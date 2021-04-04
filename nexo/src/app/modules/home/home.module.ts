@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
+import { DepartmentComponent } from './components/department/department.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -18,8 +20,5 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     FormsModule,
     CommonModule               
   ],
-  exports:[
-    NavbarComponent
-  ]
 })
 export class HomeModule { }

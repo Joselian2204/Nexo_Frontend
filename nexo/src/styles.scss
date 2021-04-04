@@ -2,3 +2,21 @@
 *{
     background-color: #121e34;
 }
+::-webkit-scrollbar{
+   width: 10px;
+   background: transparent; 
+}
+::-webkit-scrollbar-track{
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: #166678;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #0a3842;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-corner{
+    background: transparent;
+}

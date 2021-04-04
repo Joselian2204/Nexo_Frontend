@@ -1,3 +1,42 @@
 *{
-    background-color: #121e34;
+    margin: 0px;
+    padding: 0px;
+}
+
+.equal-height-columns{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list{
+    height: 89.2vh;
+    width: 100%;
+    overflow:scroll;
+}
+
+/*div[class|="col"]{
+    border: 1px solid #ffc107;
+}*/
+
+.graphics__container{
+    height: 150px;
+    background-color: red;
+}
+
+.main__container{
+    height: 89.2vh;
+}
+
+.c__input{
+    grid-area: input;
+}
+
+.c__map{
+    margin-top: 5vh;
+    display: grid;
+    justify-content: center;
+    height: 80vh;
 }
