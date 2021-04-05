@@ -1,14 +1,6 @@
 <div class="element">
-    <table class="content__table">
-        <thead>
-            <tr>
-                <th>DEPARTAMENTOS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let department of departments">
-                <a href="#" class="button">{{department.name}}</a>
-            </tr>
-        </tbody>
-    </table>
+    <h2 class="h2__cl">DEPARTAMENTOS</h2>
+    <div *ngFor="let department of departments">
+        <a href="" class="departinfo">{{department.name}}</a>
+    </div>
 </div>

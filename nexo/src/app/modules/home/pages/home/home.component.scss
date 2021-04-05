@@ -3,18 +3,10 @@
     padding: 0px;
 }
 
-.equal-height-columns{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-}
 
 .list{
     height: 89.2vh;
     width: 100%;
-    overflow:scroll;
 }
 
 /*div[class|="col"]{
@@ -23,7 +15,7 @@
 
 .graphics__container{
     height: 150px;
-    background-color: red;
+    background-color: yellow;
 }
 
 .main__container{
@@ -40,3 +32,11 @@
     justify-content: center;
     height: 80vh;
 }
+
+.c__map__world{
+    margin-top: 15vh;
+    display: grid;
+    justify-content: center;
+    height: 50vh;
+}
+

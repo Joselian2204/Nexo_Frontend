@@ -7,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentComponent implements OnInit {
 
-  departments: any 
+  departments: any;
 
   constructor() { 
     this.departments=[
-      {name:"LA PAZ"},{name:"SANTA CRUZ"},{name:"COCHABAMBA"}
+      {name:"LA PAZ"},
+      {name:"SANTA CRUZ"},
+      {name:"COCHABAMBA"},
+      {name:"PANDO"},
+      {name:"BENI"},
+      {name:"ORURO"},
+      {name:"POTOSI"},
+      {name:"SUCRE"},
+      {name:"TARIJA"},
     ]
   }
 

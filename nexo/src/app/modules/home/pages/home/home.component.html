@@ -3,15 +3,26 @@
 <div class="main__container">
     <div class="row">
         <div class="col-4">
-            <app-department></app-department>
+            <div *ngIf="map; then bolList; else worldList"></div>
+            <ng-template #bolList>
+                <app-department></app-department>
+            </ng-template>
+            <ng-template #worldList>
+                <app-country></app-country>
+            </ng-template>
         </div>
         <div class="col-8">
             <div class="c__map">
-                <object data="../../../../../assets/bolivia_map.svg" type="image/svg+xml" height="100%"></object>
+                <div *ngIf="map; then bolMap; else worldMap"></div>
+                <ng-template #bolMap>
+                    <object data="../../../../../assets/bolivia_map.svg" type="image/svg+xml" height="100%"></object>
+                </ng-template>
+                <ng-template #worldMap>
+                    <object data="../../../../../assets/world.svg" class="c__map__world" type="image/svg+xml" height="100%"></object>
+                </ng-template>
             </div>
         </div>
     </div>
 </div>
 <div class="graphics__container">
-
 </div>
