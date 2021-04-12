@@ -12,15 +12,13 @@
             </ng-template>
         </div>
         <div class="col-8">
-            <div class="c__map">
-                <div *ngIf="map; then bolMap; else worldMap"></div>
-                <ng-template #bolMap>
-                    <object data="../../../../../assets/bolivia_map.svg" type="image/svg+xml" height="100%"></object>
-                </ng-template>
-                <ng-template #worldMap>
-                    <object data="../../../../../assets/world.svg" class="c__map__world" type="image/svg+xml" height="100%"></object>
-                </ng-template>
-            </div>
+            <div *ngIf="map; then bolMap; else worldMap"></div>
+            <ng-template #bolMap>
+                <app-bolmap></app-bolmap>
+            </ng-template>
+            <ng-template #worldMap>
+                <app-worldmap></app-worldmap>
+            </ng-template>
         </div>
     </div>
 </div>

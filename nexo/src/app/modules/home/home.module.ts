@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { DepartmentComponent } from './components/department/department.component';
 import { CountryComponent } from './components/country/country.component';
+import { BolmapComponent } from './components/bolmap/bolmap.component';
+import { WorldmapComponent } from './components/worldmap/worldmap.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { CountryComponent } from './components/country/country.component';
     HomeComponent,
     NavbarComponent,
     DepartmentComponent,
-    CountryComponent
+    CountryComponent,
+    BolmapComponent,
+    WorldmapComponent
   ],
   imports: [
     BrowserModule,

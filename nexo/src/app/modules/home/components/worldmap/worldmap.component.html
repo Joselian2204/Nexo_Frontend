@@ -1,0 +1,54 @@
+<div class="c__map">
+    <object #idsvg data="../../../../../assets/world.svg"
+     class="c__map__world" type="image/svg+xml" height="100%"></object>
+</div>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="map" class="map"></div>
+  <script src="https://maps.googlleapis.com/maps/api/js?key=AIzaSyAW6qfQaTnjuo6ti9_l28oS1pJwGNnY0Z4"></script>
+  <script type="module">
+    import mapStyle from './map-style.js'
+    const $map = document.querySelector('#map')
+    const map = new window.google.maps.Map($map, {
+      center: {
+        lat: 0,
+        lng: 0
+      },
+      zoom: 3,
+      styles: mapStyle,
+    })
+    async function getData() {
+      const response = await fetch('https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest')
+      const data = await response.json()
+      return data
+    }
+    function renderExtraData({ confirmed, deaths, recovered, provincestate, countryregion }) {
+      return (`
+        <div>
+          <p> <strong>${provincestate} - ${countryregion}</strong> </p>
+          <p> confirmados: ${confirmed} </p>
+          <p> muertes: ${deaths} </p>
+          <p> recuperados: ${recovered} </p>
+        </div>
+      `)
+    }
+    const icon = './icon.png'
+    const popup = new window.google.maps.InfoWindow()
+    async function renderData() {
+      const data = await getData()
+      data.forEach(item => {
+        const marker = new window.google.maps.Marker({
+          position: {
+            lat: item.location.lat,
+            lng: item.location.lng,
+          },
+          map,
+          icon,
+          title: String(item.confirmed),
+        })
+        marker.addListener('click', () => {
+          popup.setContent(renderExtraData(item))
+          popup.open(map, marker)
+        })
+      })
+    }
+  </script>-->
