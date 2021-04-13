@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LocationService} from '../../../services/location.service'
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -9,22 +9,11 @@ export class DepartmentComponent implements OnInit {
 
   departments: any;
 
-  constructor() { 
-    this.departments=[
-      {name:"LA PAZ"},
-      {name:"SANTA CRUZ"},
-      {name:"COCHABAMBA"},
-      {name:"PANDO"},
-      {name:"BENI"},
-      {name:"ORURO"},
-      {name:"POTOSI"},
-      {name:"SUCRE"},
-      {name:"TARIJA"},
-    ]
+  constructor(private locationService: LocationService) { 
   }
 
-
   ngOnInit(): void {
+    this.departments = this.locationService.getLocation("bol");
   }
 
 }
