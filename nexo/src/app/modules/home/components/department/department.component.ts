@@ -7,13 +7,13 @@ import { LocationService} from '../../../services/location.service'
 })
 export class DepartmentComponent implements OnInit {
 
-  departments: any;
+  departments: Location[] = [];
 
   constructor(private locationService: LocationService) { 
   }
 
   ngOnInit(): void {
-    this.departments = this.locationService.getLocation("bol");
+    this.locationService.getLocation("bol").subscribe( dep => {console.log(dep);this.departments = dep});
   }
 
 }
