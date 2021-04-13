@@ -10,6 +10,7 @@ import { CountryComponent } from './components/country/country.component';
 import { BolmapComponent } from './components/bolmap/bolmap.component';
 import { WorldmapComponent } from './components/worldmap/worldmap.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { CardsComponent } from './components/cards/cards.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     DepartmentComponent,
     CountryComponent,
     BolmapComponent,
-    WorldmapComponent
+    WorldmapComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
