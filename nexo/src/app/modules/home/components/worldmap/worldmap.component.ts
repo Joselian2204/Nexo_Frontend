@@ -10,6 +10,10 @@ export class WorldmapComponent implements OnInit {
   temp: any;
   @ViewChild('idsvg', {static:true}) idsvg!: ElementRef;
 
+  centerworld = {lat: 12, lng: 0};
+  zoom = 3;
+  display?: google.maps.LatLngLiteral;
+
   constructor() { }
 
   ngOnInit(): void {
