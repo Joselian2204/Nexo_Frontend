@@ -23,7 +23,6 @@ export class DepartmentComponent implements OnInit {
     ]
   }
 
-  
 
   ngOnInit(): void {
   }

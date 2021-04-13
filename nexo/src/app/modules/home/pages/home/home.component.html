@@ -1,9 +1,18 @@
 <script src="js/bootstrap.min.js"></script>
 <app-navbar></app-navbar>
+<div class="mismapas">
+    <div *ngIf="selecmap; then bolMap; else worldMap"></div>
+    <ng-template #bolMap>
+        <app-bolmap></app-bolmap>
+    </ng-template>
+    <ng-template #worldMap>
+        <app-worldmap></app-worldmap>
+    </ng-template>
+</div>
 <div class="main__container">
     <div class="row">
         <div class="col-4">
-            <div *ngIf="map; then bolList; else worldList"></div>
+            <div *ngIf="selecmap; then bolList; else worldList"></div>
             <ng-template #bolList>
                 <app-department></app-department>
             </ng-template>
@@ -12,15 +21,10 @@
             </ng-template>
         </div>
         <div class="col-8">
-            <div *ngIf="map; then bolMap; else worldMap"></div>
-            <ng-template #bolMap>
-                <app-bolmap></app-bolmap>
-            </ng-template>
-            <ng-template #worldMap>
-                <app-worldmap></app-worldmap>
-            </ng-template>
+
         </div>
     </div>
 </div>
-<div class="graphics__container">
+<div class="graphics">
+
 </div>

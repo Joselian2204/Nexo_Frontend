@@ -1,28 +1,25 @@
 *{
     margin: 0px;
     padding: 0px;
+    background-color: #121e34;
 }
 
+.main__container{
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 99.2%;
+    background-color: aqua;
+}
 
-.list{
+.mismapas{
     height: 89.2vh;
     width: 100%;
 }
 
-/*div[class|="col"]{
-    border: 1px solid #ffc107;
-}*/
-
-.graphics__container{
+.graphics{
     height: 150px;
-    background-color: yellow;
+    background-color: aqua;
 }
 
-.main__container{
-    height: 89.2vh;
-}
-
-.c__input{
-    grid-area: input;
-}
 

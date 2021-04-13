@@ -9,7 +9,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 export class HomeComponent implements OnInit {
 
-  map: boolean = true;
+  selecmap: boolean = true;
 
   constructor(
     private navbserv: NavbarComponentService,
@@ -25,11 +25,11 @@ export class HomeComponent implements OnInit {
   }
 
   mapReload(){
-    if(this.map==true){
-      this.map=false;
+    if(this.selecmap==true){
+      this.selecmap=false;
     }
     else{
-      this.map=true;
+      this.selecmap=true;
     }
   }
 }

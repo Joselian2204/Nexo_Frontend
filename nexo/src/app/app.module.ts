@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HomeModule } from './modules/home/home.module';
     RouterModule,
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

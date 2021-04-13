@@ -9,6 +9,7 @@ import { DepartmentComponent } from './components/department/department.componen
 import { CountryComponent } from './components/country/country.component';
 import { BolmapComponent } from './components/bolmap/bolmap.component';
 import { WorldmapComponent } from './components/worldmap/worldmap.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { WorldmapComponent } from './components/worldmap/worldmap.component';
     BrowserModule,
     RouterModule,
     FormsModule,
-    CommonModule               
+    CommonModule,  
+    GoogleMapsModule          
   ],
 })
 export class HomeModule { }
