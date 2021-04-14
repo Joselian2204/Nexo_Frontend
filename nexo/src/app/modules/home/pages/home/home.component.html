@@ -9,25 +9,25 @@
         <app-worldmap></app-worldmap>
     </ng-template>
 </div>
+<div class="cardstitle">
+    <h3 class="h3__title">Datos Absolutos</h3>
+</div>
 <div class="cards">
-    <app-cards></app-cards>
+    <div *ngIf="selecmap; then bolCard; else worldCard"></div>
+    <ng-template #bolCard>
+        <app-cards></app-cards>
+    </ng-template>
+    <ng-template #worldCard>
+        <app-cardsworld></app-cardsworld>
+    </ng-template>
 </div>
 <div class="main__container">
-    <div class="row">
-        <div class="col-4">
-            <div *ngIf="selecmap; then bolList; else worldList"></div>
-            <ng-template #bolList>
-                <app-department></app-department>
-            </ng-template>
-            <ng-template #worldList>
-                <app-country></app-country>
-            </ng-template>
-        </div>
-        <div class="col-8">
-
-        </div>
-    </div>
+    <div *ngIf="selecmap; then bolComp; else worldComp"></div>
+        <ng-template #bolComp>
+            <app-department></app-department>
+        </ng-template>
+        <ng-template #worldComp>
+            <app-country></app-country>
+        </ng-template>
 </div>
-<div class="graphics">
 
-</div>

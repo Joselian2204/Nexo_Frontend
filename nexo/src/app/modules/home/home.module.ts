@@ -11,6 +11,7 @@ import { BolmapComponent } from './components/bolmap/bolmap.component';
 import { WorldmapComponent } from './components/worldmap/worldmap.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CardsComponent } from './components/cards/cards.component';
+import { CardsworldComponent } from './components/cardsworld/cardsworld.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CardsComponent } from './components/cards/cards.component';
     CountryComponent,
     BolmapComponent,
     WorldmapComponent,
-    CardsComponent
+    CardsComponent,
+    CardsworldComponent
   ],
   imports: [
     BrowserModule,
