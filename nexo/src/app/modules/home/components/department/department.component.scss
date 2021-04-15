@@ -1,10 +1,9 @@
 *{
     margin: 0px;
     padding: 0px;
-    background-color: #121e34;
 }
 .departinfo{
-    background: #e1f6f4;
+    background: #f0f8f7;
     color: #166678;
     font-size: 20px;
     margin: 20px;
@@ -15,7 +14,6 @@
     box-shadow: 0px 3px 0px #166678;
     border-radius: 10px;
     display: flex;
-    background-color: #e1e1e1;
     justify-content: center;
 }
 
@@ -43,4 +41,15 @@
     margin-bottom: 30px;
     width: 100%;
     box-shadow: 0px 3px 0px #166678;
+}
+
+.cht{
+    margin: 5px;
+    background: #f0f8f7;
+    border-radius: 20px;
+}
+
+.filters{
+    background-color: #121e34;
+    height: 35vh;
 }

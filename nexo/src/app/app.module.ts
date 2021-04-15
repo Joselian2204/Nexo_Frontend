@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HomeModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

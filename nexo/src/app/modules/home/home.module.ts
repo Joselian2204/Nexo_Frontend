@@ -12,6 +12,7 @@ import { WorldmapComponent } from './components/worldmap/worldmap.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CardsComponent } from './components/cards/cards.component';
 import { CardsworldComponent } from './components/cardsworld/cardsworld.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CardsworldComponent } from './components/cardsworld/cardsworld.componen
     RouterModule,
     FormsModule,
     CommonModule,  
-    GoogleMapsModule          
+    GoogleMapsModule,
+    ChartsModule          
   ],
 })
 export class HomeModule { }
