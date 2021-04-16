@@ -6,7 +6,7 @@ import { Color } from 'ng2-charts';
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
-  styleUrls: ['./department.component.scss']
+  styleUrls: ['./department.component.scss'],
 })
 export class DepartmentComponent implements OnInit {
 
@@ -62,6 +62,10 @@ export class DepartmentComponent implements OnInit {
       pointHoverBorderColor: 'rgba(15,209,31,0.8)'
     }
   ];
+
+  municipalities: any[] = ["mun1","mun2","mun3","mun4","mun5","mun6","mun7","mun8","mun9","mun10"];
+  
+  times: any[] = ["Ultimo Mes","Ultimo Trimestre","Ultimo Semestre","Ultimo Año","Inicio"];
 
   departments: Location[]=[{id:"bol1",name:"la paz",lat:50.0,lng:50.0},{id:"bol1",name:"santa cruz",lat:50.0,lng:50.0},{id:"bol1",name:"cochabamba",lat:50.0,lng:50.0},{id:"bol1",name:"tarija",lat:50.0,lng:50.0}];
 

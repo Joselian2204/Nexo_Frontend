@@ -9,7 +9,21 @@
             </div>
         </div>
         <div class="col-8">
-
+            <div class="filters">
+                <select class="select">
+                    <option value="" selected disabled >Tiempos</option>
+                    <option value="" *ngFor="let time of times" [value]="time" onclick="">{{time}}</option>
+                </select>
+            </div>
+            <div class="cht">
+                <canvas baseChart
+                [datasets]="ChartData"
+                [labels]="ChartLabels"
+                [options]="ChartOptions"
+                [legend]="ChartLegend"
+                [chartType]="ChartType"
+                [colors]="ChartColors"></canvas>
+            </div>
         </div>
     </div>
 </div>
