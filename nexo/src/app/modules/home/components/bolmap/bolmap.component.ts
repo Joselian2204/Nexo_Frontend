@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { LocationService} from '../../../services/location.service';
+import { Location } from '../../../models/location';
 
 @Component({
   selector: 'app-bolmap',
@@ -11,9 +13,12 @@ export class BolmapComponent implements OnInit {
   zoom = 6.4;
   display?: google.maps.LatLngLiteral;
 
-  constructor() { }
+  pos: Location[] = [];
+
+  constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
+    this.locationService.getLocation("bol").subscribe( con => this.pos = con);
   }
 
 }

@@ -3,6 +3,9 @@ import { LocationService} from '../../../services/location.service'
 import { Location } from '../../../models/location';
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
+import { Data } from '../../../models/data';
+import { DataService} from '../../../services/data.service';
+import { ɵDomAdapter } from '@angular/common';
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -15,22 +18,22 @@ export class DepartmentComponent implements OnInit {
     responsive: true,
   };
 
-  ChartLabels = ['2006','2007','2008','2009','2010','2011','2012'];
+  ChartLabels = [];
 
   ChartType: ChartType = 'line';
 
   ChartLegend = true;
 
   ChartData = [
-    {data: [65,59,80,81,56,55,40], label:'Infectados'},
-    {data: [35,40,70,15,32,10,25], label:'Decesos'},
-    {data: [21,12,0,90,150,69,11], label:'Vacunados'},
-    {data: [28,48,40,19,86,27,90], label:'Recuperados'}
+    {data: [], label:'Infectados'},
+    {data: [], label:'Decesos'},
+    {data: [], label:'Vacunados'},
+    {data: [], label:'Recuperados'}
   ];
 
   public ChartColors: Color[] = [
     { // infected
-      backgroundColor: 'rgba(247,54,47,0.3)',
+      backgroundColor: 'rgba(247,54,47,0.6)',
       borderColor: 'rgba(247,54,47,1)',
       pointBackgroundColor: 'rgba(247,54,47,1)',
       pointBorderColor: '#fff',
@@ -38,7 +41,7 @@ export class DepartmentComponent implements OnInit {
       pointHoverBorderColor: 'rgba(247,54,47,0.8)'
     },
     { // death
-      backgroundColor: 'rgba(53,53,53,0.3)',
+      backgroundColor: 'rgba(53,53,53,0.6)',
       borderColor: 'rgba(53,53,53,1)',
       pointBackgroundColor: 'rgba(53,53,53,1)',
       pointBorderColor: '#fff',
@@ -46,7 +49,7 @@ export class DepartmentComponent implements OnInit {
       pointHoverBorderColor: 'rgba(53,53,53,1)'
     },
     { // vaccinated
-      backgroundColor: 'rgba(32,198,228,0.3)',
+      backgroundColor: 'rgba(32,198,228,0.6)',
       borderColor: 'rgba(32,198,228,1)',
       pointBackgroundColor: 'rgba(32,198,228,1)',
       pointBorderColor: '#fff',
@@ -54,7 +57,7 @@ export class DepartmentComponent implements OnInit {
       pointHoverBorderColor: 'rgba(32,198,228,0.8)'
     },
     { // recovered
-      backgroundColor: 'rgba(15,209,31,0.3)',
+      backgroundColor: 'rgba(15,209,31,0.6)',
       borderColor: 'rgba(15,209,31,1)',
       pointBackgroundColor: 'rgba(15,209,31,1)',
       pointBorderColor: '#fff',
@@ -67,13 +70,33 @@ export class DepartmentComponent implements OnInit {
   
   times: any[] = ["Ultimo Mes","Ultimo Trimestre","Ultimo Semestre","Ultimo Año","Inicio"];
 
-  departments: Location[]=[/*{id:"bol1",name:"la paz",lat:50.0,lng:50.0},{id:"bol1",name:"santa cruz",lat:50.0,lng:50.0},{id:"bol1",name:"cochabamba",lat:50.0,lng:50.0},{id:"bol1",name:"tarija",lat:50.0,lng:50.0}*/];
+  departments: Location[]=[];
 
-  constructor(private locationService: LocationService) { 
+  depdata: Data[]=[];
+
+  constructor(private locationService: LocationService, private dataService: DataService) { 
   }
 
   ngOnInit(): void {
     this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
   }
 
+  fetchData(id: string): void{
+    console.log(id);
+    this.dataService.getData("department/"+id).subscribe(ddata => {
+      this.depdata = ddata;
+      this.ChartLabels = ddata.map((p: { date: any; }) => p.date)
+      this.ChartData = [
+        {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
+        {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+        {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+        {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+      ];
+      console.log(ddata);
+    });
+  }
+
+  setGraph(value: ChartType): void{
+    this.ChartType = value;
+  }
 }

@@ -3,6 +3,7 @@
     padding: 0px;
 }
 .departinfo{
+    border: 0;
     background: #f0f8f7;
     color: #166678;
     font-size: 20px;
@@ -15,7 +16,10 @@
     border-radius: 10px;
     display: flex;
     justify-content: center;
+    width: 90%;
 }
+
+
 
 .main__container{
     padding: 0px;
@@ -25,6 +29,7 @@
 }
 
 .element{
+    margin-top: 5rem;
     padding:60px;
     overflow:scroll;
     height: 90vh;
@@ -60,7 +65,7 @@
 .select{
     font-size: 18px;
     padding: 8px 12px;
-    background: #e1f6f4;
+    background: #f0f8f7;
     border: 1px solid #166678;
     color: #166678;
     cursor: pointer;
@@ -78,8 +83,22 @@
 }
 
 .select option{
-    background: #e1f6f4;
+    background: #f0f8f7;
 }
 
-
+.button__graph{
+    width: 100px;
+    background: #f0f8f7;
+    color: #166678;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #166678;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #166678;
+}
 

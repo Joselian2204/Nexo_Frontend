@@ -12,7 +12,7 @@ export class WorldmapComponent implements OnInit {
 
   @ViewChild('idsvg', {static:true}) idsvg!: ElementRef;
 
-  pos: Location[] = [{id:"bol1",name:"boli",lat:50.0,lng:50.0},{id:"bol1",name:"boli",lat:24.0,lng:12.0}]
+  pos: Location[] = [];
 
   centerworld = {lat: 12, lng: 0};
   zoom = 3;
@@ -23,7 +23,7 @@ export class WorldmapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.locationService.getLocation("bol").subscribe( dep => this.pos = dep);
+    this.locationService.getLocation("world").subscribe( con => this.pos = con);
   }
 
 }

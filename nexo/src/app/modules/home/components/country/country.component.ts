@@ -3,6 +3,8 @@ import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { LocationService } from 'src/app/modules/services/location.service';
 import { Location } from '../../../models/location';
+import { Data } from '../../../models/data';
+import { DataService} from '../../../services/data.service';
 
 @Component({
   selector: 'app-country',
@@ -16,17 +18,17 @@ export class CountryComponent implements OnInit {
     responsive: true,
   };
 
-  ChartLabels = ['2006','2007','2008','2009','2010','2011','2012'];
+  ChartLabels = [];
 
   ChartType: ChartType = 'line';
 
   ChartLegend = true;
 
   ChartData = [
-    {data: [65,59,80,81,56,55,40], label:'Infectados'},
-    {data: [35,40,70,15,32,10,25], label:'Decesos'},
-    {data: [21,12,0,90,150,69,11], label:'Vacunados'},
-    {data: [28,48,40,19,86,27,90], label:'Recuperados'}
+    {data: [], label:'Infectados'},
+    {data: [], label:'Decesos'},
+    {data: [], label:'Vacunados'},
+    {data: [], label:'Recuperados'}
   ];
 
   public ChartColors: Color[] = [
@@ -68,12 +70,33 @@ export class CountryComponent implements OnInit {
 
   countries: Location[] = [];
 
-  constructor(private locationService: LocationService) { 
+  condata: Data[]=[];
+
+  constructor(private locationService: LocationService, private dataService: DataService) { 
 
   }
 
   ngOnInit(): void {
     this.locationService.getLocation("world").subscribe( con => this.countries = con);
+  }
+  
+  fetchData(id: string): void{
+    console.log(id);
+    this.dataService.getData("country/"+id).subscribe(ddata => {
+      this.condata = ddata;
+      this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
+      this.ChartData = [
+        {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
+        {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+        {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+        {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+      ];
+      console.log(ddata);
+    });
+  }
+
+  setGraph(value: ChartType): void{
+    this.ChartType = value;
   }
 
 }

@@ -1,8 +1,8 @@
-export interface data{
+export interface Data{
     "id":number,
     "regionId":string,
-    "date":Date,
-    "cases":number,
+    "date":string,
+    "newCases":number,
     "actives":number,
     "deaths":number,
     "recovered":number,

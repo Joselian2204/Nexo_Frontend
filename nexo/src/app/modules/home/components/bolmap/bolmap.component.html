@@ -1,1 +1,9 @@
-<google-map width='100%' height='100%' [center]="centerbol" [zoom]="zoom"></google-map>
+<google-map width='100%' height='100%' [center]="centerbol" [zoom]="zoom">
+    <map-marker
+    *ngFor = "let poss of pos"
+    [position] = "{
+        lat: +poss.lat,
+        lng: +poss.lng
+    }"
+    ></map-marker>
+</google-map>

@@ -4,7 +4,7 @@
             <div class="element">
                 <h2 class="h2__cl">DEPARTAMENTOS</h2>
                 <div *ngFor="let department of departments">
-                    <a href="" class="departinfo">{{department.name}}</a>
+                    <button (click)="fetchData(department.id)" class="departinfo">{{department.name}}</button>
                 </div>
             </div>
         </div>
@@ -12,12 +12,15 @@
             <div class="filters">
                 <select class="select">
                     <option value="" selected disabled >Municipios</option>
-                    <option value="" *ngFor="let municipality of municipalities" [value]="municipality" onclick="">{{municipality}}</option>
+                    <option value="" *ngFor="let municipality of municipalities" [value]="municipality" >{{municipality}}</option>
                 </select>
                 <select class="select">
                     <option value="" selected disabled >Tiempos</option>
                     <option value="" *ngFor="let time of times" [value]="time" onclick="">{{time}}</option>
                 </select>
+                <button class="button__graph" (click)="setGraph('line')">Lineal</button>
+                <button class="button__graph" (click)="setGraph('bar')">Barras</button>
+                <button class="button__graph" (click)="setGraph('radar')">Radar</button>
             </div>
             <div class="cht">
                 <canvas baseChart
