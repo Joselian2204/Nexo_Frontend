@@ -9,7 +9,6 @@ import { DepartmentComponent } from './components/department/department.componen
 import { CountryComponent } from './components/country/country.component';
 import { BolmapComponent } from './components/bolmap/bolmap.component';
 import { WorldmapComponent } from './components/worldmap/worldmap.component';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { CardsComponent } from './components/cards/cards.component';
 import { CardsworldComponent } from './components/cardsworld/cardsworld.component';
 import { ChartsModule } from 'ng2-charts';
@@ -31,7 +30,6 @@ import { ChartsModule } from 'ng2-charts';
     RouterModule,
     FormsModule,
     CommonModule,  
-    GoogleMapsModule,
     ChartsModule          
   ],
 })

@@ -4,3 +4,15 @@
     justify-content: center;
     height: 53vh;
 }
+@import "~leaflet/dist/leaflet.css";
+
+.map-border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#map{
+    width: 90%;
+    height: 89.2vh;
+}

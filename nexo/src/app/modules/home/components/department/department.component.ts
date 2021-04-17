@@ -85,7 +85,7 @@ export class DepartmentComponent implements OnInit {
     console.log(id);
     this.dataService.getData("department/"+id).subscribe(ddata => {
       this.depdata = ddata;
-      this.ChartLabels = ddata.map((p: { date: any; }) => p.date)
+      this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
       this.ChartData = [
         {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
         {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
