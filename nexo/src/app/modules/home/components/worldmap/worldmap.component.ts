@@ -35,7 +35,7 @@ export class WorldmapComponent implements OnInit {
           fillOpacity: 0.5,
           radius: 100000
         }).addTo(mymap);
-        circle.bindPopup(x.name);
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+x.population+"</br> Infectados: "+x.cases+"</br> Decesos: "+x.deaths);
       })
     });
 

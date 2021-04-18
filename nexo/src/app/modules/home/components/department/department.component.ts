@@ -114,7 +114,7 @@ export class DepartmentComponent implements OnInit {
     this.locationService.getLocation("municipios/"+id).subscribe(mun => this.municipalities = mun);
   }
 
-  downLoadData(): void{
+  downloadData(): void{
     
   }
 

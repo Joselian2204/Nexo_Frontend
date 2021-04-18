@@ -107,7 +107,7 @@ export class CountryComponent implements OnInit {
     console.log(this.title);
   }
 
-  downLoadData(): void{
+  downloadData(): void{
     
   }
 

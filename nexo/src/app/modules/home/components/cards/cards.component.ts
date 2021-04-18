@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationService} from '../../../services/location.service'
+import { Location } from '../../../models/location';
 
 @Component({
   selector: 'app-cards',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private locationService: LocationService) { }
+
+  total: Location[]=[];
 
   ngOnInit(): void {
+    this.locationService.getLocation("world_cases").subscribe( tot => this.total = tot);
   }
+
+
 
 }

@@ -29,7 +29,7 @@ export class BolmapComponent implements OnInit {
           fillOpacity: 0.5,
           radius: 10000
         }).addTo(mymap);
-        circle.bindPopup(x.name);
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+x.population+"</br> Infectados: "+x.cases+"</br> Decesos: "+x.deaths);
       })
     });
 
@@ -43,7 +43,7 @@ export class BolmapComponent implements OnInit {
           radius: 100000
         }).addTo(mymap);
         console.log();
-        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Infectados: "+x.cases+"</br> Decesos: "+x.deaths+"</br> Vacunados: "+x.vaccine+"</br> Recuperados: "+x.recovered);
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+x.population+"</br> Infectados: "+x.cases+"</br> Decesos: "+x.deaths);
       })
     });
 
