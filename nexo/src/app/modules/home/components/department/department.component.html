@@ -41,7 +41,7 @@
                     </div>
                     <div class="modal-body m__content">
                         <div *ngFor="let time of times">
-                            <button (click)="modalTimes.close()" class="departinfo">{{time}}</button>
+                            <button (click)="modalTimes.close()" (click)="updateDate(time)" class="departinfo">{{time}}</button>
                         </div>
                     </div>
                 </ng-template>

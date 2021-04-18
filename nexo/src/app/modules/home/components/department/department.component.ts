@@ -73,9 +73,11 @@ export class DepartmentComponent implements OnInit {
 
   departments: Location[]=[];
 
-  depdata: Data[]=[];
+  depdata: any;
 
   title = "Bolivia";
+  
+  currentLocation: any;
 
   constructor(private locationService: LocationService, private dataService: DataService, private modalMun: NgbModal, private modalTimes: NgbModal) {
   }
@@ -90,17 +92,19 @@ export class DepartmentComponent implements OnInit {
     console.log(id);
     this.dataService.getData(path+id).subscribe(ddata => {
       this.depdata = ddata;
-      this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
-      this.ChartData = [
-        {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
-        {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
-        {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
-        {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
-      ];
+      this.setData(ddata);
      // console.log(ddata);
     });
   }
-
+  setData(ddata:any){
+    this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
+    this.ChartData = [
+      {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
+      {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+      {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+      {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+    ];
+  }
   setGraph(value: ChartType): void{
     this.ChartType = value;
   }
@@ -161,5 +165,21 @@ export class DepartmentComponent implements OnInit {
 
   openTimes(contenido: any): void{
     this.modalTimes.open(contenido);
+  }
+
+  updateDate(time: string){
+    let ddata;
+    if (time == this.times[0]){
+      ddata = this.depdata.slice(-30);
+    }else if  (time ==  this.times[1]){
+      ddata = this.depdata.slice(-90);
+    }else if  (time ==  this.times[2]){
+      ddata = this.depdata.slice(-180);
+    }else if  (time ==  this.times[3]){
+      ddata = this.depdata.slice(-365);
+    }else{
+      ddata = this.depdata;
+    }
+    this.setData(ddata);
   }
 }
