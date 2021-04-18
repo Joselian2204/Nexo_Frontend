@@ -87,14 +87,8 @@ export class CountryComponent implements OnInit {
     console.log(id);
     this.dataService.getData("country/"+id).subscribe(ddata => {
       this.condata = ddata;
-      this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
-      this.ChartData = [
-        {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
-        {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
-        {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
-        {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
-      ];
-      console.log(ddata);
+      this.setData(ddata);
+      //console.log(ddata);
     });
   }
 
@@ -134,5 +128,28 @@ export class CountryComponent implements OnInit {
   openTimes(contenido: any): void{
     this.modalTimes.open(contenido);
   }
-
+  setData(ddata:any){
+    this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
+    this.ChartData = [
+      {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
+      {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+      {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+      {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+    ];
+  }
+  updateDate(time: string){
+    let ddata;
+    if (time == this.times[0]){
+      ddata = this.condata.slice(-30);
+    }else if  (time ==  this.times[1]){
+      ddata = this.condata.slice(-90);
+    }else if  (time ==  this.times[2]){
+      ddata = this.condata.slice(-180);
+    }else if  (time ==  this.times[3]){
+      ddata = this.condata.slice(-365);
+    }else{
+      ddata = this.condata;
+    }
+    this.setData(ddata);
+  }
 }
