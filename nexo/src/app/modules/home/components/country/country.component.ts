@@ -108,7 +108,27 @@ export class CountryComponent implements OnInit {
   }
 
   downloadData(): void{
-    
+    const csvRows = [];
+    const headers = Object.keys(this.condata[0]);
+    //const dat = JSON.parse(this.depdata);
+    csvRows.push(headers.join(','));
+    for (const row of this.condata){
+      const values = headers.map( header =>{
+        let key = header as keyof Data;
+        return ''+row[key]
+      })
+      csvRows.push(values.join(','));
+    }
+    const data = csvRows.join('\n');
+    const blob = new Blob([data], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'datos.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
   openTimes(contenido: any): void{
