@@ -11,10 +11,10 @@ export class CardsComponent implements OnInit {
 
   constructor(private locationService: LocationService) { }
 
-  total: Location[]=[];
+  total!: Location;
 
   ngOnInit(): void {
-    this.locationService.getLocation("world_cases").subscribe( tot => this.total = tot);
+    this.locationService.getLocation("bol_cases").subscribe( tot => this.total = tot);
   }
 
 
