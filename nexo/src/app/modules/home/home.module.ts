@@ -12,6 +12,7 @@ import { WorldmapComponent } from './components/worldmap/worldmap.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { CardsworldComponent } from './components/cardsworld/cardsworld.component';
 import { ChartsModule } from 'ng2-charts';
+import { ErrorScreenComponent } from './pages/error-screen/error-screen.component';
 
 
 
@@ -24,7 +25,8 @@ import { ChartsModule } from 'ng2-charts';
     BolmapComponent,
     WorldmapComponent,
     CardsComponent,
-    CardsworldComponent
+    CardsworldComponent,
+    ErrorScreenComponent
   ],
   imports: [
     BrowserModule,

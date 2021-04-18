@@ -35,7 +35,7 @@ export class WorldmapComponent implements OnInit {
           fillOpacity: 0.5,
           radius: 100000
         }).addTo(mymap);
-        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+x.population+"</br> Infectados: "+x.cases+"</br> Decesos: "+x.deaths);
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
       })
     });
 
@@ -49,6 +49,15 @@ export class WorldmapComponent implements OnInit {
     zoomOffset: -1,
     accessToken: 'your.mapbox.access.token'
     }).addTo(mymap);  
+  }
+
+  validator(parameter: any): string{
+    if (parameter == 0){
+      return "No disponible";
+    }
+    else{
+      return parameter;
+    }
   }
 
 }

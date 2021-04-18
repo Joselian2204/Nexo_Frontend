@@ -16,4 +16,13 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
     this.locationService.getLocation("bol_cases").subscribe( tot => this.total = tot);
   }
+
+  validator(parameter: any): string{
+    if (parameter == 0){
+      return "No disponible";
+    }
+    else{
+      return parameter;
+    }
+  }
 }
