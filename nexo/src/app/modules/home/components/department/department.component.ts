@@ -5,7 +5,8 @@ import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { Data } from '../../../models/data';
 import { DataService} from '../../../services/data.service';
-import { ɵDomAdapter } from '@angular/common';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -66,7 +67,7 @@ export class DepartmentComponent implements OnInit {
     }
   ];
 
-  municipalities: any[] = ["mun1","mun2","mun3","mun4","mun5","mun6","mun7","mun8","mun9","mun10"];
+  municipalities: Location[]=[];
   
   times: any[] = ["Ultimo Mes","Ultimo Trimestre","Ultimo Semestre","Ultimo Año","Inicio"];
 
@@ -74,16 +75,20 @@ export class DepartmentComponent implements OnInit {
 
   depdata: Data[]=[];
 
-  constructor(private locationService: LocationService, private dataService: DataService) { 
+  title = "Bolivia";
+
+  constructor(private locationService: LocationService, private dataService: DataService, private modalMun: NgbModal, private modalTimes: NgbModal) {
   }
 
   ngOnInit(): void {
     this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
+    this.fetchData('country/','BOL');
   }
 
-  fetchData(id: string): void{
+  fetchData(path:string,id: string): void{
+    console.log("adawda");
     console.log(id);
-    this.dataService.getData("department/"+id).subscribe(ddata => {
+    this.dataService.getData(path+id).subscribe(ddata => {
       this.depdata = ddata;
       this.ChartLabels = ddata.map((p: { date: any; }) => p.date.substring(0,10))
       this.ChartData = [
@@ -98,5 +103,43 @@ export class DepartmentComponent implements OnInit {
 
   setGraph(value: ChartType): void{
     this.ChartType = value;
+  }
+
+  setTitle(name: string): void{
+    this.title = name;
+    console.log(this.title);
+  }
+
+  setMunicipalities(id: string): void {
+    this.locationService.getLocation("municipios/"+id).subscribe(mun => this.municipalities = mun);
+  }
+
+  downLoadData(): void{
+    
+  }
+
+  selectedGroup: any;
+
+  getVal() {
+    console.log(this.selectedGroup); // returns selected object
+    console.log(this.selectedGroup.id); // returns selected option's id
+    console.log(this.selectedGroup.name); // returns selected option's name
+  }
+
+  selectChangeHandler (event: any) {
+    console.log(event.target.value);
+    this.fetchData('municipios/',event.target.value);
+  }
+
+  setBoliviaGraph(): void {
+    this.fetchData('country/','BOL');
+  }
+
+  openMun(contenido: any): void{
+    this.modalMun.open(contenido);
+  }
+
+  openTimes(contenido: any): void{
+    this.modalTimes.open(contenido);
   }
 }

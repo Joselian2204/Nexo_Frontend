@@ -40,6 +40,7 @@
 }
 
 .h2__cl{
+    border: 0;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 40px;
@@ -49,19 +50,33 @@
     margin-bottom: 30px;
     width: 100%;
     box-shadow: 0px 3px 0px #166678;
+    background-color: #121e34;
 }
+
+.title{
+    display: flex;
+    justify-content: center;
+    color: #e1f6f4;
+}
+
+h3{
+    margin-top: 3rem;
+    font-size: 40px;
+}
+
 
 .cht{
     margin: 5px;
-    background: #f0f8f7;
+    background: #0a121f;
     border-radius: 20px;
     padding: 10px;
 }
 
+
 .filters{
     display: flex;
     justify-content: center;
-    margin: 6.5rem 0;
+    margin: 4.5rem 0;
     //background-color: #121e34;
 }
 
@@ -89,9 +104,9 @@
     background: #f0f8f7;
 }
 
-.button__graph{
+.button__ddata{
     margin-left: 50px;
-    width: 100px;
+    width: 150px;
     background: #f0f8f7;
     color: #166678;
     font-size: 20px;
@@ -104,4 +119,18 @@
     display: flex;
     justify-content: center;
     border: 1px solid #166678;
+}
+
+.m__content{
+    background-color: #121e34;
+}
+
+.m__content__h{
+    background-color: #121e34;
+    color: #e1f6f4;
+}
+
+.close__icon,
+.close__icon:hover{
+    color: #e1f6f4;
 }

@@ -20,6 +20,18 @@ export class BolmapComponent implements OnInit {
   constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
+    this.locationService.getLocation('municipios').subscribe( con => {
+      this.pos = con;
+      this.pos.forEach(x => {
+        let circle = L.circle([+x.lat,+x.lng], {
+          color: 'orange',
+          fillColor: '#c75509',
+          fillOpacity: 0.5,
+          radius: 10000
+        }).addTo(mymap);
+        circle.bindPopup(x.name);
+      })
+    });
 
     this.locationService.getLocation("bol").subscribe( con => {
       this.pos = con;

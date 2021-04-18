@@ -2,21 +2,40 @@
     <div class="row">
         <div class="col-4">
             <div class="element">
-                <h2 class="h2__cl">PAISES</h2>
+                <button class="h2__cl" (click)="setTitle('Mundo')">Mundo</button>
                 <div *ngFor="let country of countries">
-                    <button (click)="fetchData(country.id)" class="countryinfo">{{country.name}}</button>
+                    <button (click)="fetchData(country.id)" (click)="setTitle(country.name)" class="countryinfo">{{country.name}}</button>
                 </div>
             </div>
         </div>
         <div class="col-8">
+            <div class="title">
+                <h3>
+                    {{title}}
+                </h3>
+            </div>
             <div class="filters">
-                <select class="select">
-                    <option value="" selected disabled >Tiempos</option>
-                    <option value="" *ngFor="let time of times" [value]="time" onclick="">{{time}}</option>
-                </select>
-                <button class="button__graph" (click)="setGraph('line')">Lineal</button>
-                <button class="button__graph" (click)="setGraph('bar')">Barras</button>
-                <button class="button__graph" (click)="setGraph('radar')">Radar</button>
+                
+                <ng-template #contenidoT let-modalTimes class="m__content">
+                    <div class="modal-header m__content__h">
+                        <h4 class="modal-title">Tiempos</h4>
+                        <button class="close close__icon" aria-label="close" type="button" (click)="modalTimes.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body m__content">
+                        <div *ngFor="let time of times">
+                            <button (click)="modalTimes.close()" class="countryinfo">{{time}}</button>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <button type="button" class="button__ddata" (click)="openTimes(contenidoT)">Tiempos</button>
+
+
+                <button class="button__ddata" (click)="setGraph('line')">Lineal</button>
+                <button class="button__ddata" (click)="setGraph('bar')">Barras</button>
+                <button class="button__ddata" (click)="downLoadData()">Descargar</button>
             </div>
             <div class="cht">
                 <canvas baseChart

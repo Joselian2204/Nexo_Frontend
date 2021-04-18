@@ -5,6 +5,7 @@ import { LocationService } from 'src/app/modules/services/location.service';
 import { Location } from '../../../models/location';
 import { Data } from '../../../models/data';
 import { DataService} from '../../../services/data.service';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-country',
@@ -72,7 +73,9 @@ export class CountryComponent implements OnInit {
 
   condata: Data[]=[];
 
-  constructor(private locationService: LocationService, private dataService: DataService) { 
+  title = "Mundo";
+
+  constructor(private locationService: LocationService, private dataService: DataService, private modalTimes: NgbModal) { 
 
   }
 
@@ -97,6 +100,19 @@ export class CountryComponent implements OnInit {
 
   setGraph(value: ChartType): void{
     this.ChartType = value;
+  }
+
+  setTitle(name: string): void{
+    this.title = name;
+    console.log(this.title);
+  }
+
+  downLoadData(): void{
+    
+  }
+
+  openTimes(contenido: any): void{
+    this.modalTimes.open(contenido);
   }
 
 }

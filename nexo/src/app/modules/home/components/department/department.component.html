@@ -2,28 +2,59 @@
     <div class="row">
         <div class="col-4">
             <div class="element">
-                <h2 class="h2__cl">DEPARTAMENTOS</h2>
+                <button class="h2__cl" (click)="setBoliviaGraph()" (click)="setTitle('Bolivia')">Bolivia</button>
                 <div *ngFor="let department of departments">
-                    <button (click)="fetchData(department.id)" class="departinfo">{{department.name}}</button>
+                    <button (click)="fetchData('department/',department.id)" (click)="setTitle(department.name)" (click)="setMunicipalities(department.id)" class="departinfo">{{department.name}}</button>
                 </div>
             </div>
         </div>
         <div class="col-8">
+            <div class="title">
+                <h3>
+                    {{title}}
+                </h3>
+            </div>
             <div class="filters">
-                <select class="select">
-                    <option value="" selected disabled >Municipios</option>
-                    <option value="" *ngFor="let municipality of municipalities" [value]="municipality" >{{municipality}}</option>
-                </select>
-                <select class="select">
-                    <option value="" selected disabled >Tiempos</option>
-                    <option value="" *ngFor="let time of times" [value]="time" onclick="">{{time}}</option>
-                </select>
-                <button class="button__graph" (click)="setGraph('line')">Lineal</button>
-                <button class="button__graph" (click)="setGraph('bar')">Barras</button>
-                <button class="button__graph" (click)="setGraph('radar')">Radar</button>
+
+                <ng-template #contenido let-modalMun class="m__content">
+                    <div class="modal-header m__content__h">
+                        <h4 class="modal-title">Municipios</h4>
+                        <button class="close close__icon" aria-label="close" type="button" (click)="modalMun.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body m__content">
+                        <div *ngFor="let municipality of municipalities">
+                            <button (click)="fetchData('municipios/',municipality.id)" (click)="setTitle(municipality.name)"  (click)="modalMun.close()" class="departinfo">{{municipality.name}}</button>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <button type="button" class="button__ddata" (click)="openMun(contenido)">Municipios</button>
+
+                <ng-template #contenidoT let-modalTimes class="m__content">
+                    <div class="modal-header m__content__h">
+                        <h4 class="modal-title">Tiempos</h4>
+                        <button class="close close__icon" aria-label="close" type="button" (click)="modalTimes.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body m__content">
+                        <div *ngFor="let time of times">
+                            <button (click)="modalTimes.close()" class="departinfo">{{time}}</button>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <button type="button" class="button__ddata" (click)="openTimes(contenidoT)">Tiempos</button>
+
+
+                <button class="button__ddata" (click)="setGraph('line')">Lineal</button>
+                <button class="button__ddata" (click)="setGraph('bar')">Barras</button>
+                <button class="button__ddata" (click)="downLoadData()">Descargar</button>
             </div>
             <div class="cht">
-                <canvas baseChart
+                <canvas baseChart id="myChart"
                 [datasets]="ChartData"
                 [labels]="ChartLabels"
                 [options]="ChartOptions"

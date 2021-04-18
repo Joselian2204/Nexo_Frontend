@@ -14,6 +14,7 @@ import { CardsworldComponent } from './components/cardsworld/cardsworld.componen
 import { ChartsModule } from 'ng2-charts';
 
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -30,7 +31,7 @@ import { ChartsModule } from 'ng2-charts';
     RouterModule,
     FormsModule,
     CommonModule,  
-    ChartsModule          
+    ChartsModule,        
   ],
 })
 export class HomeModule { }
