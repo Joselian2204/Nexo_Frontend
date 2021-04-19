@@ -4,7 +4,7 @@
             <div class="element">
                 <button class="h2__cl" (click)="setTitle('Mundo')">Mundo</button>
                 <div *ngFor="let country of countries">
-                    <button (click)="fetchData(country.id)" (click)="setTitle(country.name)" class="countryinfo">{{country.name}}</button>
+                    <button (click)="fetchData('country/',country.id)" (click)="setTitle(country.name)" class="countryinfo">{{country.name}}</button>
                 </div>
             </div>
         </div>

@@ -73,7 +73,7 @@ export class CountryComponent implements OnInit {
 
   condata: Data[]=[];
 
-  title = "Mundo";
+  title = "Afghanistan";
 
   constructor(private locationService: LocationService, private dataService: DataService, private modalTimes: NgbModal) { 
 
@@ -81,14 +81,15 @@ export class CountryComponent implements OnInit {
 
   ngOnInit(): void {
     this.locationService.getLocation("world").subscribe( con => this.countries = con);
+    this.fetchData('country/','AFG')
   }
   
-  fetchData(id: string): void{
+  fetchData(path:string,id: string): void{
     console.log(id);
-    this.dataService.getData("country/"+id).subscribe(ddata => {
+    this.dataService.getData(path+id).subscribe(ddata => {
       this.condata = ddata;
       this.setData(ddata);
-      //console.log(ddata);
+     // console.log(ddata);
     });
   }
 
