@@ -52,7 +52,7 @@ export class WorldmapComponent implements OnInit {
   }
 
   validator(parameter: any): string{
-    if (parameter == 0){
+    if (parameter==0){
       return "No disponible";
     }
     else{
