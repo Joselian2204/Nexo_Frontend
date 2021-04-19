@@ -88,7 +88,6 @@ export class DepartmentComponent implements OnInit {
   }
 
   fetchData(path:string,id: string): void{
-    console.log("adawda");
     console.log(id);
     this.dataService.getData(path+id).subscribe(ddata => {
       this.depdata = ddata;
