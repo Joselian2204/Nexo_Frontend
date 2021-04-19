@@ -27,7 +27,7 @@ export class BolmapComponent implements OnInit {
           color: 'orange',
           fillColor: '#c75509',
           fillOpacity: 0.5,
-          radius: 10000
+          radius: x.cases*0.12
         }).addTo(mymap);
         circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
       })
@@ -40,7 +40,7 @@ export class BolmapComponent implements OnInit {
           color: 'red',
           fillColor: '#f03',
           fillOpacity: 0.5,
-          radius: 100000
+          radius: x.cases*0.8
         }).addTo(mymap);
         console.log();
         circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
