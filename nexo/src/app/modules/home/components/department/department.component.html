@@ -25,7 +25,7 @@
                     </div>
                     <div class="modal-body m__content">
                         <div *ngFor="let municipality of municipalities">
-                            <button (click)="fetchData('municipios/',municipality.id)" (click)="setTitle(municipality.name)"  (click)="modalMun.close()" class="departinfo">{{municipality.name}}</button>
+                            <button (click)="fetchData('municipio/',municipality.id)" (click)="setTitle(municipality.name)"  (click)="modalMun.close()" class="departinfo">{{municipality.name}}</button>
                         </div>
                     </div>
                 </ng-template>
