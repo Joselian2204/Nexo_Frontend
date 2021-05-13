@@ -1,0 +1,25 @@
+<mat-nav-list class="p-2 sidenav__content">
+    <div class="sidenav-brand mb-2">
+      <img [src]="logotipo" alt="logo-example" class="sidenav-brand__logotipo" />
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('maps')"
+      routerLink="/maps"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">map</mat-icon
+      ><span class="link__text">Mapas</span>
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('dashboard')"
+      routerLink="/dashboard"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">dashboard</mat-icon
+      ><span class="link__text">Dashboard</span>
+    </div>
+  </mat-nav-list>

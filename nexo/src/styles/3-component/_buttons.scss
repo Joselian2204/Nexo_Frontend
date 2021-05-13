@@ -1,0 +1,32 @@
+.circular-button {
+  &--profile {
+    background-color: $color-primary !important;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: none;
+  }
+  &__letter {
+    font-size: 50;
+    color: $color-primary-white;
+  }
+}
+
+.decline-button{
+  width: 12rem;
+  font-size: 1.5rem;
+  color: $color-primary-white ;
+  background-color: $color-warning !important;
+  border-radius: 50%;
+  border: none;
+  margin: 3rem;
+}
+
+.acept-button{
+  width: 12rem;
+  font-size: 1.5rem;
+  color: $color-primary-white ;
+  background-color: $color-acept !important;
+  border-radius: 50%;
+  border: none;
+}

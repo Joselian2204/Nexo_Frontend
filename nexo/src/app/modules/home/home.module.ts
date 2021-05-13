@@ -1,39 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { MainComponent } from './pages/main/main.component';
+import { LoginComponent } from './pages/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { NavbarComponent } from './pages/navbar/navbar.component';
-import { DepartmentComponent } from './components/department/department.component';
-import { CountryComponent } from './components/country/country.component';
-import { BolmapComponent } from './components/bolmap/bolmap.component';
-import { WorldmapComponent } from './components/worldmap/worldmap.component';
-import { CardsComponent } from './components/cards/cards.component';
-import { CardsworldComponent } from './components/cardsworld/cardsworld.component';
-import { ChartsModule } from 'ng2-charts';
-import { ErrorScreenComponent } from './pages/error-screen/error-screen.component';
-
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
+import { MapsComponent } from './components/maps/maps.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    NavbarComponent,
-    DepartmentComponent,
-    CountryComponent,
-    BolmapComponent,
-    WorldmapComponent,
-    CardsComponent,
-    CardsworldComponent,
-    ErrorScreenComponent
+    SidenavComponent,
+    MainComponent,
+    LoginComponent,
+    MapsComponent,
+    DashboardComponent
   ],
   imports: [
+    CommonModule,
+    BrowserAnimationsModule,
     BrowserModule,
     RouterModule,
-    FormsModule,
-    CommonModule,  
-    ChartsModule,        
-  ],
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatSelectModule
+  ]
 })
 export class HomeModule { }

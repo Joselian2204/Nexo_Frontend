@@ -1,0 +1,71 @@
+.card{
+    width: 15vw;
+    margin: 3.2rem 1.6rem;
+    padding-top: 3.6rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 6.8rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    background-color: $color-primary-white;
+}
+
+.cardText{
+    margin-top: 1.2rem;
+    font-weight: 500;
+    font-size: larger;
+}
+
+.cardTitle{
+    color: $color-secondary-grey-2;
+    padding-top: .8rem;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cardUbtitle{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 3.4rem;
+    margin-top: 2rem;
+    color: $color-secondary;
+}
+
+.rowCard{
+    display: flex;
+    margin: 2rem 0;
+    padding: 0 1.3rem;
+}
+
+.iconBack{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    padding-top: 1.4rem;
+    border-radius: 1rem;
+    color: $color-primary-white;
+    margin-top: .8rem;
+    margin-right: 2rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+.population{
+    background-color: $color-population;
+}
+
+.infected{
+    background-color: $color-infected;
+}
+
+.death{
+    background-color: $color-death;
+}
+
+.vaccine{
+    background-color: $color-vaccine;
+}
+
+.recover{
+    background-color: $color-recover;
+}

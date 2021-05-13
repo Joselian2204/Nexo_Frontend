@@ -1,0 +1,13 @@
+.header {
+  padding: 5rem 7rem !important;
+  height: 10rem;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $color-primary-light-1;
+  &__title {
+    color: $color-primary-black;
+    font-size: 30;
+    font-family: Quicksand;
+    font-weight: bold;
+  }
+}

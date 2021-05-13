@@ -1,0 +1,41 @@
+.link {
+  cursor: pointer;
+  border-radius: 3rem;
+  color: $color-primary !important;
+  background-color: $color-primary-light-1;
+  margin: 2rem .5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  outline: none;
+  font-family: Roboto;
+}
+.link:hover {
+  background-color: $color-secondary-light-1 !important;
+  color: $color-primary !important;
+  transition: 0.5s;
+  transform: translateX(10px);
+}
+
+.list-item-active-link {
+  //background-color: darken($color-tertiary, 15%);
+  color: $color-secondary-light-1 !important;
+  background-color: $color-secondary !important;
+  border-radius: 3rem;
+}
+
+.mat-nav-list .mat-list-item:hover {
+  background: rgba(0, 0, 0, 0);
+}
+
+// input,
+// textarea,
+// button,
+// select,
+// a {
+//   -webkit-tap-highlight-color: transparent !important;
+// }
+// :focus {
+//   outline: none; /* no outline - for most browsers */
+//   box-shadow: none; /* no box shadow - for some browsers or if you are using Bootstrap */
+// }

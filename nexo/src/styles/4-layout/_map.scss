@@ -1,0 +1,27 @@
+
+@import "~leaflet/dist/leaflet.css";
+
+#map{
+    margin: 4.6rem 4.6rem;
+    width: 60vw;
+    height: 90vh;
+    border: 4px solid $color-secondary;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mapComponent{
+    display: flex;
+}
+
+.dropMapSelected{
+    width: 15vw;
+    margin-top: 4.5rem;
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    padding-top: 1.2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}

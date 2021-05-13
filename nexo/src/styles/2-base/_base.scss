@@ -1,0 +1,44 @@
+/* basic reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* best practice for inheritance*/
+}
+/* general configuration */
+html {
+  /* font-size: 10px; bad practice*/
+  font-size: 62.5%;
+
+  // this defines what 1rem is !!!
+  /* 10px/16px */
+}
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 10rem;
+  //background-color: red;
+}
+
+::-webkit-scrollbar{
+  width: 10px;
+  background: transparent; 
+}
+::-webkit-scrollbar-track{
+   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+   background: #166678;
+   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+   background: #0a3842;
+   border-radius: 10px;
+}
+::-webkit-scrollbar-corner{
+   background: transparent;
+}

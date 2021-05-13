@@ -1,0 +1,38 @@
+.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: $color-primary;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: $color-secondary-light-1;
+}
+
+.mat-form-field-label {
+    color:$color-secondary-light-1 !important;
+} 
+
+.mat-select-arrow{
+    color: $color-secondary-light-1 !important;
+}
+
+.mat-select-panel {
+    background-color: $color-primary-light-1 !important;
+    border-radius: 1.5rem;
+}
+.mat-select-value {
+    color: $color-primary-light-1;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $color-secondary;
+}
+
+.mat-form-field{
+    background-color: $color-secondary;
+    border-radius: 2rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: $color-primary-light-1 !important;
+}
