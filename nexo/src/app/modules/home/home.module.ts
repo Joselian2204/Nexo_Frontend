@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
 import { BoliviadashboardComponent } from './components/dashboard/boliviadashboard/boliviadashboard.component';
 import { WorlddashboardComponent } from './components/dashboard/worlddashboard/worlddashboard.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatSlideToggleModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ]
 })
 export class HomeModule { }

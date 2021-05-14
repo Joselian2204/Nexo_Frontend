@@ -21,8 +21,19 @@
         </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button>
-        <mat-icon>download</mat-icon>
-        Descargar
-    </button>
+    <mat-form-field class="dropDashboard dateDash">
+        <mat-label class="selectDash">Inicio</mat-label>
+        <input matInput [matDatepicker]="myInitDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="myInitDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #myInitDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="dropDashboard dateDash">
+        <mat-label class="selectDash">Fin</mat-label>
+        <input class="selectDash" matInput [matDatepicker]="myLastDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="myLastDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #myLastDatePicker></mat-datepicker>
+    </mat-form-field>
+    
+    <button mat-raised-button><mat-icon>download</mat-icon>Descargar</button>
 </div>

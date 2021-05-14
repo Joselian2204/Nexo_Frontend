@@ -1,3 +1,5 @@
+//--------------------------- Map Style Select ---------------------------//
+
 .mat-form-field.mat-focused .mat-form-field-ripple{
     background-color: $color-primary;
 }
@@ -15,8 +17,8 @@
 }
 
 .mat-select-panel {
-    background-color: $color-primary-light-1 !important;
-    border-radius: 1.5rem;
+    background-color: $color-secondary-white !important;
+    border-radius: 1rem;
 }
 .mat-select-value {
     color: $color-primary-light-1;
@@ -36,7 +38,11 @@
     background-color: $color-primary-light-1 !important;
 }
 
-//--------------------------- Dashboard Style ---------------------------//
+//--------------------------- Dashboard Style Select ---------------------------//
+
+.dateDash{
+    color: $color-secondary;
+}
 
 .mat-form-field-label .selectDash{
     color: $color-secondary !important;
@@ -61,4 +67,27 @@
 .selectDash .mat-form-field-ripple{
     /*change color of underline when focused*/
     background-color: $color-secondary !important;
+}
+
+
+//--------------------------- DatePicker Style ---------------------------//
+
+.mat-datepicker-toggle {
+    color: $color-secondary !important;
+}
+
+.mat-calendar {
+    background-color: $color-secondary-white;
+    color: ·$color-secondary;
+}
+
+.mat-calendar-body-cell-content.mat-calendar-body-today{
+    background-color: $color-secondary !important;
+    color: white !important;
+}
+
+//--------------------------- Icon Style ---------------------------//
+
+.mat-icon{
+    margin-right: 1rem;
 }

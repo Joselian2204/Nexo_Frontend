@@ -9,8 +9,10 @@ export class BoliviadashboardComponent implements OnInit {
 
   selectedDep = 'bol';
   selectedMun = 'none';
+  selectedTime = 'ful';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
