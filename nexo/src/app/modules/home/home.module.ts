@@ -12,6 +12,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MapsComponent } from './components/maps/maps.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
+import { BoliviadashboardComponent } from './components/dashboard/boliviadashboard/boliviadashboard.component';
+import { WorlddashboardComponent } from './components/dashboard/worlddashboard/worlddashboard.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,9 @@ import { MatSelectModule } from '@angular/material/select';
     MainComponent,
     LoginComponent,
     MapsComponent,
-    DashboardComponent
+    DashboardComponent,
+    BoliviadashboardComponent,
+    WorlddashboardComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +36,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatButtonModule
   ]
 })
 export class HomeModule { }

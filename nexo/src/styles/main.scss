@@ -16,12 +16,14 @@
 @import "3-component/select";
 @import "3-component/card";
 @import "3-component/divider";
+@import "3-component/slidetoggle";
 //4 - LAYOUT
 //layout : header , footer ,sidebar, big portions of components
 @import "4-layout/header";
 @import "4-layout/sidenav";
 @import "4-layout/login";
 @import "4-layout/map";
+@import "4-layout/dashboard";
 //5- PAGES
 @import "5-pages/home";
 //pages : css just for those pages specifically

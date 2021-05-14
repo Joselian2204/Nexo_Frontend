@@ -29,10 +29,36 @@
 .mat-form-field{
     background-color: $color-secondary;
     border-radius: 2rem;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
 }
 
 .mat-form-field-ripple {
     /*change color of underline when focused*/
     background-color: $color-primary-light-1 !important;
+}
+
+//--------------------------- Dashboard Style ---------------------------//
+
+.mat-form-field-label .selectDash{
+    color: $color-secondary !important;
+} 
+
+.selectDash .mat-select-arrow{
+    color: $color-secondary !important;
+}
+
+.selectDash .mat-select-value{
+    color: $color-secondary !important;
+}
+
+.selectDash .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+    color: $color-secondary;
+}
+
+.selectDash .mat-form-field{
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+}
+
+.selectDash .mat-form-field-ripple{
+    /*change color of underline when focused*/
+    background-color: $color-secondary !important;
 }

@@ -1,0 +1,28 @@
+<div class="options">
+    <mat-form-field class="dropDashboard selectDash">
+        <mat-label class="selectDash">Departamento</mat-label>
+        <mat-select class="selectDash" [(value)]="selectedDep">
+            <mat-option class="selectDash" value = "bol" >Total</mat-option>
+            <mat-optgroup label = Departamentos>
+                <mat-option class="selectDash" value = "dep" >La Paz</mat-option>
+                <mat-option class="selectDash" value = "mun" >Santa Cruz</mat-option>
+            </mat-optgroup>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="dropDashboard selectDash">
+        <mat-label class="selectDash">Municipio</mat-label>
+        <mat-select class="selectDash" [(value)]="selectedMun">
+            <mat-option class="selectDash" value = "none">---</mat-option>
+            <mat-optgroup label = Municipios>
+                <mat-option class="selectDash" value = "dep" >La Paz</mat-option>
+                <mat-option class="selectDash" value = "mun" >Santa Cruz</mat-option>
+            </mat-optgroup>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button>
+        <mat-icon>download</mat-icon>
+        Descargar
+    </button>
+</div>

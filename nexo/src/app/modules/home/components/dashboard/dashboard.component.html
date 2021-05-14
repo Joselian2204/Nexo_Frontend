@@ -1,1 +1,12 @@
-dashboard works
+<div class="slider">
+    <h4 class="toggleTitle">Bolivia</h4>
+    <mat-slide-toggle class="toggleDashboard" [(ngModel)]="dashSelector"></mat-slide-toggle>
+    <h4 class="toggleTitle">Mundo</h4>
+</div>
+<div *ngIf="dashSelector; then worldDash; else bolDash"></div>
+    <ng-template #bolDash>
+        <app-boliviadashboard></app-boliviadashboard>
+    </ng-template>
+    <ng-template #worldDash>
+        <app-worlddashboard></app-worlddashboard>
+    </ng-template>

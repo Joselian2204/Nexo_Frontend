@@ -30,3 +30,10 @@
   border-radius: 50%;
   border: none;
 }
+
+.mat-raised-button{
+  background-color: $color-secondary;
+  color: $color-primary-white;
+  margin-top: .8rem;
+  margin-bottom: 1rem;
+}
