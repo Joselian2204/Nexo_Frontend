@@ -69,3 +69,20 @@
 .recover{
     background-color: $color-recover;
 }
+
+.infDashboards{
+    width: 33vw;
+    padding: 2rem 2rem;
+    background-color: $color-primary-white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 1rem;
+}
+
+.completeInfDashboard{
+    margin-top: 2rem;
+    width: 67vw;
+    padding: 2rem 2rem;
+    background-color: $color-primary-white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 1rem;
+}

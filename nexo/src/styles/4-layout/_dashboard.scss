@@ -7,9 +7,24 @@
     border-radius: 1.5rem;
 }
 
+.sliderSecondary{
+    display: flex;
+    justify-content: center;
+    width: 25vh;
+    background-color: $color-primary-white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 1.5rem;
+}
+
 .toggleTitle{
     margin: 1rem 2rem;
     color: $color-primary-white;
+    font-weight: 500;
+}
+
+.toggleTitleSecondary{
+    margin: 1rem 2rem;
+    color: $color-secondary;
     font-weight: 500;
 }
 
@@ -25,7 +40,6 @@
 }
 
 .options{
-    //width: 0%;
     display: flex;
     background-color: $color-primary-white;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
@@ -37,5 +51,19 @@
 }
 
 .mainDashboardContainer{
-    margin: 4rem 5rem;
+    margin: 2.5rem 5rem;
+}
+
+.dashboards{
+    display: flex;
+}
+
+.completeDashboard{
+    padding-top: 2rem;
+}
+
+.mainContainerDashboard{
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
