@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
+import { DataService } from 'src/app/modules/services/data.service';
+import { LocationService } from 'src/app/modules/services/location.service';
+import { Location } from '../../../../models/location';
+import { Data } from '../../../../models/data';
 
 @Component({
   selector: 'app-boliviadashboard',
@@ -16,7 +20,6 @@ export class BoliviadashboardComponent implements OnInit {
     responsive: true
   };
 
-  public barChartLablesInf = ['2006','2007','2008','2009','2010','2011','2012'];
   public barChartTypeInf: ChartType = 'line';
   public barChartLegendInf = true;
 
@@ -42,7 +45,6 @@ public barChartOptionsDeath = {
   responsive: true
 };
 
-public barChartLablesDeath = ['2006','2007','2008','2009','2010','2011','2012'];
 public barChartTypeDeath: ChartType = 'line';
 public barChartLegendDeath = true;
 
@@ -68,7 +70,6 @@ public barChartOptionsVac = {
   responsive: true
 };
 
-public barChartLablesVac = ['2006','2007','2008','2009','2010','2011','2012'];
 public barChartTypeVac: ChartType = 'line';
 public barChartLegendVac = true;
 
@@ -94,7 +95,6 @@ public barChartOptionsRec = {
   responsive: true
 };
 
-public barChartLablesRec = ['2006','2007','2008','2009','2010','2011','2012'];
 public barChartTypeRec: ChartType = 'line';
 public barChartLegendRec = true;
 
@@ -120,15 +120,15 @@ public barChartOptionsMult = {
   responsive: true
 };
 
-public barChartLablesMult = ['2006','2007','2008','2009','2010','2011','2012'];
+public barChartLables = [];
 public barChartTypeMult: ChartType = 'line';
 public barChartLegendMult = true;
 
 public barChartDataMult = [
-  {data: [65,59,80,81,56,55,40], label: 'Infectados'},
-  {data: [28,48,40,19,86,27,90], label: 'Decesos'},
-  {data: [43,75,26,68,15,2,35], label: 'Vacunados'},
-  {data: [16,25,87,36,42,67,32], label: 'Recuperados'}
+  {data: [], label: 'Infectados'},
+  {data: [], label: 'Decesos'},
+  {data: [], label: 'Vacunados'},
+  {data: [], label: 'Recuperados'}
 ];
 
 public barChartColorsMult: Color[] = [
@@ -166,6 +166,11 @@ public barChartColorsMult: Color[] = [
   }
 ];
 
+  nameCsv = 'bolivia';
+
+  departments: Location[]=[];
+  municipalities: Location[]=[];
+
   selectView = true;
 
 
@@ -173,10 +178,82 @@ public barChartColorsMult: Color[] = [
   selectedMun = 'none';
   selectedTime = 'ful';
 
-  constructor() {
+  depdata: any;
+
+  constructor(private locationService: LocationService, private dataService: DataService) {
   }
 
   ngOnInit(): void {
+    this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
+    this.fetchData('country/','BOL');
+  }
+
+  fetchData(path:string,id: string): void{
+    console.log(id);
+    this.dataService.getData(path+id).subscribe(ddata => {
+      this.depdata = ddata;
+      this.setData(ddata);
+     // console.log(ddata);
+    });
+  }
+
+  setData(ddata:any){
+    this.barChartLables = ddata.map((p: { date: any; }) => p.date.substring(0,10))
+    this.barChartDataMult = [
+      {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
+      {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+      {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+      {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+    ];
+    this.barChartDataInf = [
+      {data: ddata.map((p: {newCases: any}) => p.newCases), label:'Nuevos Casos'}
+    ];
+    this.barChartDataDeath = [
+      {data: ddata.map((p: {deaths: any}) => p.deaths), label:'Decesos'}
+    ];
+    this.barChartDataVac = [
+      {data: ddata.map((p: {vaccine: any}) => p.vaccine), label:'Vacunados'}
+    ];
+    this.barChartDataRec = [
+      {data: ddata.map((p: {recovered: any}) => p.recovered), label:'Recuperadoss'}
+    ];
+  }
+
+  setMunicipalities(id: string): void {
+    if (id == 'none'){
+      this.municipalities = [];
+    }
+    else{
+      this.locationService.getLocation("municipios/"+id).subscribe(mun => this.municipalities = mun);
+    }
+  }
+
+  saveName(name: string){
+    this.nameCsv = name;
+  }
+
+  downloadData(): void{
+    const csvRows = [];
+    const headers = Object.keys(this.depdata[0]);
+    //const dat = JSON.parse(this.depdata);
+    csvRows.push(headers.join(','));
+    for (const row of this.depdata){
+      const values = headers.map( header =>{
+        let key = header as keyof Data;
+        return ''+row[key]
+      })
+      csvRows.push(values.join(','));
+    }
+    const data = csvRows.join('\n');
+    const blob = new Blob([data], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', this.nameCsv.concat('.csv'));
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
 }

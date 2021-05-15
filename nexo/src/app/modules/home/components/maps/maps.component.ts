@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '../../../models/location';
+import { LocationService} from '../../../services/location.service';
 import * as L from 'leaflet';
 
 @Component({
@@ -14,15 +16,23 @@ export class MapsComponent implements OnInit {
   centerMap = {lat:-16.290154, lng:-63.588653};
   zoom = 6.4;
 
+  pos: Location[] = [];
+
   map!: L.Map;
 
   mymap!: L.Map;
 
-  constructor(private fb: FormBuilder) { }
+  total: Location = {cases:0,deaths:0,population:0,id:"",lat:0,lng:0,name:"",recovered:0,vaccine:0};
+
+  cardTitle = 'BOLIVIA'
+
+  constructor(private fb: FormBuilder,private locationService: LocationService) { }
 
   ngOnInit(): void {
 
+    this.loadMarkers('bol',60000);
     this.loadMap(-16.290154,-63.588653,6.4);
+    this.loadCardVariable('bol_cases');
 
   }
 
@@ -57,6 +67,29 @@ export class MapsComponent implements OnInit {
     else{
       return parameter;
     }
+  }
+
+  loadMarkers(pth: string,rad: number){
+    this.locationService.getLocation(pth).subscribe( con => {
+      this.pos = con;
+      this.pos.forEach(x => {
+        let circle = L.circle([+x.lat,+x.lng], {
+          color: '#9b59b6',
+          fillColor: '#9b59b6',
+          fillOpacity: 0.5,
+          radius: rad
+        }).addTo(this.mymap);
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
+      })
+    });
+  }
+
+  loadCardVariable(pth: string){
+    this.locationService.getLocation(pth).subscribe( tot => this.total = tot);
+  }
+
+  setCardTitle(title: string){
+    this.cardTitle = title;
   }
 
 }

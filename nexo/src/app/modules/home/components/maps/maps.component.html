@@ -10,17 +10,17 @@
             <mat-label>Locación</mat-label>
             <mat-select [(value)]="selected">
                 <mat-optgroup label = Bolivia>
-                    <mat-option value = "dep" (click) = "setMapParameters(-16.290154,-63.588653,6.4)">Departamentos</mat-option>
-                    <mat-option value = "mun" (click) = "setMapParameters(-16.290154,-63.588653,6.4)">Municipios</mat-option>
+                    <mat-option value = "dep" (click) = "setMapParameters(-16.290154,-63.588653,6.4)" (click) = "loadMarkers('bol',60000)" (click) = "loadCardVariable('bol_cases')" (click) = "setCardTitle('BOLIVIA')">Departamentos</mat-option>
+                    <mat-option value = "mun" (click) = "setMapParameters(-16.290154,-63.588653,6.4)" (click) = "loadMarkers('municipios',5000)" (click) = "loadCardVariable('bol_cases')" (click) = "setCardTitle('BOLIVIA')">Municipios</mat-option>
                 </mat-optgroup>
                 <mat-optgroup label = "Global">
-                    <mat-option value = "country" (click) = "setMapParameters(13,5,2)">Países</mat-option>
+                    <mat-option value = "country" (click) = "setMapParameters(13,5,2)" (click) = "loadMarkers('world',100000)" (click) = "loadCardVariable('world_cases')" (click) = "setCardTitle('MUNDO')">Países</mat-option>
                 </mat-optgroup>
             </mat-select>
         </mat-form-field>
         <mat-divider class="primaryDivider"></mat-divider>
         <div class="card">
-            <h1 class="cardUbtitle">Bolivia</h1>
+            <h1 class="cardUbtitle">{{cardTitle}}</h1>
             <mat-divider class="secondaryDivider"></mat-divider>
             <div class="rowCard">
                 <div class="iconBack population">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="textAlig">
                     <h3 class="cardTitle">Población Total</h3>
-                    <p class="cardText">10000</p>
+                    <p class="cardText">{{validator(total.population)}}</p>
                 </div>
             </div>
             <mat-divider class="secondaryDivider"></mat-divider>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="textAlig">
                     <h3 class="cardTitle">Infectados</h3>
-                    <p class="cardText">10000</p>
+                    <p class="cardText">{{validator(total.cases)}}</p>
                 </div>
             </div>
             <mat-divider class="secondaryDivider"></mat-divider>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="textAlig">
                     <h3 class="cardTitle">Decesos</h3>
-                    <p class="cardText">10000</p>
+                    <p class="cardText">{{validator(total.deaths)}}</p>
                 </div>
             </div>
             <mat-divider class="secondaryDivider"></mat-divider>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="textAlig">
                     <h3 class="cardTitle">Vacunados</h3>
-                    <p class="cardText">10000</p>
+                    <p class="cardText">{{validator(total.vaccine)}}</p>
                 </div>
             </div>
             <mat-divider class="secondaryDivider"></mat-divider>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="textAlig">
                     <h3 class="cardTitle">Recuperados</h3>
-                    <p class="cardText">10000</p>
+                    <p class="cardText">{{validator(total.recovered)}}</p>
                 </div>
             </div>
             <mat-divider class="secondaryDivider"></mat-divider>
