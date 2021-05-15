@@ -24,7 +24,7 @@ export class BoliviadashboardComponent implements OnInit {
   public barChartLegendInf = true;
 
   public barChartDataInf = [
-    {data: [65,59,80,81,56,55,40], label: 'Infectados'}
+    {data: [], label: 'Casos Nuevos'}
   ];
 
   public barChartColorsInf: Color[] = [
@@ -49,7 +49,7 @@ public barChartTypeDeath: ChartType = 'line';
 public barChartLegendDeath = true;
 
 public barChartDataDeath = [
-  {data: [28,48,40,19,86,27,90], label: 'Decesos'}
+  {data: [], label: 'Decesos'}
 ];
 
 public barChartColorsDeath: Color[] = [
@@ -74,7 +74,7 @@ public barChartTypeVac: ChartType = 'line';
 public barChartLegendVac = true;
 
 public barChartDataVac = [
-  {data: [43,75,26,68,15,2,35], label: 'Vacunados'}
+  {data: [], label: 'Vacunados'}
 ];
 
 public barChartColorsVac: Color[] = [
@@ -99,7 +99,7 @@ public barChartTypeRec: ChartType = 'line';
 public barChartLegendRec = true;
 
 public barChartDataRec = [
-  {data: [16,25,87,36,42,67,32], label: 'Recuperados'}
+  {data: [], label: 'Recuperados'}
 ];
 
 public barChartColorsRec: Color[] = [
@@ -200,13 +200,13 @@ public barChartColorsMult: Color[] = [
   setData(ddata:any){
     this.barChartLables = ddata.map((p: { date: any; }) => p.date.substring(0,10))
     this.barChartDataMult = [
-      {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Nuevos Casos'},
+      {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Casos nuevos'},
       {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
       {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
       {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
     ];
     this.barChartDataInf = [
-      {data: ddata.map((p: {newCases: any}) => p.newCases), label:'Nuevos Casos'}
+      {data: ddata.map((p: {newCases: any}) => p.newCases), label:'Casos Nuevos'}
     ];
     this.barChartDataDeath = [
       {data: ddata.map((p: {deaths: any}) => p.deaths), label:'Decesos'}

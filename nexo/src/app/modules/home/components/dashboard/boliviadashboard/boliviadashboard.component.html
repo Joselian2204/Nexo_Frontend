@@ -42,67 +42,87 @@
     <h4 class="toggleTitleSecondary">Multiple</h4>
 </div>
 
-<div *ngIf="selectView; then multipleCharts; else oneChart"></div>
-<ng-template #multipleCharts>
-    <div class="completeDashboard">
-        <div class="dashboards">
-            <div class="infDashboards">
-                <canvas baseChart
-                    [datasets] = "barChartDataInf"
-                    [labels] = "barChartLables"
-                    [options] = "barChartOptionsInf"
-                    [legend] = "barChartLegendInf"
-                    [chartType] = "barChartTypeInf"
-                    [colors]= "barChartColorsInf"
-                ></canvas>
+<div class="bodyDashboardContent">
+
+    <div *ngIf="selectView; then multipleCharts; else oneChart"></div>
+    
+    <div class="contentExplanation ml-2 mt-2">
+        <h2 class="expTitle">Especificaciones</h2>
+        <h3 class="expSubTitle infectedText">Nuevos Casos</h3>
+        <p class="expPar">Hace referencia a la cantidad de casos nuevos por día en la región especificada</p>
+        <mat-divider class="secondaryDivider"></mat-divider>
+        <h3 class="expSubTitle deathText">Decesos</h3>
+        <p class="expPar">Hace referencia a la cantidad de decesos por día en la región especificada</p>
+        <mat-divider class="secondaryDivider"></mat-divider>
+        <h3 class="expSubTitle vaccineText">Vacunados</h3>
+        <p class="expPar">Hace referencia a la cantidad de vacunados por día en la región especificada</p>
+        <mat-divider class="secondaryDivider"></mat-divider>
+        <h3 class="expSubTitle recoverText">Recuperados</h3>
+        <p class="expPar">Hace referencia a la cantidad de recuperados por día en la región especificada</p>
+        <mat-divider class="secondaryDivider"></mat-divider>
+    </div>
+
+    <ng-template #multipleCharts>
+        <div class="completeDashboard">
+            <div class="dashboards">
+                <div class="infDashboards">
+                    <canvas baseChart
+                        [datasets] = "barChartDataInf"
+                        [labels] = "barChartLables"
+                        [options] = "barChartOptionsInf"
+                        [legend] = "barChartLegendInf"
+                        [chartType] = "barChartTypeInf"
+                        [colors]= "barChartColorsInf"
+                    ></canvas>
+                </div>
+                <div class="infDashboards ml-2">
+                    <canvas baseChart
+                        [datasets] = "barChartDataDeath"
+                        [labels] = "barChartLables"
+                        [options] = "barChartOptionsDeath"
+                        [legend] = "barChartLegendDeath"
+                        [chartType] = "barChartTypeDeath"
+                        [colors]= "barChartColorsDeath"
+                    ></canvas>
+                </div>
             </div>
-            <div class="infDashboards ml-2">
-                <canvas baseChart
-                    [datasets] = "barChartDataDeath"
-                    [labels] = "barChartLables"
-                    [options] = "barChartOptionsDeath"
-                    [legend] = "barChartLegendDeath"
-                    [chartType] = "barChartTypeDeath"
-                    [colors]= "barChartColorsDeath"
-                ></canvas>
+            
+            <div class="dashboards mt-2">
+                <div class="infDashboards">
+                    <canvas baseChart
+                        [datasets] = "barChartDataVac"
+                        [labels] = "barChartLables"
+                        [options] = "barChartOptionsVac"
+                        [legend] = "barChartLegendVac"
+                        [chartType] = "barChartTypeVac"
+                        [colors]= "barChartColorsVac"
+                    ></canvas>
+                </div>
+                <div class="infDashboards ml-2">
+                    <canvas baseChart
+                        [datasets] = "barChartDataRec"
+                        [labels] = "barChartLables"
+                        [options] = "barChartOptionsRec"
+                        [legend] = "barChartLegendRec"
+                        [chartType] = "barChartTypeRec"
+                        [colors]= "barChartColorsRec"
+                    ></canvas>
+                </div>
             </div>
         </div>
-        
-        <div class="dashboards mt-2">
-            <div class="infDashboards">
-                <canvas baseChart
-                    [datasets] = "barChartDataVac"
-                    [labels] = "barChartLables"
-                    [options] = "barChartOptionsVac"
-                    [legend] = "barChartLegendVac"
-                    [chartType] = "barChartTypeVac"
-                    [colors]= "barChartColorsVac"
-                ></canvas>
-            </div>
-            <div class="infDashboards ml-2">
-                <canvas baseChart
-                    [datasets] = "barChartDataRec"
-                    [labels] = "barChartLables"
-                    [options] = "barChartOptionsRec"
-                    [legend] = "barChartLegendRec"
-                    [chartType] = "barChartTypeRec"
-                    [colors]= "barChartColorsRec"
-                ></canvas>
-            </div>
+    </ng-template>
+    <ng-template #oneChart>
+        <div class="completeInfDashboard">
+            <canvas baseChart
+                [datasets] = "barChartDataMult"
+                [labels] = "barChartLables"
+                [options] = "barChartOptionsMult"
+                [legend] = "barChartLegendMult"
+                [chartType] = "barChartTypeMult"
+                [colors]= "barChartColorsMult"
+            ></canvas>
         </div>
+    </ng-template>
     </div>
-</ng-template>
-<ng-template #oneChart>
-    <div class="completeInfDashboard">
-        <canvas baseChart
-            [datasets] = "barChartDataMult"
-            [labels] = "barChartLables"
-            [options] = "barChartOptionsMult"
-            [legend] = "barChartLegendMult"
-            [chartType] = "barChartTypeMult"
-            [colors]= "barChartColorsMult"
-        ></canvas>
-    </div>
-</ng-template>
 
 

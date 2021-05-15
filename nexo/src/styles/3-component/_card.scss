@@ -86,3 +86,15 @@
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
     border-radius: 1rem;
 }
+
+.contentExplanation{
+    width: 10.5vw;
+    padding-top: 4.55rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 4.55rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    background-color: $color-primary-white;
+    text-align: center;
+}

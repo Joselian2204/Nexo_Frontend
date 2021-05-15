@@ -1,0 +1,45 @@
+.title__logo {
+  display: flex;
+  font-size: 3rem;
+  flex: 1;
+  font-family: "Rubik";
+  color: white;
+  font-family: "montserrat";
+  font-weight: 500;
+}
+
+.populationText{
+  color: $color-population;
+}
+
+.infectedText{
+  color: $color-infected;
+}
+
+.deathText{
+  color: $color-death;
+}
+
+.vaccineText{
+  color: $color-vaccine;
+}
+
+.recoverText{
+  color: $color-recover;
+}
+
+.expTitle{
+  color: $color-secondary;
+  font-size: 17px;
+  margin-bottom: 2rem;
+}
+
+.expSubTitle{
+  font-size: 16px;
+}
+
+.expPar{
+  margin: 2rem 0;
+  font-size: 14px;
+  color: $color-primary;
+}

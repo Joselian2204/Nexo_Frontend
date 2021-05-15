@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
+import { DataService } from 'src/app/modules/services/data.service';
+import { LocationService } from 'src/app/modules/services/location.service';
+import { Location } from '../../../../models/location';
+import { Data } from '../../../../models/data';
 
 @Component({
   selector: 'app-worlddashboard',
@@ -16,12 +20,11 @@ export class WorlddashboardComponent implements OnInit {
     responsive: true
   };
 
-  public barChartLablesInf = ['2006','2007','2008','2009','2010','2011','2012'];
   public barChartTypeInf: ChartType = 'line';
   public barChartLegendInf = true;
 
   public barChartDataInf = [
-    {data: [65,59,80,81,56,55,40], label: 'Infectados'}
+    {data: [], label: 'Casos Nuevos'}
   ];
 
   public barChartColorsInf: Color[] = [
@@ -42,12 +45,11 @@ public barChartOptionsDeath = {
   responsive: true
 };
 
-public barChartLablesDeath = ['2006','2007','2008','2009','2010','2011','2012'];
 public barChartTypeDeath: ChartType = 'line';
 public barChartLegendDeath = true;
 
 public barChartDataDeath = [
-  {data: [28,48,40,19,86,27,90], label: 'Decesos'}
+  {data: [], label: 'Decesos'}
 ];
 
 public barChartColorsDeath: Color[] = [
@@ -68,12 +70,11 @@ public barChartOptionsVac = {
   responsive: true
 };
 
-public barChartLablesVac = ['2006','2007','2008','2009','2010','2011','2012'];
 public barChartTypeVac: ChartType = 'line';
 public barChartLegendVac = true;
 
 public barChartDataVac = [
-  {data: [43,75,26,68,15,2,35], label: 'Vacunados'}
+  {data: [], label: 'Vacunados'}
 ];
 
 public barChartColorsVac: Color[] = [
@@ -94,12 +95,11 @@ public barChartOptionsRec = {
   responsive: true
 };
 
-public barChartLablesRec = ['2006','2007','2008','2009','2010','2011','2012'];
 public barChartTypeRec: ChartType = 'line';
 public barChartLegendRec = true;
 
 public barChartDataRec = [
-  {data: [16,25,87,36,42,67,32], label: 'Recuperados'}
+  {data: [], label: 'Recuperados'}
 ];
 
 public barChartColorsRec: Color[] = [
@@ -120,15 +120,15 @@ public barChartOptionsMult = {
   responsive: true
 };
 
-public barChartLablesMult = ['2006','2007','2008','2009','2010','2011','2012'];
+public barChartLables = [];
 public barChartTypeMult: ChartType = 'line';
 public barChartLegendMult = true;
 
 public barChartDataMult = [
-  {data: [65,59,80,81,56,55,40], label: 'Infectados'},
-  {data: [28,48,40,19,86,27,90], label: 'Decesos'},
-  {data: [43,75,26,68,15,2,35], label: 'Vacunados'},
-  {data: [16,25,87,36,42,67,32], label: 'Recuperados'}
+  {data: [], label: 'Casos Nuevos'},
+  {data: [], label: 'Decesos'},
+  {data: [], label: 'Vacunados'},
+  {data: [], label: 'Recuperados'}
 ];
 
 public barChartColorsMult: Color[] = [
@@ -166,14 +166,81 @@ public barChartColorsMult: Color[] = [
   }
 ];
 
+nameCsv = 'mundo';
+
+  countries: Location[] = [];
+
+  condata: Data[]=[];
+
   selectView = true;
 
   selectedCon = 'con';
   selectedTime = 'ful';
 
-  constructor() { }
+  constructor(private locationService: LocationService, private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.locationService.getLocation("world").subscribe( con => this.countries = con);
+    this.fetchData('country/','AFG')
+  }
+
+  fetchData(path:string,id: string): void{
+    console.log(id);
+    this.dataService.getData(path+id).subscribe(ddata => {
+      this.condata = ddata;
+      this.setData(ddata);
+     // console.log(ddata);
+    });
+  }
+
+  setData(ddata:any){
+    this.barChartLables = ddata.map((p: { date: any; }) => p.date.substring(0,10))
+    this.barChartDataMult = [
+      {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Casos Nuevos'},
+      {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+      {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+      {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+    ];
+    this.barChartDataInf = [
+      {data: ddata.map((p: {newCases: any}) => p.newCases), label:'Casos Nuevos'}
+    ];
+    this.barChartDataDeath = [
+      {data: ddata.map((p: {deaths: any}) => p.deaths), label:'Decesos'}
+    ];
+    this.barChartDataVac = [
+      {data: ddata.map((p: {vaccine: any}) => p.vaccine), label:'Vacunados'}
+    ];
+    this.barChartDataRec = [
+      {data: ddata.map((p: {recovered: any}) => p.recovered), label:'Recuperadoss'}
+    ];
+  }
+
+  saveName(name: string){
+    this.nameCsv = name;
+  }
+
+  downloadData(): void{
+    const csvRows = [];
+    const headers = Object.keys(this.condata[0]);
+    //const dat = JSON.parse(this.depdata);
+    csvRows.push(headers.join(','));
+    for (const row of this.condata){
+      const values = headers.map( header =>{
+        let key = header as keyof Data;
+        return ''+row[key]
+      })
+      csvRows.push(values.join(','));
+    }
+    const data = csvRows.join('\n');
+    const blob = new Blob([data], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', this.nameCsv.concat('.csv'));
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
 }
