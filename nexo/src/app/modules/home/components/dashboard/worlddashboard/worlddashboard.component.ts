@@ -166,7 +166,7 @@ public barChartColorsMult: Color[] = [
   }
 ];
 
-nameCsv = 'mundo';
+  nameCsv = 'Afghanistan';
 
   countries: Location[] = [];
 

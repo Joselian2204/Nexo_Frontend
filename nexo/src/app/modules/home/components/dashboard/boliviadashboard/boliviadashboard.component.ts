@@ -166,7 +166,7 @@ public barChartColorsMult: Color[] = [
   }
 ];
 
-  nameCsv = 'bolivia';
+  nameCsv = 'Bolivia';
 
   departments: Location[]=[];
   municipalities: Location[]=[];
