@@ -1,39 +1,41 @@
 <div class="options">
-    <mat-form-field class="dropDashboard selectDash">
-        <mat-label class="selectDash">Departamento</mat-label>
-        <mat-select class="selectDash" [(value)]="selectedDep">
-            <mat-option class="selectDash" value = "bol" (click)="fetchData('country/','BOL')" (click)="setMunicipalities('none')">Total</mat-option>
-            <mat-optgroup label = Departamentos>
-                <mat-option *ngFor = "let department of departments" (click)="fetchData('department/',department.id)" (click)="setMunicipalities(department.id)" (click)="saveName(department.name)" value ="{{department.id}}">{{department.name}}</mat-option>
-            </mat-optgroup>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="dropDashboard selectDash">
-        <mat-label class="selectDash">Municipio</mat-label>
-        <mat-select class="selectDash" [(value)]="selectedMun">
-            <mat-option class="selectDash" value = "none">---</mat-option>
-            <mat-optgroup label = Municipios>
-                <mat-option *ngFor = "let municipality of municipalities" (click)="fetchData('municipio/',municipality.id)" (click)="saveName(municipality.name)" value = "{{municipality.id}}">{{municipality.name}}</mat-option>
-            </mat-optgroup>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="dropDashboard dateDash">
-        <mat-label class="selectDash">Inicio</mat-label>
-        <input matInput [matDatepicker]="myInitDatePicker">
-        <mat-datepicker-toggle matSuffix [for]="myInitDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #myInitDatePicker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field class="dropDashboard dateDash">
-        <mat-label class="selectDash">Fin</mat-label>
-        <input class="selectDash" matInput [matDatepicker]="myLastDatePicker">
-        <mat-datepicker-toggle matSuffix [for]="myLastDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #myLastDatePicker></mat-datepicker>
-    </mat-form-field>
+    <div class="leftOptions">
+        <mat-form-field class="dropDashboard selectDash">
+            <mat-label class="selectDash">Departamento</mat-label>
+            <mat-select class="selectDash" [(value)]="selectedDep">
+                <mat-option class="selectDash" value = "bol" (click)="fetchData('country/','BOL')" (click)="setMunicipalities('none')">Total</mat-option>
+                <mat-optgroup label = Departamentos>
+                    <mat-option *ngFor = "let department of departments" (click)="fetchData('department/',department.id)" (click)="setMunicipalities(department.id)" (click)="saveName(department.name)" value ="{{department.id}}">{{department.name}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+        </mat-form-field>
     
-    <button mat-raised-button class="ml-bb" (click)="downloadData()"><mat-icon class="buttonIcon">download</mat-icon>Descargar</button>
+        <mat-form-field class="dropDashboard selectDash">
+            <mat-label class="selectDash">Municipio</mat-label>
+            <mat-select class="selectDash" [(value)]="selectedMun">
+                <mat-option class="selectDash" value = "none">---</mat-option>
+                <mat-optgroup label = Municipios>
+                    <mat-option *ngFor = "let municipality of municipalities" (click)="fetchData('municipio/',municipality.id)" (click)="saveName(municipality.name)" value = "{{municipality.id}}">{{municipality.name}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field class="dropDashboard dateDash">
+            <mat-label class="selectDash">Inicio</mat-label>
+            <input matInput [matDatepicker]="myInitDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="myInitDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #myInitDatePicker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field class="dropDashboard dateDash">
+            <mat-label class="selectDash">Fin</mat-label>
+            <input class="selectDash" matInput [matDatepicker]="myLastDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="myLastDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #myLastDatePicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    
+    <button mat-raised-button (click)="downloadData()"><mat-icon class="buttonIcon">download</mat-icon>Descargar</button>
 </div>
 
 <div class="sliderSecondary">

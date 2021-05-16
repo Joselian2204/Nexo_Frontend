@@ -1,4 +1,5 @@
 <div class="options">
+   <div class="leftOptions">
     <mat-form-field class="dropDashboard selectDash">
         <mat-label class="selectDash">País</mat-label>
         <mat-select class="selectDash" [(value)]="selectedCon">
@@ -22,8 +23,9 @@
         <mat-datepicker-toggle matSuffix [for]="myLastDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #myLastDatePicker></mat-datepicker>
     </mat-form-field>
+   </div>
     
-    <button mat-raised-button class="ml-wb" (click)="downloadData()"><mat-icon class="buttonIcon">download</mat-icon>Descargar</button>
+    <button mat-raised-button  (click)="downloadData()"><mat-icon class="buttonIcon">download</mat-icon>Descargar</button>
 </div>
 
 <div class="sliderSecondary">
