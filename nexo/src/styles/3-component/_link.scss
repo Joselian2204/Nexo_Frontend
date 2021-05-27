@@ -28,6 +28,38 @@
   background: rgba(0, 0, 0, 0);
 }
 
+//----------------------Link Admin----------------------//
+
+
+.linkAdmin {
+  cursor: pointer;
+  border-radius: 3rem;
+  color: $color-primary-white !important;
+  background-color: transparent;
+  border: 2px solid $color-primary-white;
+  margin: 2rem .5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  outline: none;
+  font-family: Roboto;
+}
+.linkAdmin:hover {
+  background-color: $color-secondary-grey-2 !important;
+  border: none;
+  color: $color-primary !important;
+  transition: 0.5s;
+  transform: translateX(10px);
+}
+
+.list-item-active-linkAdmin {
+  //background-color: darken($color-tertiary, 15%);
+  color: $color-secondary-light-1 !important;
+  background-color: $color-secondary !important;
+  border-radius: 3rem;
+}
+
+
 // input,
 // textarea,
 // button,

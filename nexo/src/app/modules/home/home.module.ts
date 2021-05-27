@@ -20,8 +20,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ChartsModule } from 'ng2-charts';
-import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSelectModule,
     MatSlideToggleModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,

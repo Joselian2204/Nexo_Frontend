@@ -32,4 +32,15 @@
       <mat-icon class="link__icon mx-1">dashboard_customize</mat-icon
       ><span class="link__text">Personalizado</span>
     </div>
+    <mat-divider class="secondaryDivider"></mat-divider>
+    <div
+      class="linkAdmin mt-ad"
+      mat-list-item
+      (click)="irALink('login')"
+      routerLink="/login"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">admin_panel_settings</mat-icon
+      ><span class="link__text">Administrador</span>
+    </div>
   </mat-nav-list>
