@@ -3,26 +3,24 @@
     <mat-form-field class="dropDashboard selectDash">
         <mat-label class="selectDash">País</mat-label>
         <mat-select class="selectDash" [(value)]="selectedCon">
-            <mat-option class="selectDash" value = "con" (click)="fetchData('country/','AFH')">Afghanistan</mat-option>
+            <mat-option class="selectDash" value = "con" (click)="fetchData('country/','AFH',true)">Afghanistan</mat-option>
             <mat-optgroup label = Departamentos>
-                <mat-option *ngFor = "let country of countries" (click)="fetchData('country/',country.id)" (click)="saveName(country.name)" value ="{{country.id}}">{{country.name}}</mat-option>
+                <mat-option *ngFor = "let country of countries" (click)="fetchData('country/',country.id,true)" (click)="saveName(country.name)" value ="{{country.id}}">{{country.name}}</mat-option>
             </mat-optgroup>
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="dropDashboard dateDash">
-        <mat-label class="selectDash">Inicio</mat-label>
-        <input matInput [matDatepicker]="myInitDatePicker">
-        <mat-datepicker-toggle matSuffix [for]="myInitDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #myInitDatePicker></mat-datepicker>
-    </mat-form-field>
+    <mat-form-field appearance="fill" class="dropDashboard dateDash">
+        <mat-label class="selectDash">Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+          <input class="selectDash" matStartDate formControlName="initDate" placeholder="Start date">
+          <input class="selectDash" matEndDate formControlName="endDate" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
 
-    <mat-form-field class="dropDashboard dateDash">
-        <mat-label class="selectDash">Fin</mat-label>
-        <input class="selectDash" matInput [matDatepicker]="myLastDatePicker">
-        <mat-datepicker-toggle matSuffix [for]="myLastDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #myLastDatePicker></mat-datepicker>
-    </mat-form-field>
+    <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
    </div>
     
     <button mat-raised-button  (click)="downloadData()"><mat-icon class="buttonIcon">download</mat-icon>Descargar</button>

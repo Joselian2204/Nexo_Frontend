@@ -5,6 +5,8 @@ import { DataService } from 'src/app/modules/services/data.service';
 import { LocationService } from 'src/app/modules/services/location.service';
 import { Location } from '../../../../models/location';
 import { Data } from '../../../../models/data';
+import { FormControl, FormGroup } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-worlddashboard',
@@ -177,20 +179,47 @@ public barChartColorsMult: Color[] = [
   selectedCon = 'con';
   selectedTime = 'ful';
 
-  constructor(private locationService: LocationService, private dataService: DataService) { }
+  date1!: any;
+  date2!: any;
+
+  dateRange!: FormGroup;
+
+  actualPath = 'country/'
+  actualId = 'BOL'
+
+  constructor(private locationService: LocationService, private dataService: DataService, private datePipe : DatePipe) {
+    const date = new Date()
+    const month = date.getMonth()
+    const day = date.getDate()
+    const year = date.getFullYear()
+
+    this.dateRange = new FormGroup({
+      initDate: new FormControl(new Date(2020,3,11)),
+      endDate: new FormControl(new Date(2021,3,24))
+    });
+  }
 
   ngOnInit(): void {
     this.locationService.getLocation("world").subscribe( con => this.countries = con);
-    this.fetchData('country/','AFG')
+    this.fetchData('country/','AFG',true)
   }
 
-  fetchData(path:string,id: string): void{
-    //console.log(id);
-    this.dataService.getData(path+id).subscribe(ddata => {
-      this.condata = ddata;
-      this.setData(ddata);
-     // console.log(ddata);
-    });
+  fetchData(path:string,id: string, clear: boolean): void{
+
+    if(clear){
+      this.dataService.getData(path+id,"","").subscribe(ddata => {
+        this.condata = ddata;
+        this.setData(ddata);
+       // console.log(ddata);
+      });
+    }
+    else{
+      this.dataService.getData(path+id,this.date1,this.date2).subscribe(ddata => {
+        this.condata = ddata;
+        this.setData(ddata);
+       // console.log(ddata);
+      });
+    } //console.log(id);
   }
 
   setData(ddata:any){
@@ -217,6 +246,22 @@ public barChartColorsMult: Color[] = [
 
   saveName(name: string){
     this.nameCsv = name;
+  }
+
+  saveDataPath(pth: string, id: string){
+    this.actualPath = pth;
+    this.actualId = id;
+  }
+
+  setDate(path: string, id: string){
+    const iDate = this.dateRange.get('initDate')?.value
+    const eDate = this.dateRange.get('endDate')?.value
+
+    this.date1 = this.datePipe.transform(iDate,'yyyy-MM-dd');
+    this.date2 = this.datePipe.transform(eDate,'yyyy-MM-dd');
+
+    this.fetchData(path,id,false)
+    //console.log(this.date1)
   }
 
   downloadData(): void{
