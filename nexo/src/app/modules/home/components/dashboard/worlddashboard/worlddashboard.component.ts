@@ -185,7 +185,7 @@ public barChartColorsMult: Color[] = [
   }
 
   fetchData(path:string,id: string): void{
-    console.log(id);
+    //console.log(id);
     this.dataService.getData(path+id).subscribe(ddata => {
       this.condata = ddata;
       this.setData(ddata);

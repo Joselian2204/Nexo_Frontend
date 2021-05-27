@@ -5,7 +5,7 @@
             <mat-select class="selectDash" [(value)]="selectedDep">
                 <mat-option class="selectDash" value = "bol" (click)="fetchData('country/','BOL')" (click)="setMunicipalities('none')">Total</mat-option>
                 <mat-optgroup label = Departamentos>
-                    <mat-option *ngFor = "let department of departments" (click)="fetchData('department/',department.id)" (click)="setMunicipalities(department.id)" (click)="saveName(department.name)" value ="{{department.id}}">{{department.name}}</mat-option>
+                    <mat-option *ngFor = "let department of departments" (click)="fetchData('department/',department.id)" (click)="setMunicipalities(department.id)" (click)="saveName(department.name)" (click)="saveId(department.id)"value ="{{department.id}}">{{department.name}}</mat-option>
                 </mat-optgroup>
             </mat-select>
         </mat-form-field>
@@ -13,7 +13,7 @@
         <mat-form-field class="dropDashboard selectDash">
             <mat-label class="selectDash">Municipio</mat-label>
             <mat-select class="selectDash" [(value)]="selectedMun">
-                <mat-option class="selectDash" value = "none">---</mat-option>
+                <mat-option class="selectDash" value = "none" (click)="fetchData('department/',this.actualDepartmentId)">---</mat-option>
                 <mat-optgroup label = Municipios>
                     <mat-option *ngFor = "let municipality of municipalities" (click)="fetchData('municipio/',municipality.id)" (click)="saveName(municipality.name)" value = "{{municipality.id}}">{{municipality.name}}</mat-option>
                 </mat-optgroup>

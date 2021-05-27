@@ -22,4 +22,14 @@
       <mat-icon class="link__icon mx-1">dashboard</mat-icon
       ><span class="link__text">Dashboard</span>
     </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('custom')"
+      routerLink="/custom"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">dashboard_customize</mat-icon
+      ><span class="link__text">Personalizado</span>
+    </div>
   </mat-nav-list>

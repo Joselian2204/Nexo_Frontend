@@ -168,6 +168,8 @@ public barChartColorsMult: Color[] = [
 
   nameCsv = 'Bolivia';
 
+  actualDepartmentId = 'BOL1291';
+
   departments: Location[]=[];
   municipalities: Location[]=[];
 
@@ -189,7 +191,7 @@ public barChartColorsMult: Color[] = [
   }
 
   fetchData(path:string,id: string): void{
-    console.log(id);
+    //console.log(id);
     this.dataService.getData(path+id).subscribe(ddata => {
       this.depdata = ddata;
       this.setData(ddata);
@@ -230,6 +232,11 @@ public barChartColorsMult: Color[] = [
 
   saveName(name: string){
     this.nameCsv = name;
+  }
+
+  saveId(id: string){
+    this.actualDepartmentId = id
+    //console.log(this.actualDepartmentId)
   }
 
   downloadData(): void{

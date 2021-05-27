@@ -13,7 +13,6 @@ import { MapsComponent } from './components/maps/maps.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormsModule } from '@angular/forms';
 import { BoliviadashboardComponent } from './components/dashboard/boliviadashboard/boliviadashboard.component';
 import { WorlddashboardComponent } from './components/dashboard/worlddashboard/worlddashboard.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +20,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ChartsModule } from 'ng2-charts';
+import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ChartsModule } from 'ng2-charts';
     MapsComponent,
     DashboardComponent,
     BoliviadashboardComponent,
-    WorlddashboardComponent
+    WorlddashboardComponent,
+    CustomDashboardComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { ChartsModule } from 'ng2-charts';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    ChartsModule
+    ChartsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }
