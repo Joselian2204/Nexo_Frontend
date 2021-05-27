@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   admiList: Administrator[] = [];
 
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private _builder: FormBuilder,
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         console.log(result)
         if(result.status==200){
           this.localStorage.setToken(result.body.token)
-          this.router.navigate(['home/userList']);
+        
         }
         else{
           console.log("Acceso")
