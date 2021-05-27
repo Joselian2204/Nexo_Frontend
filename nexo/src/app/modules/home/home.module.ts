@@ -22,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { CustomDashboardComponent } from './components/custom-dashboard/custom-d
     MatNativeDateModule,
     MatInputModule,
     ChartsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule
   ]
 })
 export class HomeModule { }

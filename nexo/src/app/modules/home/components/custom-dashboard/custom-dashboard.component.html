@@ -1,0 +1,66 @@
+<div class="dashboards">
+    <div class="infCustomDashboards ml-2 mt-2">
+        <div class="customOptions">
+            <button mat-raised-button class="locationButton">Ubicación</button>
+            <mat-form-field appearance="fill" class="dropDashboardCustom dateDash ash">
+                <mat-label class="selectDash">Intervalo de Tiempo</mat-label>
+                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                  <input class="selectDash" matStartDate formControlName="initDate" placeholder="Start date">
+                  <input class="selectDash" matEndDate formControlName="endDate" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+              <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
+        </div>
+        <canvas baseChart
+            [datasets] = "lineChartData"
+            [labels] = "lineChartLables"
+            [options] = "lineChartOptions"
+            [legend] = "lineChartLegend"
+            [chartType] = "lineChartType"
+            [colors]= "chartColors"
+        ></canvas>
+    </div>
+    <div class="mapCustomOptions">
+        <section>
+            <mat-button-toggle-group [(ngModel)]="fontStyle" aria-label="Font Style">
+              <mat-button-toggle value="bold">Bold</mat-button-toggle>
+              <mat-button-toggle value="italic">Italic</mat-button-toggle>
+              <mat-button-toggle value="underline">Underline</mat-button-toggle>
+            </mat-button-toggle-group>
+            <!-- <p>Chosen value is {{fontStyle}}</p> -->
+          </section>
+        <div class="map-wrapper mt-1">
+            <div class="map-border">
+                <div id="cmap" class="customMap">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dashboards">
+    <div class="infCustomDashboards ml-2 mt-2">
+        <div class="customOptions">
+            <button mat-raised-button class="locationButton">Ubicación</button>
+            <mat-form-field appearance="fill" class="dropDashboardCustom dateDash ash">
+                <mat-label class="selectDash">Intervalo de Tiempo</mat-label>
+                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                  <input class="selectDash" matStartDate formControlName="initDate" placeholder="Start date">
+                  <input class="selectDash" matEndDate formControlName="endDate" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+              <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
+        </div>
+        <canvas baseChart
+            [datasets] = "barChartData"
+            [labels] = "barChartLables"
+            [options] = "barChartOptions"
+            [legend] = "barChartLegend"
+            [chartType] = "barChartType"
+            [colors]= "chartColors"
+        ></canvas>
+    </div>
+</div>
