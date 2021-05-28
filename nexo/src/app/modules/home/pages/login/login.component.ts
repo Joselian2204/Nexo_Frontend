@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   loginProcess(){
     if(this.loginForm.valid){
       this.admiService.login(this.loginForm.value).subscribe(result=>{
-        console.log(result)
+        
         if(result.status==200){
           this.localStorage.setToken(result.body.token)
           this.router.navigate(['admin']);
