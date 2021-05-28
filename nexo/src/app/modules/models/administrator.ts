@@ -1,8 +1,8 @@
 export interface Administrator{
-    "idUser":number,
+    "idAdministrator":number,
     "name":string,
     "email":string,
-    "phoneNumber":number,
-    "rol":string,
+    "lastName":number,
     "password": string
+    "token":string
 }
