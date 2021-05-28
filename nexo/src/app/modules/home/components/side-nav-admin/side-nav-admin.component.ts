@@ -18,8 +18,13 @@ export class SideNavAdminComponent implements OnInit {
   }
 
   irALink(link: string) {
+    this.router.navigate(["admin/" + link]);
+  }
+
+  close(link: string) {
     this.router.navigate(["/" + link]);
   }
+
   logout(){
     this.localStorageService.removeToken();
     this.router.navigate([""]);

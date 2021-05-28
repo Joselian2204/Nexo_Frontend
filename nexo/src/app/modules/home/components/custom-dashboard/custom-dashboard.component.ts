@@ -6,6 +6,8 @@ import { Color } from 'ng2-charts';
 import { LocationService } from 'src/app/modules/services/location.service';
 import * as L from 'leaflet';
 import { Location } from '../../../models/location';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomfiltersComponent } from '../dialogs/customfilters/customfilters.component';
 
 @Component({
   selector: 'app-custom-dashboard',
@@ -88,17 +90,20 @@ export class CustomDashboardComponent implements OnInit {
   ];
 
   fontStyleControl = new FormControl();
-  fontStyle?: string;
+  locationMap?: string;
 
   dateRange!: FormGroup;
+  dateRangeTwo!: FormGroup;
 
   date1!: any;
   date2!: any;
+  date3!: any;
+  date4!: any;
 
   actualPath = ''
   actualId = ''
 
-  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService) {
+  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService, public dialog: MatDialog,) {
     const date = new Date()
     const month = date.getMonth()
     const day = date.getDate()
@@ -107,6 +112,11 @@ export class CustomDashboardComponent implements OnInit {
     this.dateRange = new FormGroup({
       initDate: new FormControl(new Date(2020,3,11)),
       endDate: new FormControl(new Date(2021,3,24))
+    });
+
+    this.dateRangeTwo = new FormGroup({
+      initDateTwo: new FormControl(new Date(2020,3,11)),
+      endDateTwo: new FormControl(new Date(2021,3,24))
     });
   }
 
@@ -121,6 +131,15 @@ export class CustomDashboardComponent implements OnInit {
 
     this.date1 = this.datePipe.transform(iDate,'yyyy-MM-dd');
     this.date2 = this.datePipe.transform(eDate,'yyyy-MM-dd');
+    //console.log(this.date1)
+  }
+
+  setDateTwo(path: string, id: string){
+    const iDateTwo = this.dateRangeTwo.get('initDate')?.value
+    const eDateTwo = this.dateRangeTwo.get('endDate')?.value
+
+    this.date3 = this.datePipe.transform(iDateTwo,'yyyy-MM-dd');
+    this.date4 = this.datePipe.transform(eDateTwo,'yyyy-MM-dd');
     //console.log(this.date1)
   }
 
@@ -190,5 +209,23 @@ export class CustomDashboardComponent implements OnInit {
     }
   }
 //--------------------------Chart Functions------------------------//
+//--------------------------Dialog---------------------------------//
+
+  pathForLocation = ''
+
+  openLocationDialog(){
+    const dialogRef = this.dialog.open(CustomfiltersComponent,{
+      width:"323px",
+      data: {path: this.pathForLocation}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pathForLocation = result;
+      console.log(this.pathForLocation)
+    });
+  }
+//--------------------------Editor---------------------------------//
+
+ckeditorContent = "";
 
 }
+

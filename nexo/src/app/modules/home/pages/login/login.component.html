@@ -1,26 +1,21 @@
-<div class="main__container">
-    <div class="forms__container">
-        <div class="login">         
-            <form  action="" class="login__form" [formGroup] = "loginForm" ng-submit = "loginProcess()">
-                <h2 class="title">Iniciar Sesión</h2>
+<div class="mainBox">
+    <div class="logInForm">
+        <div class="formContainer">
+            <h2 class="liText mt-20">Iniciar Sesión</h2>
+            <form  action="" class="containerForm" [formGroup] = "loginForm" ng-submit = "loginProcess()">
                 <div class="input__field">
-                    <mat-icon class="icon">mail</mat-icon>
-                    <input type="text" placeholder="Correo Electronico" formControlName = "email" ngModel required>
+                    <mat-icon class="iconLI">mail</mat-icon>
+                    <input type="email" placeholder="Correo Electronico" formControlName = "email" ngModel required>
                 </div>
                 <div class="input__field">
-                    <mat-icon class="icon">lock</mat-icon>
+                    <mat-icon class="iconLI">lock</mat-icon>
                     <input type="password" placeholder="Contraseña" formControlName = "password" ngModel required>
                 </div>
                 <input type="submit" value="Ingresar" class="btn__login" (click)="loginProcess()">
             </form>
         </div>
-    </div>
-    <div class="panels__container">
-        <div class="panel left__panel">
-            <div class="content">
-                <h3>Nexo</h3>
-            </div>
-            <img src="../../../../../assets/buildings.svg" class="image" alt="">
+        <div class="imageContainer">
+            <img src="../../../../../assets/virus.png" class="image">
         </div>
     </div>
 </div>

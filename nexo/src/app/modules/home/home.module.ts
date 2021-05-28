@@ -26,12 +26,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CustomfiltersComponent } from './components/dialogs/customfilters/customfilters.component';
 import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { PharmacyComponent } from './components/pharmacy/pharmacy.component';
 import { HospitalComponent } from './components/hospital/hospital.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { DepartamentsComponent } from './components/departaments/departaments.component';
 import { MunicipalitiesComponent } from './components/municipalities/municipalities.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,9 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     ChartsModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
+    MatDialogModule,
+    MatTableModule,
+    CKEditorModule
   ]
 })
 export class HomeModule { }

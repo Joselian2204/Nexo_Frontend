@@ -23,7 +23,8 @@ const routes: Routes = [
       { path: "custom", component: CustomDashboardComponent},
     ]
   },
-  {path: "login", component: LoginComponent},
+  { path: "login", component: LoginComponent },
+  { path: "admin", pathMatch: "full", redirectTo: "admin/pharmacy" },
   { path: "admin",component: AdminComponent,
   canActivate: [GuardGuard],
     children:[

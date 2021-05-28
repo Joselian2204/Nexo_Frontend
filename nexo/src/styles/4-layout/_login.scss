@@ -5,68 +5,65 @@
     font-family:'Poppins', sans-serif;
 }
 
-input{
-    font-family:'Poppins', sans-serif;
+.mainBox{
+    height: 100vh;
+    background: linear-gradient($color-primary,$color-secondary-grey-2,$color-secondary-light-1);
 }
 
-.main__container{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background-color: #fff;
-    overflow: hidden;
-}
-
-.main__container::before{
-    content: '';
-    position: absolute;
-    width: 2000px;
-    height: 2000px;
-    border-radius: 50%;
-    background: linear-gradient(-45deg, #0a2b41, #143d59);
-    top: 15%;
-    right: 48%;
-    transform: translateY(-50%);
-    z-index: 6;
-}
-
-.forms__container{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.login{
+.logInForm{
+    display: flex;
     position: absolute;
     top: 50%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    z-index: 5;
+    left: 50%;
+    width: 60vw;
+    height: 75vh;
+    background-color: $color-primary-white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    transform: translate(-50%,-50%);
 }
 
-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.formContainer{
+    position: relative;
+    width: 70%;
+    background-color: $color-primary-white;
 }
 
-.title{
-    font-size: 4rem;
-    color: #0a2b41;
-    margin-bottom: 50px;
+.formSC{
+    position: relative;
+
+}
+.imageContainer{
+    width: 30%;
+}
+
+.image{
+    rotate: 90;
+    width: 100%;
+    height: 100%;
+}
+
+label{
+    display: block;
+    width: 350px;
+    margin: 25px auto;
+    text-align: center;
+    color: $color-primary;
+}
+
+label span{
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-primary;
+    text-transform: uppercase;
 }
 
 .input__field{
-    max-width: 380px;
+    max-width: 400px;
     width: 100%;
     height: 55px;
-    background-color: #dfe0e2;
+    background-color: $color-primary-light-2;
     margin: 10px 0;
-    border-radius: 55px;
+    border-radius: 1rem;
     display: grid;
     grid-template-columns: 15% 85%;
     padding: 0 .8rem;
@@ -79,12 +76,16 @@ form{
     line-height: 1;
     font-weight: 500;
     font-size: 1.6rem;
-    color: #333;
+    color: $color-primary;
 }
 
 .input__field input::placeholder{
-    color: #aaa;
+    color: $color-secondary;
     font-weight: 400;
+}
+
+.input__field input:focus{
+    background-color: transparent !important;
 }
 
 .btn__login{
@@ -94,8 +95,8 @@ form{
     outline: none;
     border-radius: 49px;
     cursor: pointer;
-    background-color: #143d59;
-    color: #fff;
+    background-color: $color-secondary;
+    color: $color-primary-white;
     text-transform: uppercase;
     font-weight: 500;
     margin: 50px 0;
@@ -104,50 +105,18 @@ form{
     font-size: 1.4rem;
 }
 
-.btn:hover{
-    background-color: #0a2b41;
-}
-
-.panels__container{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.panel{
+form{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    z-index: 7;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.left__panel{
-    pointer-events: all;
-    padding: 2rem 8% 5rem 12%;
-}
-
-.panel .content{
-    color: #fff;
-}
-
-.panel h3{
-    font-weight: 400;
-    line-height: 1;
-    font-size: 5rem;
-    font-style: italic;
-}
-
-.image{
-    width: 90%;
-}
-
-.icon{
+.iconLI{
     padding: 1.75rem 1.35rem;
-    color: #979797;
+    color: $color-secondary;
+}
+
+.containerForm{
+    margin-top: 10vh;
 }

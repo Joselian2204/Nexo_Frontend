@@ -6,7 +6,7 @@
       class="link"
       mat-list-item
       (click)="irALink('pharmacy')"
-      routerLink="/pharmacy"
+      routerLink="/admin/pharmacy"
       routerLinkActive="list-item-active-link"
     >
       <mat-icon class="link__icon mx-1">local_pharmacy</mat-icon
@@ -16,7 +16,7 @@
       class="link"
       mat-list-item
       (click)="irALink('hospital')"
-      routerLink="/hospital"
+      routerLink="/admin/hospital"
       routerLinkActive="list-item-active-link"
     >
       <mat-icon class="link__icon mx-1">local_hospital</mat-icon
@@ -26,7 +26,7 @@
       class="link"
       mat-list-item
       (click)="irALink('countries')"
-      routerLink="/countries"
+      routerLink="/admin/countries"
       routerLinkActive="list-item-active-link"
     >
       <mat-icon class="link__icon mx-1">public</mat-icon
@@ -36,7 +36,7 @@
       class="link"
       mat-list-item
       (click)="irALink('departaments')"
-      routerLink="/departaments"
+      routerLink="/admin/departaments"
       routerLinkActive="list-item-active-link"
     >
       <mat-icon class="link__icon mx-1">place</mat-icon
@@ -46,7 +46,7 @@
       class="link"
       mat-list-item
       (click)="irALink('municipalities')"
-      routerLink="/municipalities"
+      routerLink="/admin/municipalities"
       routerLinkActive="list-item-active-link"
     >
       <mat-icon class="link__icon mx-1">place</mat-icon
@@ -57,8 +57,8 @@
     <div
       class="linkAdmin mt-ad"
       mat-list-item
-      (click)="irALink('login')"
-      routerLink="/login"
+      (click)="close('maps')"
+      routerLink="/maps"
       routerLinkActive="list-item-active-link"
     >
       <mat-icon class="link__icon mx-1">logout</mat-icon
