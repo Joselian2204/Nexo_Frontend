@@ -10,6 +10,7 @@ export class AdministratorService {
 
   authToken: string = "";
   headers: any;
+  url: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient,
     private localStorageService: LocalStorageService) {
@@ -20,9 +21,9 @@ export class AdministratorService {
       })
      }
 
-  login(user: Administrator):Observable<any>{
-    console.log(user)
-    return this.http.post<any>(`user/signin/Admi`,user,{ observe: 'response' });
+  login(admi: Administrator):Observable<any>{
+    console.log(admi)
+    return this.http.post<any>(this.url+`/administrator/login`,admi,{ observe: 'response' });
 
   }
 
