@@ -1,9 +1,10 @@
-<h1 class="expTitle"><strong>Farmacias</strong></h1>
+<div class="">
+  <div class="title-container"><h1 class="title-page"><strong>Farmacias</strong></h1></div>
 <div class="header-farmacias">
   <div>
-      <button class="btn" color="primary">
+      <button>
     <!--button (click)="addPharmacy()" class="btn" color="primary"-->
-      <mat-icon class="button-add">add_business</mat-icon>
+      <mat-icon class="button-add">local_pharmacy</mat-icon>
     </button>
   </div>
   <!--div class="filter">
@@ -19,7 +20,7 @@
   </div-->
 </div>
 
-<div class="table-container mat-elevation-z8">
+<div class="table-container ">
     <!--div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
       <div class="rate-limit-reached" *ngIf="isRateLimitReached">
@@ -28,11 +29,11 @@
     </div-->
  <!--[dataSource]="dataSource"-->
     <!-- Tabla de los pedidos -->
-    <div class="mat-elevation-z8 divtable">
+    <div class="divtable">
       <table
         mat-table
         [dataSource]="dataSource"
-        class="mat-elevation-z8 tableall"
+        class="tableall"
         matSort
       >
         >
@@ -101,3 +102,5 @@
       (page)="refreshOrders($event)"
     ></mat-paginator-->
   </div>
+
+</div>

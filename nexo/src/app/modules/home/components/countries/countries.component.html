@@ -1,18 +1,6 @@
-<!--div class="mat-elevation-z8">
-    <mat-table [dataSource]="dataSource">
-        <ng-container matColumDef="id">
-            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
-            
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>         
-        <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
-        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':po!=null}"></mat-footer-row>
-        
-    </mat-table>
-</div-->
-<div class="mat-elevation-z8 divtable">
+<div>
+  <div class="title-container"><h1 class="title-page"><strong>Paises</strong></h1></div>
+  <div class="mat-elevation-z8 divtable">
     <table
       mat-table
       [dataSource]="dataSource"
@@ -78,4 +66,5 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
     </table>
+</div>
 </div>

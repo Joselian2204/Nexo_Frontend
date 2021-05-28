@@ -1,42 +1,30 @@
+.title-container{
+    margin-left: 5rem;
+    margin-top: 5rem;
+}
 .title-page{
-    margin-left: 50%;
-    margin-bottom: 20px;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     font-weight: bold;
     font-size: 40px;
-    color: #2f4a85;
-}
-.btn{
-    color: white;
-    height: 48px !important;
-    width: 48px !important;
-    font-size: 48px !important;
+    color: $color-primary;
 }
 .button-add {
-    color: white;
+    color: $color-primary;
     height: 48px !important;
     width: 48px !important;
     font-size: 48px !important;
-  }
-  .title {
-    margin-left: 45px;
-    margin-bottom: 20px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-    color: #2f4a85;
+    background-color: $color-secondary-light-1;
   }
   .pharmacies {
     margin-left: 180px;
     margin-right: 170px;
   }
   .header-farmacias {
-    margin-left: 50%;
+    margin-left: 5rem;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #2f4a85;
   }
   .search-bar {
     .top-search-form {
@@ -53,14 +41,6 @@
       //margin-left: 20px;
       box-shadow: inset 0 0 2px 2px white;
   
-      .material-icons {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        margin-top: -12px;
-        margin-left: 10px;
-        color: #fff;
-      }
       input {
         font-size: 2rem;
         margin-left: 17px;
