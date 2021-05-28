@@ -51,7 +51,7 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     HospitalComponent,
     CountriesComponent,
     DepartamentsComponent,
-    MunicipalitiesComponent
+    MunicipalitiesComponent,
   ],
   imports: [
     CommonModule,
