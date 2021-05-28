@@ -41,29 +41,7 @@
     </div>
 </div>
 <div class="dashboards">
-    <div class="infCustomDashboards ml-2 mt-2">
-        <div class="customOptions">
-            <button mat-raised-button class="locationButton" (click)="openLocationDialog()">Ubicación</button>
-            <mat-form-field appearance="fill" class="dropDashboardCustom dateDash ash">
-                <mat-label class="selectDash">Intervalo de Tiempo</mat-label>
-                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
-                  <input class="selectDash" matStartDate formControlName="initDate" placeholder="Start date">
-                  <input class="selectDash" matEndDate formControlName="endDate" placeholder="End date">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field>
-              <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
-              <button mat-mini-fab class="ml-1"><mat-icon>download</mat-icon></button>
-        </div>
-        <canvas baseChart
-            [datasets] = "barChartData"
-            [labels] = "barChartLables"
-            [options] = "barChartOptions"
-            [legend] = "barChartLegend"
-            [chartType] = "barChartType"
-            [colors]= "chartColors"
-        ></canvas>
+    <div class="valuesOfdata mt-2 ml-2">
     </div>
     <div class="valuesOfdata mt-2 ml-2">
 
