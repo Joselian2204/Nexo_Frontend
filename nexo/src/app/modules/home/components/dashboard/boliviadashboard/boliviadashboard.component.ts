@@ -212,7 +212,6 @@ public barChartColorsMult: Color[] = [
   }
 
   fetchData(path:string,id: string, clear: boolean): void{
-
     if(clear){
       this.dataService.getData(path+id,"","").subscribe(ddata => {
         this.depdata = ddata;

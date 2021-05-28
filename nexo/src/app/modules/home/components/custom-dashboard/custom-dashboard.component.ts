@@ -1,8 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
+import { LocationService } from 'src/app/modules/services/location.service';
+import * as L from 'leaflet';
+import { Location } from '../../../models/location';
 
 @Component({
   selector: 'app-custom-dashboard',
@@ -95,7 +98,7 @@ export class CustomDashboardComponent implements OnInit {
   actualPath = ''
   actualId = ''
 
-  constructor(private datePipe : DatePipe) {
+  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService) {
     const date = new Date()
     const month = date.getMonth()
     const day = date.getDate()
@@ -108,6 +111,7 @@ export class CustomDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadMap(13,5,2);
   }
 
 
@@ -119,6 +123,72 @@ export class CustomDashboardComponent implements OnInit {
     this.date2 = this.datePipe.transform(eDate,'yyyy-MM-dd');
     //console.log(this.date1)
   }
+
+//----------------------Map Functions---------------------------//
+
+  centerMap = {lat:-16.290154, lng:-63.588653};
+
+  zoom = 6.4;
+
+  pos: Location[] = [];
+
+  map!: L.Map;
+
+  mymap!: L.Map;
+
+  total: Location = {cases:0,deaths:0,population:0,id:"",lat:0,lng:0,name:"",recovered:0,vaccine:0};
+
+  setMapParameters(lati: number, long: number, zoom: number){
+    this.centerMap.lat = lati;
+    this.centerMap.lng = long;
+    this.zoom = zoom;
+    this.loadMap(this.centerMap.lat,this.centerMap.lng,this.zoom);
+  }
+
+  loadMap(lati: number, long: number, zoom: number){
+    if(this.mymap) {
+      this.mymap.remove();
+    }
+    
+    this.mymap = L.map('cmap').setView([lati,long],zoom);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiam9zZWxpYW4yMjA0IiwiYSI6ImNrbmw4cXB5bzBkbmcyb3F2enA5cWg0NzgifQ.6lYfGfc_i0IBX6tap-T-Og', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'your.mapbox.access.token'
+    }).addTo(this.mymap); 
+  }
+
+  loadMarkers(pth: string,rad: number){
+    this.locationService.getLocation(pth).subscribe( con => {
+      this.pos = con;
+      this.pos.forEach(x => {
+        let circle = L.circle([+x.lat,+x.lng], {
+          color: '#9b59b6',
+          fillColor: '#9b59b6',
+          fillOpacity: 0.5,
+          radius: rad
+        }).addTo(this.mymap);
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
+      })
+    });
+  }
+
+  loadCardVariable(pth: string){
+    this.locationService.getLocation(pth).subscribe( tot => this.total = tot);
+  }
   
+  validator(parameter: any): string{
+    if (parameter == 0){
+      return "No disponible";
+    }
+    else{
+      return parameter;
+    }
+  }
+//--------------------------Chart Functions------------------------//
 
 }

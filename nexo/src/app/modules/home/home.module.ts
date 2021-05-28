@@ -23,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { CustomfiltersComponent } from './components/dialogs/customfilters/customfilters.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     DashboardComponent,
     BoliviadashboardComponent,
     WorlddashboardComponent,
-    CustomDashboardComponent
+    CustomDashboardComponent,
+    CustomfiltersComponent
   ],
   imports: [
     CommonModule,
