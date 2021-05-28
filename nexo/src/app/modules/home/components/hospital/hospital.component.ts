@@ -6,6 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hospital.component.scss']
 })
 export class HospitalComponent implements OnInit {
+  
+  displayedColumns: string[] = [
+    "id_location",
+    "name",
+    "population",
+    "Case",
+    "Deaths",
+    "Recovered",
+    "Vaccine",
+  ];
+
 
   constructor() { }
 
