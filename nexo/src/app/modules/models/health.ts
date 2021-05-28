@@ -1,5 +1,5 @@
-export interface Pharmacy{
-    "idPharmacy":number,
+export interface Health{
+    "id":number,
     "idDepartament":string,
     "name":string,
     "location":string,
