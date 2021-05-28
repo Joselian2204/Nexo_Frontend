@@ -44,5 +44,21 @@
 
 
 .locationButton{
-  width: 15vw;
+  width: 12.5vw;
+}
+
+.mat-button-toggle {
+  background-color: $color-secondary-light-1;
+  width: 10vw;
+  color: $color-secondary;
+}
+
+.mat-button-toggle:hover {
+  background-color: $color-secondary !important;
+  color: $color-primary-white !important;
+}
+
+.mat-button-toggle-checked {
+  background-color: $color-secondary-grey-2 !important;
+  color: $color-secondary-white !important;
 }

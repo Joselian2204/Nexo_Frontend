@@ -23,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { CustomfiltersComponent } from './components/dialogs/customfilters/customfilters.component';
 import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { PharmacyComponent } from './components/pharmacy/pharmacy.component';
@@ -30,6 +31,7 @@ import { HospitalComponent } from './components/hospital/hospital.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { DepartamentsComponent } from './components/departaments/departaments.component';
 import { MunicipalitiesComponent } from './components/municipalities/municipalities.component';
+
 
 @NgModule({
   declarations: [
@@ -41,13 +43,9 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     BoliviadashboardComponent,
     WorlddashboardComponent,
     CustomDashboardComponent,
+    CustomfiltersComponent,
     SideNavAdminComponent,
     AdminComponent,
-    PharmacyComponent,
-    HospitalComponent,
-    CountriesComponent,
-    DepartamentsComponent,
-    MunicipalitiesComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +65,12 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     MatInputModule,
     ChartsModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    PharmacyComponent,
+    HospitalComponent,
+    CountriesComponent,
+    DepartamentsComponent,
+    MunicipalitiesComponent
   ]
 })
 export class HomeModule { }

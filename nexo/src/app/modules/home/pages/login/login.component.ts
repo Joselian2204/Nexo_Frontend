@@ -38,10 +38,11 @@ export class LoginComponent implements OnInit {
         console.log(result)
         if(result.status==200){
           this.localStorage.setToken(result.body.token)
+          this.router.navigate(['admin']);
         
         }
         else{
-          console.log("Acceso")
+          console.log("Acceso Denegado")
         }
       })
     }
