@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.localStorage.removeToken
+    this.localStorage.removeToken()
   }
   loginProcess(){
     if(this.loginForm.valid){

@@ -27,6 +27,11 @@ import { CustomfiltersComponent } from './components/dialogs/customfilters/custo
 import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PharmacyComponent } from './components/pharmacy/pharmacy.component';
+import { HospitalComponent } from './components/hospital/hospital.component';
+import { CountriesComponent } from './components/countries/countries.component';
+import { DepartamentsComponent } from './components/departaments/departaments.component';
+import { MunicipalitiesComponent } from './components/municipalities/municipalities.component';
 
 
 @NgModule({
@@ -42,6 +47,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     CustomfiltersComponent,
     SideNavAdminComponent,
     AdminComponent,
+    PharmacyComponent,
+    HospitalComponent,
+    CountriesComponent,
+    DepartamentsComponent,
+    MunicipalitiesComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +72,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ChartsModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    MatDialogModule
+    MatDialogModule,
   ]
 })
 export class HomeModule { }
