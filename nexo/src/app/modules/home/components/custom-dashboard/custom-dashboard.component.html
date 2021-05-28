@@ -1,103 +1,120 @@
-<div class="dashboards">
-    <div class="infCustomDashboards ml-2 mt-2">
-        <div class="customOptions">
-            <button mat-raised-button class="locationButton">Ubicación</button>
-            <mat-form-field appearance="fill" class="dropDashboardCustom dateDash ash">
-                <mat-label class="selectDash">Intervalo de Tiempo</mat-label>
-                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
-                  <input class="selectDash" matStartDate formControlName="initDate" placeholder="Start date">
-                  <input class="selectDash" matEndDate formControlName="endDate" placeholder="End date">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field>
-              <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
-              <button mat-mini-fab class="ml-1"><mat-icon>download</mat-icon></button>
+    <div class="dashboards overflowContent">
+        <div class="infCustomDashboards ml-2 mt-2">
+            <div class="customOptions">
+                <button mat-raised-button class="locationButton" (click)="openLocationDialog()">{{this.actualButtonName}}</button>
+                <mat-form-field appearance="fill" class="dropDashboardCustom dateDash ash">
+                    <mat-label class="selectDash">Intervalo de Tiempo</mat-label>
+                    <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                      <input class="selectDash" matStartDate formControlName="initDate" placeholder="Start date">
+                      <input class="selectDash" matEndDate formControlName="endDate" placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+                  <button mat-icon-button (click)="setDate(this.pathForLocation)"><mat-icon>check_circle</mat-icon></button>
+                  <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="setTypeChart('line')">
+                      <mat-icon>show_chart</mat-icon>
+                      <span>Lineal</span>
+                    </button>
+                    <button mat-menu-item (click)="setTypeChart('bar')">
+                      <mat-icon>bar_chart</mat-icon>
+                      <span>Barras</span>
+                    </button>
+                    <button mat-menu-item (click)="setTypeChart('radar')">
+                      <mat-icon>radar</mat-icon>
+                      <span>Radar</span>
+                    </button>
+                  </mat-menu>
+                  <button mat-icon-button (click)="downloadData()"><mat-icon>download</mat-icon></button>
+            </div>
+            <canvas baseChart
+                [datasets] = "chartData"
+                [labels] = "chartLables"
+                [options] = "chartOptions"
+                [legend] = "chartLegend"
+                [chartType] = "chartType"
+                [colors]= "chartColors"
+            ></canvas>
         </div>
-        <canvas baseChart
-            [datasets] = "lineChartData"
-            [labels] = "lineChartLables"
-            [options] = "lineChartOptions"
-            [legend] = "lineChartLegend"
-            [chartType] = "lineChartType"
-            [colors]= "chartColors"
-        ></canvas>
-    </div>
-    <div class="mapCustomOptions">
-        <section class="ml-4">
-            <mat-button-toggle-group [(ngModel)]="locationMap" aria-label="Font Style">
-              <mat-button-toggle value="country" (click) = "setMapParameters(13,5,2)" (click) = "loadMarkers('world',100000)" (click) = "loadCardVariable('world_cases')">Países</mat-button-toggle>
-              <mat-button-toggle value="dep" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('bol',60000)" (click) = "loadCardVariable('bol_cases')">Departamentos</mat-button-toggle>
-              <mat-button-toggle value="mun" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('municipios',5000)" (click) = "loadCardVariable('bol_cases')">Municipios</mat-button-toggle>
-            </mat-button-toggle-group>
-          </section>
-        <div class="map-wrapper mt-1">
-            <div class="map-border">
-                <div id="cmap" class="customMap">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="dashboards">
-    <div class="valuesOfdata mt-2 ml-2">
-        <div class="values">
-            <div class="cardValue infected mt-2 ml-2">
-                <div class="rowCard">
-                    <div class="icon infectedText">
-                        <mat-icon>coronavirus</mat-icon>
-                    </div>
-                    <div class="textAlig">
-                        <p class="valueText">10000</p>
-                        <mat-divider class="thirdDivider"></mat-divider>
-                        <h3 class="valueTitle">Infectados</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="cardValue death mt-2 ml-25">
-                <div class="rowCard">
-                    <div class="icon deathText">
-                        <mat-icon>airline_seat_individual_suite</mat-icon>
-                    </div>
-                    <div class="textAlig">
-                        <p class="valueText">10000</p>
-                        <mat-divider class="thirdDivider"></mat-divider>
-                        <h3 class="valueTitle ml-2">Decesos</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="values">
-            <div class="cardValue vaccine mt-2 ml-2">
-                <div class="rowCard">
-                    <div class="icon vaccineText">
-                        <mat-icon>colorize</mat-icon>
-                    </div>
-                    <div class="textAlig">
-                        <p class="valueText">10000</p>
-                        <mat-divider class="thirdDivider"></mat-divider>
-                        <h3 class="valueTitle">Vacunados</h3>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="cardValue recover mt-2 ml-25">
-                <div class="rowCard">
-                    <div class="icon recoverText">
-                        <mat-icon>health_and_safety</mat-icon>
-                    </div>
-                    <div class="textAlig">
-                        <p class="valueText">10000</p>
-                        <mat-divider class="thirdDivider"></mat-divider>
-                        <h3 class="valueTitle">Recuperados</h3>
+        <div class="mapCustomOptions">
+            <section class="ml-4">
+                <mat-button-toggle-group [(ngModel)]="locationMap" aria-label="Font Style">
+                  <mat-button-toggle value="country" (click) = "setMapParameters(13,5,2)" (click) = "loadMarkers('world',100000)" (click) = "loadCardVariable('world_cases')">Países</mat-button-toggle>
+                  <mat-button-toggle value="dep" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('bol',60000)" (click) = "loadCardVariable('bol_cases')">Departamentos</mat-button-toggle>
+                  <mat-button-toggle value="mun" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('municipios',5000)" (click) = "loadCardVariable('bol_cases')">Municipios</mat-button-toggle>
+                </mat-button-toggle-group>
+              </section>
+            <div class="map-wrapper mt-1">
+                <div class="map-border">
+                    <div id="cmap" class="customMap">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="valuesOfdata mt-2 ml-2">
-        <ckeditor
-            [(ngModel)]="ckeditorContent">
-        </ckeditor>
+    <div class="dashboards overflowContent">
+        <div class="valuesOfdata mt-2 ml-2">
+            <div class="values">
+                <div class="cardValue infected mt-2 ml-2">
+                    <div class="rowCard">
+                        <div class="icon infectedText">
+                            <mat-icon>coronavirus</mat-icon>
+                        </div>
+                        <div class="textAlig">
+                            <p class="valueText">10000</p>
+                            <mat-divider class="thirdDivider"></mat-divider>
+                            <h3 class="valueTitle">Infectados</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardValue death mt-2 ml-25">
+                    <div class="rowCard">
+                        <div class="icon deathText">
+                            <mat-icon>airline_seat_individual_suite</mat-icon>
+                        </div>
+                        <div class="textAlig">
+                            <p class="valueText">10000</p>
+                            <mat-divider class="thirdDivider"></mat-divider>
+                            <h3 class="valueTitle ml-2">Decesos</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="values">
+                <div class="cardValue vaccine mt-2 ml-2">
+                    <div class="rowCard">
+                        <div class="icon vaccineText">
+                            <mat-icon>colorize</mat-icon>
+                        </div>
+                        <div class="textAlig">
+                            <p class="valueText">10000</p>
+                            <mat-divider class="thirdDivider"></mat-divider>
+                            <h3 class="valueTitle">Vacunados</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="cardValue recover mt-2 ml-25">
+                    <div class="rowCard">
+                        <div class="icon recoverText">
+                            <mat-icon>health_and_safety</mat-icon>
+                        </div>
+                        <div class="textAlig">
+                            <p class="valueText">10000</p>
+                            <mat-divider class="thirdDivider"></mat-divider>
+                            <h3 class="valueTitle">Recuperados</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="valuesOfdata mt-2 ml-2">
+            <ckeditor
+                [(ngModel)]="ckeditorContent">
+            </ckeditor>
+        </div>
     </div>
-</div>

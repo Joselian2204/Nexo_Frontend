@@ -20,6 +20,7 @@ export class CustomfiltersComponent implements OnInit {
   coun = 'country/'
 
   actualPath = ''
+  actualName = 'Ubicación'
 
   departments: Location[]=[];
   municipalities: Location[]=[];
@@ -46,9 +47,13 @@ export class CustomfiltersComponent implements OnInit {
     this.actualPath = path
   }
 
+  setActualName(name: string){
+    this.actualName = name
+  }
+
   returnPath(): any{
-    this.dialogRef.close();
-    return this.actualPath
+    const data = {path: this.actualPath,name: this.actualName}
+    this.dialogRef.close(data);
   }
 
 }
