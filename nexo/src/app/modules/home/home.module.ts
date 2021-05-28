@@ -23,8 +23,10 @@ import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { CustomfiltersComponent } from './components/dialogs/customfilters/customfilters.component';
 import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
 import { AdminComponent } from './pages/admin/admin.component';
+
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { AdminComponent } from './pages/admin/admin.component';
     BoliviadashboardComponent,
     WorlddashboardComponent,
     CustomDashboardComponent,
+    CustomfiltersComponent,
     SideNavAdminComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     CommonModule,

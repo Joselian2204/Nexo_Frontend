@@ -12,6 +12,7 @@
                 <mat-date-range-picker #picker></mat-date-range-picker>
               </mat-form-field>
               <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
+              <button mat-mini-fab class="ml-1"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
             [datasets] = "lineChartData"
@@ -23,11 +24,11 @@
         ></canvas>
     </div>
     <div class="mapCustomOptions">
-        <section>
+        <section class="ml-4">
             <mat-button-toggle-group [(ngModel)]="fontStyle" aria-label="Font Style">
-              <mat-button-toggle value="bold">Bold</mat-button-toggle>
-              <mat-button-toggle value="italic">Italic</mat-button-toggle>
-              <mat-button-toggle value="underline">Underline</mat-button-toggle>
+              <mat-button-toggle value="country" (click) = "setMapParameters(13,5,2)" (click) = "loadMarkers('world',100000)" (click) = "loadCardVariable('world_cases')">Países</mat-button-toggle>
+              <mat-button-toggle value="dep" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('bol',60000)" (click) = "loadCardVariable('bol_cases')">Departamentos</mat-button-toggle>
+              <mat-button-toggle value="mun" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('municipios',5000)" (click) = "loadCardVariable('bol_cases')">Municipios</mat-button-toggle>
             </mat-button-toggle-group>
             <!-- <p>Chosen value is {{fontStyle}}</p> -->
           </section>
@@ -53,6 +54,7 @@
                 <mat-date-range-picker #picker></mat-date-range-picker>
               </mat-form-field>
               <button mat-mini-fab (click)="setDate(actualPath,actualId)"><mat-icon>search</mat-icon></button>
+              <button mat-mini-fab class="ml-1"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
             [datasets] = "barChartData"
@@ -62,5 +64,8 @@
             [chartType] = "barChartType"
             [colors]= "chartColors"
         ></canvas>
+    </div>
+    <div class="valuesOfdata mt-2 ml-2">
+
     </div>
 </div>
