@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Location } from '../../../models/location';
-import { LocationService} from '../../../services/location.service';
+import { Location } from '../../../models/location';//
+import { LocationService} from '../../../services/location.service';//
 import * as L from 'leaflet';
 
 @Component({
@@ -16,7 +16,7 @@ export class MapsComponent implements OnInit {
   centerMap = {lat:-16.290154, lng:-63.588653};
   zoom = 6.4;
 
-  pos: Location[] = [];
+  pos: Location[] = [];//
 
   map!: L.Map;
 
@@ -60,7 +60,7 @@ export class MapsComponent implements OnInit {
     }).addTo(this.mymap); 
   }
 
-  validator(parameter: any): string{
+  validator(parameter: any): string{//
     if (parameter == 0){
       return "No disponible";
     }
@@ -69,9 +69,9 @@ export class MapsComponent implements OnInit {
     }
   }
 
-  loadMarkers(pth: string,rad: number){
+  loadMarkers(pth: string,rad: number){//
     this.locationService.getLocation(pth).subscribe( con => {
-      this.pos = con;
+      this.pos = con;//
       this.pos.forEach(x => {
         let circle = L.circle([+x.lat,+x.lng], {
           color: '#9b59b6',

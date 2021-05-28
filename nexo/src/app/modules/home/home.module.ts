@@ -25,6 +25,11 @@ import { CustomDashboardComponent } from './components/custom-dashboard/custom-d
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { PharmacyComponent } from './components/pharmacy/pharmacy.component';
+import { HospitalComponent } from './components/hospital/hospital.component';
+import { CountriesComponent } from './components/countries/countries.component';
+import { DepartamentsComponent } from './components/departaments/departaments.component';
+import { MunicipalitiesComponent } from './components/municipalities/municipalities.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,12 @@ import { AdminComponent } from './pages/admin/admin.component';
     WorlddashboardComponent,
     CustomDashboardComponent,
     SideNavAdminComponent,
-    AdminComponent
+    AdminComponent,
+    PharmacyComponent,
+    HospitalComponent,
+    CountriesComponent,
+    DepartamentsComponent,
+    MunicipalitiesComponent
   ],
   imports: [
     CommonModule,
