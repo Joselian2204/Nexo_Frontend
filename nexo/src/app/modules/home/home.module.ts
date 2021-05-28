@@ -32,6 +32,7 @@ import { HospitalComponent } from './components/hospital/hospital.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { DepartamentsComponent } from './components/departaments/departaments.component';
 import { MunicipalitiesComponent } from './components/municipalities/municipalities.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     ReactiveFormsModule,
     MatButtonToggleModule,
     MatDialogModule,
+    MatTableModule,
   ]
 })
 export class HomeModule { }
