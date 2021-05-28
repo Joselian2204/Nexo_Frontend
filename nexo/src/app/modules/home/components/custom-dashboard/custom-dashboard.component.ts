@@ -6,6 +6,8 @@ import { Color } from 'ng2-charts';
 import { LocationService } from 'src/app/modules/services/location.service';
 import * as L from 'leaflet';
 import { Location } from '../../../models/location';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomfiltersComponent } from '../dialogs/customfilters/customfilters.component';
 
 @Component({
   selector: 'app-custom-dashboard',
@@ -88,7 +90,7 @@ export class CustomDashboardComponent implements OnInit {
   ];
 
   fontStyleControl = new FormControl();
-  fontStyle?: string;
+  locationMap?: string;
 
   dateRange!: FormGroup;
 
@@ -98,7 +100,7 @@ export class CustomDashboardComponent implements OnInit {
   actualPath = ''
   actualId = ''
 
-  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService) {
+  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService, public dialog: MatDialog,) {
     const date = new Date()
     const month = date.getMonth()
     const day = date.getDate()
@@ -190,5 +192,17 @@ export class CustomDashboardComponent implements OnInit {
     }
   }
 //--------------------------Chart Functions------------------------//
+//--------------------------Dialog---------------------------------//
 
+  pathForLocation = ''
+
+  openLocationDialog(){
+    const dialogRef = this.dialog.open(CustomfiltersComponent,{
+      width:"600px",
+      data: {path: this.pathForLocation}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pathForLocation = result;
+    });
+  }
 }

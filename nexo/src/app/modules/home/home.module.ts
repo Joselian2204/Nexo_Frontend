@@ -26,6 +26,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CustomfiltersComponent } from './components/dialogs/customfilters/customfilters.component';
 import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     MatInputModule,
     ChartsModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
   ]
 })
 export class HomeModule { }
