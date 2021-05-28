@@ -225,5 +225,7 @@ export class CustomDashboardComponent implements OnInit {
   }
 //--------------------------Editor---------------------------------//
 
+ckeditorContent = "";
+
 }
 

@@ -33,7 +33,7 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { DepartamentsComponent } from './components/departaments/departaments.component';
 import { MunicipalitiesComponent } from './components/municipalities/municipalities.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   declarations: [
@@ -75,6 +75,7 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonToggleModule,
     MatDialogModule,
     MatTableModule,
+    CKEditorModule
   ]
 })
 export class HomeModule { }

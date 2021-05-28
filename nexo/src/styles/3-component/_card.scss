@@ -50,6 +50,18 @@
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
 }
 
+.icon{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    padding-top: 1.4rem;
+    border-radius: 1rem;
+    background-color: $color-primary-white;
+    margin-right: 2rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
 .population{
     background-color: $color-population;
 }
@@ -109,8 +121,17 @@
 
 .valuesOfdata{
     width: 35.5vw;
+    height: 47vh;
     padding: 2rem 2rem;
     background-color: $color-primary-white;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
     border-radius: 1rem;
+}
+
+.cardValue{
+    height: 19vh;
+    border-radius: 1rem;
+    display: flex;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    width: 15vw;
 }
