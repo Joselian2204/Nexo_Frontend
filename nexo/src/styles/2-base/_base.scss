@@ -11,6 +11,7 @@
 html {
   /* font-size: 10px; bad practice*/
   font-size: 62.5%;
+  overflow-y: hidden;
 
   // this defines what 1rem is !!!
   /* 10px/16px */

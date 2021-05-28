@@ -4,7 +4,7 @@
         <mat-label class="selectDash">Departamento</mat-label>
         <mat-select class="selectDash">
             <mat-optgroup label = Departamentos>
-                <mat-option *ngFor = "let department of departments" (click)="setMunicipalities(department.id)" (click)="setActualPath(this.depar.concat(department.id))" value ="{{department.id}}">{{department.name}}</mat-option>
+                <mat-option *ngFor = "let department of departments" (click)="setMunicipalities(department.id)" (click)="setActualPath(this.depar.concat(department.id))"  (click)="setActualName(department.name)" value ="{{department.id}}">{{department.name}}</mat-option>
             </mat-optgroup>
         </mat-select>
     </mat-form-field>
@@ -14,7 +14,7 @@
         <mat-select class="selectDash">
             <mat-option class="selectDash" value = "none" >---</mat-option>
             <mat-optgroup label = Municipios>
-                <mat-option *ngFor = "let municipality of municipalities" (click)="setActualPath(this.muni.concat(municipality.id))" value = "{{municipality.id}}">{{municipality.name}}</mat-option>
+                <mat-option *ngFor = "let municipality of municipalities" (click)="setActualPath(this.muni.concat(municipality.id))" (click)="setActualName(municipality.name)" value = "{{municipality.id}}">{{municipality.name}}</mat-option>
             </mat-optgroup>
         </mat-select>
     </mat-form-field>
@@ -23,7 +23,7 @@
         <mat-label class="selectDash">País</mat-label>
         <mat-select class="selectDash">
             <mat-optgroup label = Países>
-                <mat-option *ngFor = "let country of countries" (click)="setActualPath(this.coun.concat(country.id))" value ="{{country.id}}">{{country.name}}</mat-option>
+                <mat-option *ngFor = "let country of countries" (click)="setActualPath(this.coun.concat(country.id))" (click)="setActualName(country.name)"value ="{{country.id}}">{{country.name}}</mat-option>
             </mat-optgroup>
         </mat-select>
     </mat-form-field>
