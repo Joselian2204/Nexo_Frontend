@@ -23,6 +23,8 @@ import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomDashboardComponent } from './components/custom-dashboard/custom-dashboard.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { SideNavAdminComponent } from './components/side-nav-admin/side-nav-admin.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     DashboardComponent,
     BoliviadashboardComponent,
     WorlddashboardComponent,
-    CustomDashboardComponent
+    CustomDashboardComponent,
+    SideNavAdminComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,68 @@
+<mat-nav-list class="p-2 sidenav__content">
+    <div class="sidenav-brand mb-2">
+      <img [src]="logotipo" alt="logo-example" class="sidenav-brand__logotipo" />
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('maps')"
+      routerLink="/maps"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">map</mat-icon
+      ><span class="link__text">Farmacias</span>
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('dashboard')"
+      routerLink="/dashboard"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">dashboard</mat-icon
+      ><span class="link__text">Hospitales</span>
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('dashboard')"
+      routerLink="/dashboard"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">dashboard</mat-icon
+      ><span class="link__text">Paises</span>
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('dashboard')"
+      routerLink="/dashboard"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">dashboard</mat-icon
+      ><span class="link__text">Departamentos</span>
+    </div>
+    <div
+      class="link"
+      mat-list-item
+      (click)="irALink('dashboard')"
+      routerLink="/dashboard"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">dashboard</mat-icon
+      ><span class="link__text">Municipios</span>
+    </div>
+    
+    <mat-divider class="secondaryDivider"></mat-divider>
+    <div
+      class="linkAdmin mt-ad"
+      mat-list-item
+      (click)="irALink('login')"
+      routerLink="/login"
+      routerLinkActive="list-item-active-link"
+    >
+      <mat-icon class="link__icon mx-1">admin_panel_settings</mat-icon
+      ><span class="link__text">Cerrar Sesión</span>
+    </div>
+  </mat-nav-list>
+
