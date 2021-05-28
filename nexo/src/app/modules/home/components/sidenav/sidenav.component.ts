@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { LocalStorageService } from 'src/app/modules/services/local-storage.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { Router } from "@angular/router";
 export class SidenavComponent implements OnInit {
   logotipo: string = "assets/logox2.png";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +20,5 @@ export class SidenavComponent implements OnInit {
   irALink(link: string) {
     this.router.navigate(["/" + link]);
   }
+
 }

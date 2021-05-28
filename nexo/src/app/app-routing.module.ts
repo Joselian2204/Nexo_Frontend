@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardGuard } from './modules/guard/guard.guard';
 import { CountriesComponent } from './modules/home/components/countries/countries.component';
 import { CustomDashboardComponent } from './modules/home/components/custom-dashboard/custom-dashboard.component';
 import { DashboardComponent } from './modules/home/components/dashboard/dashboard.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   },
   {path: "login", component: LoginComponent},
   { path: "admin",component: AdminComponent,
+  canActivate: [GuardGuard],
     children:[
       { path: "pharmacy", component: PharmacyComponent},
       { path: "hospital", component: HospitalComponent},
