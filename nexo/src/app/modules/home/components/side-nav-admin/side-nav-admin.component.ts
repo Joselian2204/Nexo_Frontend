@@ -21,7 +21,7 @@ export class SideNavAdminComponent implements OnInit {
     this.router.navigate(["admin/" + link]);
   }
 
-  cerrar(link: string) {
+  close(link: string) {
     this.router.navigate(["/" + link]);
   }
 
