@@ -21,11 +21,6 @@ const routes: Routes = [
       { path: "maps", component: MapsComponent},
       { path: "dashboard", component: DashboardComponent},
       { path: "custom", component: CustomDashboardComponent},
-      { path: "pharmacy", component: PharmacyComponent},
-      { path: "hospital", component: HospitalComponent},
-      { path: "countries", component: CountriesComponent},
-      { path: "departaments", component: DepartamentsComponent},
-      { path: "municipalities", component: MunicipalitiesComponent},
     ]
   },
   {path: "login", component: LoginComponent},

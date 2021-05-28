@@ -46,6 +46,11 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     CustomfiltersComponent,
     SideNavAdminComponent,
     AdminComponent,
+    PharmacyComponent,
+    HospitalComponent,
+    CountriesComponent,
+    DepartamentsComponent,
+    MunicipalitiesComponent,
   ],
   imports: [
     CommonModule,
@@ -66,11 +71,6 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
     ChartsModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    PharmacyComponent,
-    HospitalComponent,
-    CountriesComponent,
-    DepartamentsComponent,
-    MunicipalitiesComponent
   ]
 })
 export class HomeModule { }
