@@ -60,9 +60,15 @@ export class MapsComponent implements OnInit {
     }).addTo(this.mymap); 
   }
 
-  validator(parameter: any): string{//
+  validator(parameter: any,type: string): string{//
     if (parameter == 0){
-      return "No disponible";
+      if (type == 'popup') {
+        return "No disponible";
+      }
+      else{
+        return "------"
+      }
+      
     }
     else{
       return parameter;
@@ -79,7 +85,7 @@ export class MapsComponent implements OnInit {
           fillOpacity: 0.5,
           radius: rad
         }).addTo(this.mymap);
-        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
+        circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population,'popup')+"</br> Infectados: "+this.validator(x.cases,'popup')+"</br> Decesos: "+this.validator(x.deaths,'popup'));
       })
     });
   }
