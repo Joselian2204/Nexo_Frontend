@@ -1,7 +1,7 @@
-<h1 class="expTitle"><strong>Hospitales</strong></h1>
+<h1 class="title-page"><strong>Hospitales</strong></h1>
 <div class="header-farmacias">
   <div>
-      <button>
+      <button class="btn" color="primary">
     <!--button (click)="addPharmacy()" class="btn" color="primary"-->
       <mat-icon class="button-add">add_business</mat-icon>
     </button>
@@ -28,11 +28,11 @@
     </div-->
  <!--[dataSource]="dataSource"-->
     <!-- Tabla de los pedidos -->
-    <div class="adminlist">
+    <div class="mat-elevation-z8 divtable">
       <table
         mat-table
-       
-        class="mat-elevation-z8 formfarmaciatabla"
+        [dataSource]="dataSource"
+        class="mat-elevation-z8 tableall"
         matSort
       >
         >
@@ -43,31 +43,31 @@
             {{ location.id }}
           </td>
         </ng-container>
-
+  
         <!-- User Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef>Nombre</th>
           <td mat-cell *matCellDef="let location">
             {{ location.name }}
           </td>
         </ng-container>
-
+  
         <!-- Date Column -->
-        <ng-container matColumnDef="population">
+        <ng-container matColumnDef="Population">
           <th mat-header-cell *matHeaderCellDef>Población</th>
           <td mat-cell *matCellDef="let location">
             {{ location.population}}
           </td>
         </ng-container>
-
+  
         <!-- Cost Column -->
-        <ng-container matColumnDef="Case">
+        <ng-container matColumnDef="Cases">
           <th mat-header-cell *matHeaderCellDef>Casos</th>
           <td mat-cell *matCellDef="let location">
             {{ location.cases }}
           </td>
         </ng-container>
-
+  
         <!-- Status Column -->
         <ng-container matColumnDef="Deaths">
           <th mat-header-cell *matHeaderCellDef>Muertes</th>
@@ -75,7 +75,7 @@
             {{ location.deaths }}
           </td>
         </ng-container>
-
+  
         <ng-container matColumnDef="Recovered">
             <th mat-header-cell *matHeaderCellDef>Recuperados</th>
             <td mat-cell *matCellDef="let location">
@@ -89,12 +89,12 @@
               {{ location.vaccine }}
             </td>
           </ng-container>
-
+  
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
+  
       </table>
-    </div>
+  </div>
     <!--mat-paginator
       [length]="length"
       [pageSize]="size"
