@@ -1,13 +1,17 @@
-.mat-header-cell {     background-color: $color-primary;     color: $color-primary-white;     font-size: 16px; }
+.mat-header-cell {     
+    background-color: $color-primary;     
+    color: $color-primary-white;     
+    font-size: 16px; }
 .tableall{
-    background-color: $color-secondary; color: $color-primary-white;  
+    background-color: $color-primary-white; 
+    color: $color-primary-white;  
     font-size: 16px;
     width: 100%;
     border-collapse: separate;
 	border-spacing: 25px 10px;
 }
 .divtable{
-    margin-top: 5%;
+    margin-top: 2rem;
     width: 60%;
     margin-left: 20%;
     //height: 200px;
@@ -15,7 +19,4 @@
     display:flex;
     justify-content: center;
     align-items: center;
-}
-.title-page{
-    
 }

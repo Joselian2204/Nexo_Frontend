@@ -1,0 +1,70 @@
+.title-container{
+    margin-left: 5rem;
+    margin-top: 5rem;
+}
+.title-page{
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: $color-primary;
+}
+.button-add {
+    margin-top: 5px;
+    color: $color-primary;
+    height: 48px !important;
+    width: 48px !important;
+    font-size: 48px !important;
+  }
+  .pharmacies {
+    margin-left: 180px;
+    margin-right: 170px;
+  }
+  .header-farmacias {
+    margin-left: 5rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .search-bar {
+    .top-search-form {
+      position: relative;
+      //background: #fff;
+      border-radius: 40px;
+      margin-right: 3rem;
+      display: block;
+      width: 500px;
+      height: 50px;
+      color: #fff;
+      background-color: #2f4a85;
+      //max-width: 620px;
+      //margin-left: 20px;
+      box-shadow: inset 0 0 2px 2px white;
+  
+      input {
+        font-size: 2rem;
+        margin-left: 17px;
+        padding: 0.6rem 0.75rem;
+        z-index: 2;
+        cursor: text;
+        text-emphasis-color: white;
+        text-indent: 30px;
+        border: none;
+        background: transparent;
+        width: 100%;
+        outline: 0;
+        //color: #2F4A85;
+      }
+    }
+  }
+  .lettersearch {
+    color: white;
+  }
+  input::placeholder {
+    color: rgba(236, 227, 227, 0.836);
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  

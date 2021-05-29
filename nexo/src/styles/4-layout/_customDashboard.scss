@@ -9,7 +9,7 @@
 
 .dropDashboardCustom{
     width: 15vw;
-    padding: 0 2.5rem;
+    padding: 0 1rem;
     height: 5rem;
     background-color: transparent;
 }
@@ -22,4 +22,8 @@
 
 .values{
     display: flex;
+}
+
+.overflowContent::-webkit-scrollbar {
+    display: none;
 }

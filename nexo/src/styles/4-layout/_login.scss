@@ -1,11 +1,7 @@
-*{
+.mainBox{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family:'Poppins', sans-serif;
-}
-
-.mainBox{
     height: 100vh;
     background: linear-gradient($color-primary,$color-secondary-grey-2,$color-secondary-light-1);
 }
@@ -30,7 +26,6 @@
 
 .formSC{
     position: relative;
-
 }
 .imageContainer{
     width: 30%;
@@ -42,7 +37,7 @@
     height: 100%;
 }
 
-label{
+.labelLI{
     display: block;
     width: 350px;
     margin: 25px auto;
@@ -50,7 +45,7 @@ label{
     color: $color-primary;
 }
 
-label span{
+.labelLI span{
     font-size: 18px;
     font-weight: 600;
     color: $color-primary;

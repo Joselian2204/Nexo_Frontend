@@ -1,12 +1,11 @@
-
-<div class="mat-elevation-z8 divtable">
-    <!--h1 class="title-page">DEPARTAMENTOS</h1-->
+<div>
+  <div class="title-container"><h1 class="title-page"><strong>Departamentos</strong></h1></div>
+  <div class="mat-elevation-z8 divtable">
     <table
       mat-table
       [dataSource]="dataSource"
       class="mat-elevation-z8 tableall"
       matSort
-    
     >
       >
       <!-- Position Column -->
@@ -67,4 +66,5 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
     </table>
+</div>
 </div>

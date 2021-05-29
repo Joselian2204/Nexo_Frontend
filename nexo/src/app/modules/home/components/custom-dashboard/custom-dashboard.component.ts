@@ -8,6 +8,8 @@ import * as L from 'leaflet';
 import { Location } from '../../../models/location';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomfiltersComponent } from '../dialogs/customfilters/customfilters.component';
+import { Data } from '../../../models/data';
+import { DataService } from 'src/app/modules/services/data.service';
 
 @Component({
   selector: 'app-custom-dashboard',
@@ -16,36 +18,18 @@ import { CustomfiltersComponent } from '../dialogs/customfilters/customfilters.c
 })
 export class CustomDashboardComponent implements OnInit {
 
-  //------------------------Bar Chart Variables-----------------------//
+  //------------------------Chart Variables-----------------------//
 
-  public barChartOptions = {
+  public chartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
   
-  public barChartLables = [];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
+  public chartLables = [];
+  public chartType: ChartType = 'line';
+  public chartLegend = true;
   
-  public barChartData = [
-    {data: [], label: 'Infectados'},
-    {data: [], label: 'Decesos'},
-    {data: [], label: 'Vacunados'},
-    {data: [], label: 'Recuperados'}
-  ];
-
-  //------------------------Line Chart Variables-----------------------//
-
-  public lineChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  
-  public lineChartLables = [];
-  public lineChartType: ChartType = 'line';
-  public lineChartLegend = true;
-  
-  public lineChartData = [
+  public chartData = [
     {data: [], label: 'Infectados'},
     {data: [], label: 'Decesos'},
     {data: [], label: 'Vacunados'},
@@ -103,7 +87,7 @@ export class CustomDashboardComponent implements OnInit {
   actualPath = ''
   actualId = ''
 
-  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService, public dialog: MatDialog,) {
+  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService, public dialog: MatDialog,private dataService: DataService) {
     const date = new Date()
     const month = date.getMonth()
     const day = date.getDate()
@@ -123,26 +107,6 @@ export class CustomDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.loadMap(13,5,2);
   }
-
-
-  setDate(path: string, id: string){
-    const iDate = this.dateRange.get('initDate')?.value
-    const eDate = this.dateRange.get('endDate')?.value
-
-    this.date1 = this.datePipe.transform(iDate,'yyyy-MM-dd');
-    this.date2 = this.datePipe.transform(eDate,'yyyy-MM-dd');
-    //console.log(this.date1)
-  }
-
-  setDateTwo(path: string, id: string){
-    const iDateTwo = this.dateRangeTwo.get('initDate')?.value
-    const eDateTwo = this.dateRangeTwo.get('endDate')?.value
-
-    this.date3 = this.datePipe.transform(iDateTwo,'yyyy-MM-dd');
-    this.date4 = this.datePipe.transform(eDateTwo,'yyyy-MM-dd');
-    //console.log(this.date1)
-  }
-
 //----------------------Map Functions---------------------------//
 
   centerMap = {lat:-16.290154, lng:-63.588653};
@@ -209,9 +173,44 @@ export class CustomDashboardComponent implements OnInit {
     }
   }
 //--------------------------Chart Functions------------------------//
+
+cdata!: any;
+
+setTypeChart(type: any){
+  this.chartType = type;
+}
+
+fetchData(path:string, clear: boolean): void{
+  if(clear){
+    this.dataService.getData(path,"","").subscribe(ddata => {
+      this.cdata = ddata;
+      this.setData(ddata);
+     // console.log(ddata);
+    });
+  }
+  else{
+    this.dataService.getData(path,this.date1,this.date2).subscribe(ddata => {
+      this.cdata = ddata;
+      this.setData(ddata);
+     // console.log(ddata);
+    });
+  } //console.log(id);
+}
+
+setData(ddata:any){
+  this.chartLables = ddata.map((p: { date: any; }) => p.date.substring(0,10))
+  this.chartData = [
+    {data: ddata.map((p: { newCases: any; }) => p.newCases), label:'Casos nuevos'},
+    {data: ddata.map((p: { deaths: any; }) => p.deaths), label:'Decesos'},
+    {data: ddata.map((p: { vaccine: any; }) => p.vaccine), label:'Vacunados'},
+    {data: ddata.map((p: { recovered: any; }) => p.recovered), label:'Recuperados'}
+  ];
+}
+
 //--------------------------Dialog---------------------------------//
 
   pathForLocation = ''
+  actualButtonName = 'Ubicación'
 
   openLocationDialog(){
     const dialogRef = this.dialog.open(CustomfiltersComponent,{
@@ -219,13 +218,56 @@ export class CustomDashboardComponent implements OnInit {
       data: {path: this.pathForLocation}
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.pathForLocation = result;
+      this.pathForLocation = result.path;
+      this.actualButtonName = result.name;
+      this.fetchData(this.pathForLocation,true)
+      this.saveName(this.actualButtonName)
       console.log(this.pathForLocation)
     });
   }
 //--------------------------Editor---------------------------------//
+  ckeditorContent = "";
+//-------------------------Dates-------------------------------//
+  setDate(path: string){
+  const iDate = this.dateRange.get('initDate')?.value
+  const eDate = this.dateRange.get('endDate')?.value
 
-ckeditorContent = "";
+  this.date1 = this.datePipe.transform(iDate,'yyyy-MM-dd');
+  this.date2 = this.datePipe.transform(eDate,'yyyy-MM-dd');
 
+  this.fetchData(path,false)
+  //console.log(this.date1)
+  }
+//-------------------------Download-------------------------------//
+
+nameCsv = 'null'
+
+saveName(name: string){
+  this.nameCsv = name;
+}
+
+downloadData(): void{
+  const csvRows = [];
+  const headers = Object.keys(this.cdata[0]);
+  //const dat = JSON.parse(this.depdata);
+  csvRows.push(headers.join(','));
+  for (const row of this.cdata){
+    const values = headers.map( header =>{
+      let key = header as keyof Data;
+      return ''+row[key]
+    })
+    csvRows.push(values.join(','));
+  }
+  const data = csvRows.join('\n');
+  const blob = new Blob([data], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.setAttribute('hidden', '');
+  a.setAttribute('href', url);
+  a.setAttribute('download', this.nameCsv.concat('.csv'));
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 }
 
