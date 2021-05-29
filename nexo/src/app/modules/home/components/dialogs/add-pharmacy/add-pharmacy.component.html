@@ -1,0 +1,34 @@
+<form [formGroup]="form" class="updateForm">
+    <div class="controlers-container">
+        
+        <title mat-dialog-title class="title-dialog">Agregar Farmacia</title>
+        <mat-form-field appearance="outline" class="dark"floatLabel="never">
+            <mat-label  class="labelEdit">Id Department</mat-label>
+            <input formControlName="idDepartment" matInput >
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="dark"floatLabel="never">
+            <mat-label  class="labelEdit">Nombre</mat-label>
+            <input formControlName="name" matInput >
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="dark"floatLabel="never">
+            <mat-label  class="labelEdit">Ubicacion</mat-label>
+            <input formControlName="location" matInput >
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="dark"floatLabel="never">
+            <mat-label  class="labelEdit">Numero de Teléfono</mat-label>
+            <input formControlName="phoneNumber" matInput >
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="dark"floatLabel="never">
+            <mat-label  class="labelEdit">Latitud</mat-label>
+            <input formControlName="lat" matInput >
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="dark"floatLabel="never">
+            <mat-label  class="labelEdit">Longitud</mat-label>
+            <input formControlName="lng" matInput >
+        </mat-form-field>
+        <mat-dialog-actions align="end">
+            <button mat-stroked-button type="submit" class="acept-button" (click)="save()">Guardar</button>
+            <button mat-stroked-button class="decline-button" (click)="cancel()">Cancelar</button>
+        </mat-dialog-actions>
+    </div>
+</form>

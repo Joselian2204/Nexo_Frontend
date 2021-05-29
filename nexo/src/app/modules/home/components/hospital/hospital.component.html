@@ -3,33 +3,14 @@
 <div class="header-farmacias">
   <div>
       <button mat-flat-button (click)="addHospital()">
-    <!--button (click)="addPharmacy()" class="btn" color="primary"-->
+  
       <mat-icon class="button-add">local_hospital</mat-icon>
       <h5>Añadir Hospitales</h5>
     </button>
   </div>
-  <!--div class="filter">
-    <mat-form-field>
-      <mat-label>Buscar</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Ex. ium"
-        #input
-      />
-    </mat-form-field>
-  </div-->
 </div>
 
 <div class="table-container ">
-    <!--div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-      <div class="rate-limit-reached" *ngIf="isRateLimitReached">
-        Es el limite de los datos
-      </div>
-    </div-->
- <!--[dataSource]="dataSource"-->
-    <!-- Tabla de los pedidos -->
     <div class="divtable">
       <table
         mat-table

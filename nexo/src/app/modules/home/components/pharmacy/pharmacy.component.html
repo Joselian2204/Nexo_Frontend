@@ -2,34 +2,15 @@
   <div class="title-container"><h1 class="title-page"><strong>Farmacias</strong></h1></div>
 <div class="header-farmacias">
   <div>
-    <button mat-flat-button >
-      <!--button (click)="addPharmacy()" class="btn" color="primary"-->
+    <button mat-flat-button (click)="addPharmacy()">
         <mat-icon class="button-add">local_pharmacy</mat-icon>
         <h5>Añadir Farmacias</h5>
       </button>
   </div>
-  <!--div class="filter">
-    <mat-form-field>
-      <mat-label>Buscar</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Ex. ium"
-        #input
-      />
-    </mat-form-field>
-  </div-->
-</div>
+
 
 <div class="table-container ">
-  <!--div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    <div class="rate-limit-reached" *ngIf="isRateLimitReached">
-      Es el limite de los datos
-    </div>
-  </div-->
-<!--[dataSource]="dataSource"-->
-  <!-- Tabla de los pedidos -->
+
   <div class="divtable">
     <table
       mat-table

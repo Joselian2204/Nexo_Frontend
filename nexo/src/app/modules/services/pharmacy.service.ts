@@ -25,4 +25,10 @@ export class PharmacyService {
         headers: this.headers
       })
     }
+    addPharmacy(pharmacy: any): Observable<any>{
+      return this.http.post<any>(this.url+`/pharmacy`,pharmacy,{
+        headers: this.headers,
+  
+      })
+    }
 }

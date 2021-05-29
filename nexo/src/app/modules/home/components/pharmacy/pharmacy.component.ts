@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pharmacy } from 'src/app/modules/models/pharmacy';
 import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
+import { AddPharmacyComponent } from '../dialogs/add-pharmacy/add-pharmacy.component';
 
 @Component({
   selector: 'app-pharmacy',
@@ -49,6 +50,12 @@ export class PharmacyComponent implements OnInit {
       console.log(this.pharmacyList)
     });
     
+  }
+  addPharmacy(){
+    this.dialog.open(AddPharmacyComponent,{
+      width:"600px",
+      data: {}
+    })
   }
 
   validator(parameter: any): string{
