@@ -4,6 +4,8 @@ import { LocationService} from '../../../services/location.service';//
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Pharmacy } from 'src/app/modules/models/pharmacy';
+import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
 
 @Component({
   selector: 'app-pharmacy',
@@ -12,13 +14,14 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class PharmacyComponent implements OnInit {
  
-  displayedColumns: string[] = ["id_location",
-  "Name",
-  "Population",
-  "Cases",
-  "Deaths",
-  "Recovered",
-  "Vaccine",];
+  displayedColumns: string[] = ["idPharmacy",
+  "idDepartment",
+  "name",
+  "location",
+  "phoneNumber",
+  "lat",
+  "lng",];
+
 
   searchKey!: string;
 
@@ -26,7 +29,7 @@ export class PharmacyComponent implements OnInit {
 
   dataSource!: MatTableDataSource<any>
 
-  po: Location[] = [];
+  pharmacyList: Pharmacy[] = [];
 
 
 
@@ -34,16 +37,16 @@ export class PharmacyComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private locationService: LocationService
+    private pharmacyService: PharmacyService
     ) {
    
   }
 
   ngOnInit(): void {
-    this.locationService.getLocation('world').subscribe(con =>{
-      this.po = con;
-      this.dataSource = new MatTableDataSource(this.po);
-      console.log(this.po)
+    this.pharmacyService.getPharmacy().subscribe(pharmacy =>{
+      this.pharmacyList = pharmacy;
+      this.dataSource = new MatTableDataSource(this.pharmacyList);
+      console.log(this.pharmacyList)
     });
     
   }
