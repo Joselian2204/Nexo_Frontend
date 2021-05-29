@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalStorageService} from './local-storage.service';
 import { Observable } from 'rxjs';
+import { Hospital } from '../models/hospital';
 
 
 @Injectable({
@@ -20,11 +21,17 @@ export class HospitalService {
         Authorization: this.authToken
       })
      }
-     getPharmacy(): Observable<any>{
+     getHospital(): Observable<any>{
 
       var comple="";
       return this.http.get<any>(this.url+`/hospital`+comple,{
         headers: this.headers
+      })
+    }
+    addHospital(hospital: any): Observable<any>{
+      return this.http.post<any>(this.url+`/hospital`,hospital,{
+        headers: this.headers,
+  
       })
     }
 }

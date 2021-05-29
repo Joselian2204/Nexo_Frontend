@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Hospital } from 'src/app/modules/models/hospital';
 import { HospitalService } from 'src/app/modules/services/hospital.service';
+import { AddHospitalComponent } from '../dialogs/add-hospital/add-hospital.component';
 
 
 @Component({
@@ -41,12 +42,18 @@ export class HospitalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hospitalService.getPharmacy().subscribe(hospitals =>{
+    this.hospitalService.getHospital().subscribe(hospitals =>{
       this.hospitalList = hospitals
       this.dataSource = new MatTableDataSource(this.hospitalList);
       console.log(this.hospitalList)
     });
     
+  }
+  addHospital(){
+    this.dialog.open(AddHospitalComponent,{
+      width:"600px",
+      data: {}
+    })
   }
 
   validator(parameter: any): string{

@@ -35,6 +35,7 @@ import { MunicipalitiesComponent } from './components/municipalities/municipalit
 import { MatTableModule } from '@angular/material/table';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { MatMenuModule } from '@angular/material/menu';
+import { AddHospitalComponent } from './components/dialogs/add-hospital/add-hospital.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MatMenuModule } from '@angular/material/menu';
     CountriesComponent,
     DepartamentsComponent,
     MunicipalitiesComponent,
+    AddHospitalComponent,
   ],
   imports: [
     CommonModule,
