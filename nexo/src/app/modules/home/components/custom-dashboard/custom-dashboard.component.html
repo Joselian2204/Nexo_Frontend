@@ -40,12 +40,14 @@
                 [colors]= "chartColors"
             ></canvas>
         </div>
-        <div class="mapCustomOptions">
-            <section class="ml-4">
+        <div class="valuesOfdata mt-2 ml-2">
+            <section>
                 <mat-button-toggle-group [(ngModel)]="locationMap" aria-label="Font Style">
                   <mat-button-toggle value="country" (click) = "setMapParameters(13,5,2)" (click) = "loadMarkers('world',100000)" (click) = "loadCardVariable('world_cases')">Países</mat-button-toggle>
                   <mat-button-toggle value="dep" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('bol',60000)" (click) = "loadCardVariable('bol_cases')">Departamentos</mat-button-toggle>
                   <mat-button-toggle value="mun" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadMarkers('municipios',5000)" (click) = "loadCardVariable('bol_cases')">Municipios</mat-button-toggle>
+                  <mat-button-toggle value="mun" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadHealthMarkers('pharmacy','pharm')" (click) = "loadCardVariable('bol_cases')">Farmacias</mat-button-toggle>
+                  <mat-button-toggle value="mun" (click) = "setMapParameters(-16.290154,-63.588653,5)" (click) = "loadHealthMarkers('hospital','hosp')" (click) = "loadCardVariable('bol_cases')">Hospitales</mat-button-toggle>
                 </mat-button-toggle-group>
               </section>
             <div class="map-wrapper mt-1">

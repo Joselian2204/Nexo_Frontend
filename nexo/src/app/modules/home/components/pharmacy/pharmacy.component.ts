@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Pharmacy } from 'src/app/modules/models/pharmacy';
 import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
 import { AddPharmacyComponent } from '../dialogs/add-pharmacy/add-pharmacy.component';
+import { HealthService } from 'src/app/modules/services/health.service';
 
 @Component({
   selector: 'app-pharmacy',
@@ -38,7 +39,7 @@ export class PharmacyComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private pharmacyService: PharmacyService
+    private pharmacyService: PharmacyService,
     ) {
    
   }

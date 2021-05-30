@@ -12,6 +12,8 @@
                 <mat-optgroup label = Bolivia>
                     <mat-option value = "dep" (click) = "setMapParameters(-16.290154,-63.588653,6.4)" (click) = "loadMarkers('bol',60000)" (click) = "loadCardVariable('bol_cases')" (click) = "setCardTitle('BOLIVIA')">Departamentos</mat-option>
                     <mat-option value = "mun" (click) = "setMapParameters(-16.290154,-63.588653,6.4)" (click) = "loadMarkers('municipios',5000)" (click) = "loadCardVariable('bol_cases')" (click) = "setCardTitle('BOLIVIA')">Municipios</mat-option>
+                    <mat-option value = "pha" (click) = "setMapParameters(-16.290154,-63.588653,6.4)" (click) = "loadHealthMarkers('pharmacy','pharm')" (click) = "loadCardVariable('bol_cases')" (click) = "setCardTitle('BOLIVIA')">Farmacias</mat-option>
+                    <mat-option value = "pha" (click) = "setMapParameters(-16.290154,-63.588653,6.4)" (click) = "loadHealthMarkers('hospital','hosp')" (click) = "loadCardVariable('bol_cases')" (click) = "setCardTitle('BOLIVIA')">Hospitales</mat-option>
                 </mat-optgroup>
                 <mat-optgroup label = "Global">
                     <mat-option value = "country" (click) = "setMapParameters(13,5,2)" (click) = "loadMarkers('world',100000)" (click) = "loadCardVariable('world_cases')" (click) = "setCardTitle('MUNDO')">Países</mat-option>

@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CustomfiltersComponent } from '../dialogs/customfilters/customfilters.component';
 import { Data } from '../../../models/data';
 import { DataService } from 'src/app/modules/services/data.service';
+import { HealthService } from 'src/app/modules/services/health.service';
+import { Health } from 'src/app/modules/models/health';
 
 @Component({
   selector: 'app-custom-dashboard',
@@ -87,7 +89,7 @@ export class CustomDashboardComponent implements OnInit {
   actualPath = ''
   actualId = ''
 
-  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService, public dialog: MatDialog,private dataService: DataService) {
+  constructor(private datePipe : DatePipe,private fb: FormBuilder,private locationService: LocationService, public dialog: MatDialog,private dataService: DataService,private healthService: HealthService) {
     const date = new Date()
     const month = date.getMonth()
     const day = date.getDate()
@@ -114,6 +116,8 @@ export class CustomDashboardComponent implements OnInit {
   zoom = 6.4;
 
   pos: Location[] = [];
+
+  healthBuild: Health[] = [];
 
   map!: L.Map;
 
@@ -156,6 +160,34 @@ export class CustomDashboardComponent implements OnInit {
           radius: rad
         }).addTo(this.mymap);
         circle.bindPopup("<center>"+x.name+"</center>"+"</br> Población: "+this.validator(x.population)+"</br> Infectados: "+this.validator(x.cases)+"</br> Decesos: "+this.validator(x.deaths));
+      })
+    });
+  }
+
+  markerPharm = L.icon({
+    iconUrl: "https://images.vexels.com/media/users/3/208408/isolated/lists/48821afaaceaeec526a2112da2e7a4b9-icono-de-trazo-de-bolsa-de-farmacia.png",
+    iconSize: [38,38],
+    iconAnchor: [22,94],
+    popupAnchor: [12,-90]
+  });
+
+  markerHosp = L.icon({
+    iconUrl: "https://images.vexels.com/media/users/3/208292/isolated/lists/e901ebd21033c8e425c8b52f49e98e5f-hospital-icono-de-accidente-cerebrovascular-hospital.png",
+    iconSize: [38,38],
+    iconAnchor: [22,94],
+    popupAnchor: [12,-90]
+  });
+
+  loadHealthMarkers(pth:string, type: string){
+    this.healthService.getHealth(pth).subscribe(health =>{
+      this.healthBuild = health;
+      this.healthBuild.forEach(x =>{
+        if (type == 'pharm') {
+          let marker = L.marker([+x.lat,+x.lng],{icon:this.markerPharm}).bindPopup("<center>"+x.name+"</center>"+"</br> Departamento: "+x.idDepartment+"</br> Ubicación: "+x.location+"</br> Teléfono: "+x.phoneNumber).addTo(this.mymap);
+        }
+        else{
+          let marker = L.marker([+x.lat,+x.lng],{icon:this.markerHosp}).bindPopup("<center>"+x.name+"</center>"+"</br> Departamento: "+x.idDepartment+"</br> Ubicación: "+x.location+"</br> Teléfono: "+x.phoneNumber).addTo(this.mymap);
+        }
       })
     });
   }
