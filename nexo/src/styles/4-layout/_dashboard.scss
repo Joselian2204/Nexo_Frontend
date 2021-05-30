@@ -39,6 +39,20 @@
     background-color: transparent;
 }
 
+.dropDashboardSmall{
+    width: 4.5vw;
+    margin: 0 .5rem;
+    height: 5rem;
+    background-color: transparent;
+}
+
+.dropDashboardSuperSmall{
+    width: 5.5vw;
+    margin: 0 .5rem;
+    height: 5rem;
+    background-color: transparent;
+}
+
 .options{
     display: flex;
     justify-content: space-between;
@@ -49,6 +63,19 @@
     padding-bottom: .5rem;
     padding-left: 1rem;
     padding-right: 3rem;
+    border-radius: 1rem;
+}
+
+.optionsPrediction{
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-primary-white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    margin: 1rem 0;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-radius: 1rem;
 }
 

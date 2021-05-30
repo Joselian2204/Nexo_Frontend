@@ -243,6 +243,7 @@ setData(ddata:any){
 
   pathForLocation = ''
   actualButtonName = 'Ubicación'
+  pathForRoute = ''
 
   openLocationDialog(){
     const dialogRef = this.dialog.open(CustomfiltersComponent,{
@@ -252,9 +253,10 @@ setData(ddata:any){
     dialogRef.afterClosed().subscribe(result => {
       this.pathForLocation = result.path;
       this.actualButtonName = result.name;
-      this.fetchData(this.pathForLocation,true)
+      this.pathForRoute = result.location;
+      this.fetchData(this.pathForRoute.concat(this.pathForLocation),true)
       this.saveName(this.actualButtonName)
-      console.log(this.pathForLocation)
+      //console.log(this.pathForLocation)
     });
   }
 //--------------------------Editor---------------------------------//

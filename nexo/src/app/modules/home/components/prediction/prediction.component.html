@@ -1,0 +1,72 @@
+<div class="dashboards overflowContent">
+    <div class="infCustomDashboards ml-2 mt-2">
+        <div class="optionsPrediction">
+            <mat-form-field class="dropDashboardSmall selectDash">
+                <mat-label class="selectDash">Predicción</mat-label>
+                <mat-select class="selectDash" [(value)]="selectPred1">
+                    <mat-optgroup label = Tipo>
+                        <mat-option *ngFor = "let type of types" value ="{{type.value}}">{{type.name}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="dropDashboardSuperSmall selectDash">
+                <mat-label class="selectDash">Variable</mat-label>
+                <mat-select class="selectDash" [(value)]="selectVar1">
+                    <mat-optgroup label = Variable>
+                        <mat-option *ngFor = "let variable of variables" (click)="setLables(1,variable.type)" value ="{{variable.value}}">{{variable.type}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <div class="adder">
+                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('less')"><mat-icon>horizontal_rule</mat-icon></button> -->
+                <!-- <p class="mt-1">{{adderValue}}</p> -->
+                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss')"><mat-icon>add</mat-icon></button> -->
+            </div>
+            <button mat-raised-button class="locationButton" (click)="openLocationDialog()">{{this.actualButtonName}}</button>
+            <button mat-icon-button class="mt-07" (click)="downloadData()"><mat-icon>download</mat-icon></button>
+        </div>
+        <canvas baseChart
+            [datasets] = "firstChartData"
+            [labels] = "firstChartLables"
+            [options] = "firstChartOptions"
+            [legend] = "firstChartLegend"
+            [chartType] = "firstChartType"
+            [colors]= "firstChartColors"
+        ></canvas>
+    </div>
+    <div class="infCustomDashboards ml-2 mt-2">
+        <div class="optionsPrediction">
+            <mat-form-field class="dropDashboardSmall selectDash">
+                <mat-label class="selectDash">Predicción</mat-label>
+                <mat-select class="selectDash" [(value)]="selectPred2">
+                    <mat-optgroup label = Tipo>
+                        <mat-option *ngFor = "let type of types" value ="{{type.value}}">{{type.name}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="dropDashboardSuperSmall selectDash">
+                <mat-label class="selectDash">Variable</mat-label>
+                <mat-select class="selectDash" [(value)]="selectVar2">
+                    <mat-optgroup label = Variable>
+                        <mat-option *ngFor = "let variable of variables" (click)="setLables(2,variable.type)" value ="{{variable.value}}">{{variable.type}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <div class="adder">
+                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('less')"><mat-icon>horizontal_rule</mat-icon></button> -->
+                <!-- <p class="mt-1">{{adderValue}}</p> -->
+                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss')"><mat-icon>add</mat-icon></button> -->
+            </div>
+            <button mat-raised-button class="locationButton" (click)="openLocationDialog()">{{this.actualButtonName}}</button>
+            <button mat-icon-button class="mt-07" (click)="downloadData()"><mat-icon>download</mat-icon></button>
+        </div>
+        <canvas baseChart
+            [datasets] = "secondChartData"
+            [labels] = "secondChartLables"
+            [options] = "secondChartOptions"
+            [legend] = "secondChartLegend"
+            [chartType] = "secondChartType"
+            [colors]= "secondChartColors"
+        ></canvas>
+    </div>
+</div>

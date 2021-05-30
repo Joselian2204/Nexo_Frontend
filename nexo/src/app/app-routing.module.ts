@@ -9,6 +9,7 @@ import { HospitalComponent } from './modules/home/components/hospital/hospital.c
 import { MapsComponent } from './modules/home/components/maps/maps.component';
 import { MunicipalitiesComponent } from './modules/home/components/municipalities/municipalities.component';
 import { PharmacyComponent } from './modules/home/components/pharmacy/pharmacy.component';
+import { PredictionComponent } from './modules/home/components/prediction/prediction.component';
 import { AdminComponent } from './modules/home/pages/admin/admin.component';
 import { LoginComponent } from './modules/home/pages/login/login.component';
 import { MainComponent } from './modules/home/pages/main/main.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: "maps", component: MapsComponent},
       { path: "dashboard", component: DashboardComponent},
       { path: "custom", component: CustomDashboardComponent},
+      { path: "prediction", component: PredictionComponent}
     ]
   },
   { path: "login", component: LoginComponent },

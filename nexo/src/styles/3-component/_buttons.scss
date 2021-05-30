@@ -70,3 +70,20 @@
 .mat-icon-button{
   color: $color-secondary !important;
 }
+
+.myAdder{
+  color: $color-primary-white !important;
+}
+
+.adder{
+  color: $color-primary-white;
+  display: flex;
+  justify-content: center;
+  border-radius: .5rem;
+  background-color: $color-secondary;
+  height: 3.7rem;
+  padding-bottom: 1.5rem;
+  margin-top: .8rem;
+  padding-top: 0rem;
+  width: 11rem;
+}

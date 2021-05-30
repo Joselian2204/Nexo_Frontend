@@ -39,6 +39,7 @@ import { AddHospitalComponent } from './components/dialogs/add-hospital/add-hosp
 import { AddPharmacyComponent } from './components/dialogs/add-pharmacy/add-pharmacy.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PredictionComponent } from './components/prediction/prediction.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MunicipalitiesComponent,
     AddHospitalComponent,
     AddPharmacyComponent,
+    PredictionComponent,
   ],
   imports: [
     CommonModule,
