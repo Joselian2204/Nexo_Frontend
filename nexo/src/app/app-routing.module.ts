@@ -28,11 +28,11 @@ const routes: Routes = [
   { path: "admin",component: AdminComponent,
   canActivate: [GuardGuard],
     children:[
-      { path: "pharmacy", component: PharmacyComponent},
-      { path: "hospital", component: HospitalComponent},
-      { path: "countries", component: CountriesComponent},
-      { path: "departaments", component: DepartamentsComponent},
-      { path: "municipalities", component: MunicipalitiesComponent},
+      { path: "pharmacy", component: PharmacyComponent,canActivate: [GuardGuard]},
+      { path: "hospital", component: HospitalComponent,canActivate: [GuardGuard]},
+      { path: "countries", component: CountriesComponent,canActivate: [GuardGuard]},
+      { path: "departaments", component: DepartamentsComponent,canActivate: [GuardGuard]},
+      { path: "municipalities", component: MunicipalitiesComponent,canActivate: [GuardGuard]},
     ]
   },
 ];

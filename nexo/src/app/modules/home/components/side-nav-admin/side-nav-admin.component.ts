@@ -22,13 +22,7 @@ export class SideNavAdminComponent implements OnInit {
   }
 
   close(link: string) {
+    this.localStorageService.removeToken();
     this.router.navigate(["/" + link]);
   }
-
-  logout(){
-    this.localStorageService.removeToken();
-    this.router.navigate([""]);
-
-  }
-
 }

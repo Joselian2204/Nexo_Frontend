@@ -15,21 +15,23 @@
 .decline-button{
   width: 48%;
   font-size: 1.5rem;
-  color: $color-primary-white ;
-  background-color: $color-warning !important;
+  color: $color-warning ;
+  background-color: $color-warning-back !important;
   border-radius: .8rem;
   border: none;
   height: 3.5rem;
+  border: 2px solid $color-warning !important;
 }
 
 .acept-button{
   width: 48%;
   font-size: 1.5rem;
-  color: $color-primary-white ;
-  background-color: $color-acept !important;
+  color: $color-acept;
+  background-color: $color-acept-back!important;
   border-radius: .8rem;
   border: none;
   height: 3.5rem;
+  border: 2px solid $color-acept !important;
 }
 
 .mat-raised-button{
