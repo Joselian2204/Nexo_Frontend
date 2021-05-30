@@ -13,22 +13,23 @@
 }
 
 .decline-button{
-  width: 12rem;
+  width: 48%;
   font-size: 1.5rem;
   color: $color-primary-white ;
   background-color: $color-warning !important;
-  border-radius: 50%;
+  border-radius: .8rem;
   border: none;
-  margin: 3rem;
+  height: 3.5rem;
 }
 
 .acept-button{
-  width: 12rem;
+  width: 48%;
   font-size: 1.5rem;
   color: $color-primary-white ;
   background-color: $color-acept !important;
-  border-radius: 50%;
+  border-radius: .8rem;
   border: none;
+  height: 3.5rem;
 }
 
 .mat-raised-button{

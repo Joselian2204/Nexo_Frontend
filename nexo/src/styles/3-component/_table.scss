@@ -1,7 +1,15 @@
 .mat-header-cell {     
-    background-color: $color-primary;     
+    background-color: $color-secondary;     
     color: $color-primary-white;     
-    font-size: 16px; }
+    font-size: 16px; 
+    padding-left: 3rem;
+    text-align: center;
+}
+
+.mat-cell{
+    text-align: center !important;
+    padding-left: 2rem;
+}
 .tableall{
     background-color: $color-primary-white; 
     color: $color-primary-white;  
@@ -14,9 +22,4 @@
     margin-top: 2rem;
     width: 60%;
     margin-left: 20%;
-    //height: 200px;
-    //background-color: #EEE;
-    display:flex;
-    justify-content: center;
-    align-items: center;
 }

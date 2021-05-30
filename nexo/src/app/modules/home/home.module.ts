@@ -37,6 +37,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { MatMenuModule } from '@angular/material/menu';
 import { AddHospitalComponent } from './components/dialogs/add-hospital/add-hospital.component';
 import { AddPharmacyComponent } from './components/dialogs/add-pharmacy/add-pharmacy.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import { AddPharmacyComponent } from './components/dialogs/add-pharmacy/add-phar
     MatDialogModule,
     MatTableModule,
     CKEditorModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class HomeModule { }

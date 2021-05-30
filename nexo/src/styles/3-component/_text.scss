@@ -9,7 +9,7 @@
 }
 
 .populationText{
-  color: $color-population;
+  color: $color-population !important;
 }
 
 .infectedText{
@@ -71,4 +71,16 @@
   font-family: "Rubik";
   font-family: "montserrat";
   color: $color-secondary;
+}
+
+.pText{
+  color: $color-primary;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.dialogTitle{
+  color: $color-secondary;
+  font-size: 20px;
+  text-align: center;
 }

@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LocationService } from 'src/app/modules/services/location.service';
 import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
+import { Location } from '../../../../models/location';
 
 @Component({
   selector: 'app-add-pharmacy',
@@ -9,12 +11,19 @@ import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
   styleUrls: ['./add-pharmacy.component.scss']
 })
 export class AddPharmacyComponent implements OnInit {
+
   form!: FormGroup;
+
+  departments: Location[]=[];
+
+  selected = '';
+
   constructor(
     private _builder: FormBuilder,
     public dialogRef: MatDialogRef<AddPharmacyComponent>,
     @Inject(MAT_DIALOG_DATA) public data:{},
-    private pharmacyService: PharmacyService
+    private pharmacyService: PharmacyService,
+    private locationService: LocationService
     
   ) {
     this.form = this._builder.group({
@@ -28,7 +37,7 @@ export class AddPharmacyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
   }
   cancel(){
     this.dialogRef.close();
@@ -37,7 +46,7 @@ export class AddPharmacyComponent implements OnInit {
     this.dialogRef.close();
     
     var newPharmacy={
-      idDepartment:this.form.get(["idDepartment"])?.value,
+      idDepartment: this.selected,
       name:this.form.get(["name"])?.value,
       location:this.form.get(["location"])?.value,
       phoneNumber:this.form.get(["phoneNumber"])?.value,
@@ -55,7 +64,4 @@ export class AddPharmacyComponent implements OnInit {
       }
     });
   }
-  
-
-
 }

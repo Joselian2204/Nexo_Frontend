@@ -30,7 +30,7 @@ export class DepartamentsComponent implements OnInit {
 
 
 
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
@@ -43,7 +43,8 @@ export class DepartamentsComponent implements OnInit {
     this.locationService.getLocation('bol').subscribe(con =>{
       this.po = con;
       this.dataSource = new MatTableDataSource(this.po);
-      console.log(this.po)
+      this.dataSource.paginator = this.paginator;
+      //console.log(this.po)
     });
     
   }

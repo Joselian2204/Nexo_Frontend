@@ -34,7 +34,7 @@ export class PharmacyComponent implements OnInit {
 
 
 
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
@@ -47,13 +47,14 @@ export class PharmacyComponent implements OnInit {
     this.pharmacyService.getPharmacy().subscribe(pharmacy =>{
       this.pharmacyList = pharmacy;
       this.dataSource = new MatTableDataSource(this.pharmacyList);
+      this.dataSource.paginator = this.paginator;
       console.log(this.pharmacyList)
     });
     
   }
   addPharmacy(){
     this.dialog.open(AddPharmacyComponent,{
-      width:"600px",
+      width:"450px",
       data: {}
     })
   }

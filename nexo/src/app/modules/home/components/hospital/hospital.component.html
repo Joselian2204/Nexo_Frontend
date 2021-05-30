@@ -1,88 +1,49 @@
 <div class="">
-  <div class="title-container"><h1 class="title-page"><strong>Hospitales</strong></h1></div>
-<div class="header-farmacias">
-  <div>
-      <button mat-flat-button (click)="addHospital()">
-  
-      <mat-icon class="button-add">local_hospital</mat-icon>
-      <h5>Añadir Hospitales</h5>
-    </button>
+  <div class="title-container">
+    <h1 class="title-page"><strong>Hospitales</strong></h1>
   </div>
-</div>
+  <div class="header-farmacias">
+      <button mat-raised-button  class="ml-2" (click)="addHospital()"><mat-icon class="buttonIcon">local_hospital</mat-icon>Añadir Hospitales</button>
+  </div>
+  <div class="mat-elevation-z8 divtable">
+    <mat-table [dataSource] = "dataSource" class="tableall mt-build">
+      <ng-container matColumnDef="idHospital">
+        <mat-header-cell *matHeaderCellDef >Id Hospital</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.idHospital}}</mat-cell>
+      </ng-container>
 
-<div class="table-container ">
-    <div class="divtable">
-      <table
-        mat-table
-        [dataSource]="dataSource"
-        class="tableall"
-        matSort
-      >
-        >
-        <!-- Position Column -->
-        <ng-container matColumnDef="idHospital">
-          <th mat-header-cell *matHeaderCellDef>Id Hospital</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.idHospital }}
-          </td>
-        </ng-container>
-  
-        <!-- User Column -->
-        <ng-container matColumnDef="idDepartment">
-          <th mat-header-cell *matHeaderCellDef>Id Department</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.idDepartment }}
-          </td>
-        </ng-container>
-  
-        <!-- Date Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Nombre</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.name}}
-          </td>
-        </ng-container>
-  
-        <!-- Cost Column -->
-        <ng-container matColumnDef="location">
-          <th mat-header-cell *matHeaderCellDef>Ubicacion</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.location }}
-          </td>
-        </ng-container>
-  
-        <!-- Status Column -->
-        <ng-container matColumnDef="phoneNumber">
-          <th mat-header-cell *matHeaderCellDef>Phone Number</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.phoneNumber }}
-          </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="lat">
-            <th mat-header-cell *matHeaderCellDef>Latittud</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.lat }}
-            </td>
-          </ng-container>
-        
-          <ng-container matColumnDef="lng">
-            <th mat-header-cell *matHeaderCellDef>Longitud</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.lng }}
-            </td>
-          </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  
-      </table>
-  </div>
-    <!--mat-paginator
-      [length]="length"
-      [pageSize]="size"
-      (page)="refreshOrders($event)"
-    ></mat-paginator-->
-  </div>
+      <ng-container matColumnDef="idDepartment">
+        <mat-header-cell *matHeaderCellDef >Id Departamento</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.idDepartment}}</mat-cell>
+      </ng-container>
 
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef >Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef >Ubicación</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.location}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef >Telefono</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.phoneNumber}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lat">
+        <mat-header-cell *matHeaderCellDef>Latitud</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.lat}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lng">
+        <mat-header-cell *matHeaderCellDef >Longitud</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.lng}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]=[5,10,15,25] [pageSize] = "10"  class="selectDash"></mat-paginator>
+  </div>
 </div>

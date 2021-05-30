@@ -32,7 +32,7 @@ export class HospitalComponent implements OnInit {
 
   hospitalList: Hospital[] = [];
 
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
@@ -45,13 +45,14 @@ export class HospitalComponent implements OnInit {
     this.hospitalService.getHospital().subscribe(hospitals =>{
       this.hospitalList = hospitals
       this.dataSource = new MatTableDataSource(this.hospitalList);
-      console.log(this.hospitalList)
+      this.dataSource.paginator = this.paginator;
+      //console.log(this.hospitalList)
     });
     
   }
   addHospital(){
     this.dialog.open(AddHospitalComponent,{
-      width:"600px",
+      width:"450px",
       data: {}
     })
   }

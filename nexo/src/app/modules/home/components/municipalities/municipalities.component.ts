@@ -29,8 +29,7 @@ export class MunicipalitiesComponent implements OnInit {
   po: Location[] = [];
 
 
-
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
@@ -43,7 +42,8 @@ export class MunicipalitiesComponent implements OnInit {
     this.locationService.getLocation('municipios').subscribe(con =>{
       this.po = con;
       this.dataSource = new MatTableDataSource(this.po);
-      console.log(this.po)
+      this.dataSource.paginator = this.paginator;
+      //console.log(this.po)
     });
     
   }
