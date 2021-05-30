@@ -22,9 +22,7 @@ export class HospitalService {
       })
      }
      getHospital(): Observable<any>{
-
-      var comple="";
-      return this.http.get<any>(this.url+`/hospital`+comple,{
+      return this.http.get<any>(this.url+`/hospital`,{
         headers: this.headers
       })
     }

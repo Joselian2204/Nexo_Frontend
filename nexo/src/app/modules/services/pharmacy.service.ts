@@ -20,8 +20,7 @@ export class PharmacyService {
       })
      }
      getPharmacy(): Observable<any>{
-      var comple="";
-      return this.http.get<any>(this.url+`/pharmacy`+comple,{
+      return this.http.get<any>(this.url+`/pharmacy`,{
         headers: this.headers
       })
     }
