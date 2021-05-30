@@ -46,7 +46,7 @@ export class DepartamentsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       //console.log(this.po)
     });
-    
+
   }
 
   validator(parameter: any): string{

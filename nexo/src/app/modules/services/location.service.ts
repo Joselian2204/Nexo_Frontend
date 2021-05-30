@@ -12,4 +12,7 @@ export class LocationService {
   getLocation(path:string):Observable<any>{
     return this.http.get<any>(this.url+path);
   }
+  getAverage(path:string):Observable<any>{
+    return this.http.get<any>(this.url+path);
+  }
 }
