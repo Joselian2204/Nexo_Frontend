@@ -13,18 +13,13 @@ export class SidenavComponent implements OnInit {
   logotipo: string = "assets/logox2.png";
   po: Location[] = [];
 
-  average: Location []= [];
-
 
   constructor(private router: Router,
     private locationService: LocationService
     ) { }
 
   ngOnInit(): void {
-    this.locationService.getAverage('country/average?id=BOL').subscribe(con =>{
-      this.average = con;
-      console.log(this.average)
-    });
+
   }
 
   irALink(link: string) {

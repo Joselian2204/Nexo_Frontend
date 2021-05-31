@@ -16,4 +16,7 @@ export class DataService {
     .set('date2', date2);
     return this.http.get<any>(this.url+path,{params});
   }
+  getAverage(path:string):Observable<any>{
+    return this.http.get<any>(this.url+path);
+  }
 }

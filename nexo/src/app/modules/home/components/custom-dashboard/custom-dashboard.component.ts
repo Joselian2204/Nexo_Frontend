@@ -256,7 +256,8 @@ setData(ddata:any){
       this.pathForRoute = result.location;
       this.fetchData(this.pathForRoute.concat(this.pathForLocation),true)
       this.saveName(this.actualButtonName)
-      //console.log(this.pathForLocation)
+      this.averageData();
+
     });
   }
 //--------------------------Editor---------------------------------//
@@ -302,6 +303,25 @@ downloadData(): void{
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+}
+
+// ----------------------------------Average Data---------------------------------------
+average!: Data;
+mediaCases= 0;
+mediaDeath= 0;
+mediaRecovered = 0;
+mediaVaccine = 0;
+averageData(): void{
+  const InitPath = this.pathForRoute.concat("average/");
+  const finalPath = InitPath.concat(this.pathForLocation);
+  this.dataService.getAverage(finalPath).subscribe(con =>{
+    this.average = con;
+    this.mediaCases = this.average.newCases
+    this.mediaDeath = this.average.deaths
+    this.mediaRecovered = this.average.recovered
+    this.mediaVaccine = this.average.vaccine
+    console.log(this.average)
+  });
 }
 }
 
