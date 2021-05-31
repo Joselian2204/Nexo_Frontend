@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PredictionService {
-  url: string = 'http://localhost:8080/';
+  url: string = 'http://localhost:8080/prediction/';
   data: Prediction[] = [];
   constructor(private http: HttpClient) { }
   getPrediction(path:string, cant: any, filter: any):Observable<any>{

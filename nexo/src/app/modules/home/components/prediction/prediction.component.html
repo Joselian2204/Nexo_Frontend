@@ -18,12 +18,13 @@
                 </mat-select>
             </mat-form-field>
             <div class="adder">
-                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('less')"><mat-icon>horizontal_rule</mat-icon></button> -->
-                <!-- <p class="mt-1">{{adderValue}}</p> -->
-                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss')"><mat-icon>add</mat-icon></button> -->
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('less',1)"><mat-icon>horizontal_rule</mat-icon></button>
+                <p class="mt-1">{{adderValue1}}</p>
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss',1)"><mat-icon>add</mat-icon></button>
             </div>
-            <button mat-raised-button class="locationButton" (click)="openLocationDialog()">{{this.actualButtonName}}</button>
-            <button mat-icon-button class="mt-07" (click)="downloadData()"><mat-icon>download</mat-icon></button>
+            <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog1()">{{this.actualButtonName1}}</button>
+            <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred1,this.pathForRoute1,this.pathForLocation1,this.adderValue1,this.selectVar1,1)"><mat-icon>check</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData1)"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
             [datasets] = "firstChartData"
@@ -53,12 +54,13 @@
                 </mat-select>
             </mat-form-field>
             <div class="adder">
-                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('less')"><mat-icon>horizontal_rule</mat-icon></button> -->
-                <!-- <p class="mt-1">{{adderValue}}</p> -->
-                <!-- <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss')"><mat-icon>add</mat-icon></button> -->
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('less',2)"><mat-icon>horizontal_rule</mat-icon></button>
+                <p class="mt-1">{{adderValue2}}</p>
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss',2)"><mat-icon>add</mat-icon></button>
             </div>
-            <button mat-raised-button class="locationButton" (click)="openLocationDialog()">{{this.actualButtonName}}</button>
-            <button mat-icon-button class="mt-07" (click)="downloadData()"><mat-icon>download</mat-icon></button>
+            <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog2()">{{this.actualButtonName2}}</button>
+            <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred2,this.pathForRoute2,this.pathForLocation2,this.adderValue2,this.selectVar2,2)"><mat-icon>check</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData2)"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
             [datasets] = "secondChartData"
@@ -67,6 +69,80 @@
             [legend] = "secondChartLegend"
             [chartType] = "secondChartType"
             [colors]= "secondChartColors"
+        ></canvas>
+    </div>
+</div>
+<div class="dashboards overflowContent">
+    <div class="infCustomDashboards ml-2 mt-2">
+        <div class="optionsPrediction">
+            <mat-form-field class="dropDashboardSmall selectDash">
+                <mat-label class="selectDash">Predicción</mat-label>
+                <mat-select class="selectDash" [(value)]="selectPred3">
+                    <mat-optgroup label = Tipo>
+                        <mat-option *ngFor = "let type of types" value ="{{type.value}}">{{type.name}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="dropDashboardSuperSmall selectDash">
+                <mat-label class="selectDash">Variable</mat-label>
+                <mat-select class="selectDash" [(value)]="selectVar3">
+                    <mat-optgroup label = Variable>
+                        <mat-option *ngFor = "let variable of variables" (click)="setLables(3,variable.type)" value ="{{variable.value}}">{{variable.type}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <div class="adder">
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('less',3)"><mat-icon>horizontal_rule</mat-icon></button>
+                <p class="mt-1">{{adderValue3}}</p>
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss',3)"><mat-icon>add</mat-icon></button>
+            </div>
+            <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog3()">{{this.actualButtonName3}}</button>
+            <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred3,this.pathForRoute3,this.pathForLocation3,this.adderValue3,this.selectVar3,3)"><mat-icon>check</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData3)"><mat-icon>download</mat-icon></button>
+        </div>
+        <canvas baseChart
+            [datasets] = "thirdChartData"
+            [labels] = "thirdChartLables"
+            [options] = "thirdChartOptions"
+            [legend] = "thirdChartLegend"
+            [chartType] = "thirdChartType"
+            [colors]= "thirdChartColors"
+        ></canvas>
+    </div>
+    <div class="infCustomDashboards ml-2 mt-2">
+        <div class="optionsPrediction">
+            <mat-form-field class="dropDashboardSmall selectDash">
+                <mat-label class="selectDash">Predicción</mat-label>
+                <mat-select class="selectDash" [(value)]="selectPred4">
+                    <mat-optgroup label = Tipo>
+                        <mat-option *ngFor = "let type of types" value ="{{type.value}}">{{type.name}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="dropDashboardSuperSmall selectDash">
+                <mat-label class="selectDash">Variable</mat-label>
+                <mat-select class="selectDash" [(value)]="selectVar4">
+                    <mat-optgroup label = Variable>
+                        <mat-option *ngFor = "let variable of variables" (click)="setLables(4,variable.type)" value ="{{variable.value}}">{{variable.type}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <div class="adder">
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('less',4)"><mat-icon>horizontal_rule</mat-icon></button>
+                <p class="mt-1">{{adderValue4}}</p>
+                <button mat-icon-button class="myAdder" (click)="setAdderValue('pluss',4)"><mat-icon>add</mat-icon></button>
+            </div>
+            <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog4()">{{this.actualButtonName4}}</button>
+            <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred4,this.pathForRoute4,this.pathForLocation4,this.adderValue4,this.selectVar4,4)"><mat-icon>check</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData4)"><mat-icon>download</mat-icon></button>
+        </div>
+        <canvas baseChart
+            [datasets] = "fourthChartData"
+            [labels] = "fourthChartLables"
+            [options] = "fourthChartOptions"
+            [legend] = "fourthChartLegend"
+            [chartType] = "fourthChartType"
+            [colors]= "fourthChartColors"
         ></canvas>
     </div>
 </div>

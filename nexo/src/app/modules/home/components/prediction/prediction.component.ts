@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { Data } from 'src/app/modules/models/data';
+import { Prediction } from 'src/app/modules/models/prediction';
 import { DataService } from 'src/app/modules/services/data.service';
 import { LocationService } from 'src/app/modules/services/location.service';
 import { PredictionService } from 'src/app/modules/services/prediction.service';
@@ -42,6 +43,35 @@ export class PredictionComponent implements OnInit {
     public secondChartData = [
       {data: [], label: ''}
     ];
+
+  //------------------------------------//
+  public thirdChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  
+  public thirdChartLables = [];
+  public thirdChartType: ChartType = 'line';
+  public thirdChartLegend = true;
+  
+  public thirdChartData = [
+    {data: [], label: ''}
+  ];
+
+//------------------------------------//
+public fourthChartOptions = {
+  scaleShowVerticalLines: false,
+  responsive: true
+};
+
+public fourthChartLables = [];
+public fourthChartType: ChartType = 'line';
+public fourthChartLegend = true;
+
+public fourthChartData = [
+  {data: [], label: ''}
+];
+
   
     //------------------------Chart Colors-----------------------//
     
@@ -93,8 +123,6 @@ export class PredictionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  cdata!: any;
-
 
   selectPred1 = "";
   selectVar1 = "";
@@ -108,55 +136,173 @@ export class PredictionComponent implements OnInit {
   selectPred4 = "";
   selectVar4 = "";
 
-  types: any[] =[{name: 'AR1', value: 'ar1'},{name:'Lineal', value: 'mtx'}];
+  types: any[] =[{name: 'AR1', value: 'ar1/'},{name:'Lineal', value: 'mtx/'}];
 
-  variables: any[] = [{type: 'Infectados', value: '0'},{type: 'Decesos', value: '1'},{type: 'Recuperados', value: '2'}]
+  variables: any[] = [{type: 'Infectados', value: 0},{type: 'Decesos', value: 1},{type: 'Recuperados', value: 2}]
+
+  label1=''
+  label2=''
+  label3=''
+  label4=''
 
   setLables(chart: number, lbl: string){
     if(chart == 1){
+      this.label1 = lbl;
       this.firstChartData = [
         {data: [],label: lbl}
       ];
     }else{
       if(chart == 2){
+        this.label2 = lbl;
         this.secondChartData = [
           {data: [],label: lbl}
         ];
+      }else{
+        if(chart == 3){
+          this.label3 = lbl;
+          this.thirdChartData = [
+            {data: [],label: lbl}
+          ];
+        }else{
+          if(chart == 4){
+            this.label4 = lbl;
+            this.fourthChartData = [
+              {data: [],label: lbl}
+            ];
+          }
+        }
       }
     }
   }
 
+  myNewData1: Prediction [] =[]
+  myNewData2: Prediction [] =[]
+  myNewData3: Prediction [] =[]
+  myNewData4: Prediction [] =[]
 
-  // fetchData(initpth: string,id:string): void{
-  //   const mypth = this.pathForRoute.concat(initpth)
-  //   const finalpht = mypth.concat(id)
-  //   this.predictionService.getPrediction(finalpht)
-  //   if(clear){
-  //     this.dataService.getData(path,"","").subscribe(ddata => {
-  //       this.cdata = ddata;
-  //       this.setData(ddata);
-  //      // console.log(ddata);
-  //     });
-  //   } //console.log(id);
-  // }
+  fetchData(type:string,pfr:string,pfl:string,cant:number,filter:any,chart: number): void{
+    const ppth = type.concat(pfr)
+    const spth = ppth.concat(pfl)
+    if(chart == 1){
+      this.predictionService.getPrediction(spth,cant,filter).subscribe(data =>{
+        this.myNewData1 = data;
+        this.setData(this.myNewData1,1);
+      });
+    }else{
+      if(chart == 2){
+        this.predictionService.getPrediction(spth,cant,filter).subscribe(data =>{
+          this.myNewData2 = data;
+          this.setData(this.myNewData2,2);
+        });
+      }else{
+        if (chart == 3) {
+          this.predictionService.getPrediction(spth,cant,filter).subscribe(data =>{
+            this.myNewData3 = data;
+            this.setData(this.myNewData3,3);
+          });
+        }else{
+          if (chart == 4) {
+            this.predictionService.getPrediction(spth,cant,filter).subscribe(data =>{
+              this.myNewData4 = data;
+              this.setData(this.myNewData4,4);
+            });
+          }
+        }
+      }
+    } 
+  }
+
+  setData(mydata: any, chart: number){
+    if(chart == 1){
+      this.firstChartLables = mydata.map((p: {date : any}) => p.date.substring(0,10))
+      this.firstChartData = [
+        {data: mydata.map((p: {cases : any; }) => p.cases),label:this.label1}
+      ];
+    }else{
+      if(chart == 2){
+        this.secondChartLables = mydata.map((p: {date : any}) => p.date.substring(0,10))
+        this.secondChartData = [
+        {data: mydata.map((p: {cases : any; }) => p.cases),label:this.label2}
+      ];
+      }else{
+        if (chart == 3) {
+          this.thirdChartLables = mydata.map((p: {date : any}) => p.date.substring(0,10))
+          this.thirdChartData = [
+          {data: mydata.map((p: {cases : any; }) => p.cases),label:this.label3}
+        ];
+        }else{
+          if (chart == 4) {
+            this.fourthChartLables = mydata.map((p: {date : any}) => p.date.substring(0,10))
+            this.fourthChartData = [
+            {data: mydata.map((p: {cases : any; }) => p.cases),label:this.label4}
+          ];
+          }
+        }
+      }
+    } 
+  }
 
 //--------------------------Dialog---------------------------------//
 
-  pathForLocation = ''
-  actualButtonName = 'Ubicación'
-  pathForRoute = ''
+  pathForLocation1 = ''
+  pathForLocation2 = ''
+  pathForLocation3 = ''
+  pathForLocation4 = ''
+  actualButtonName1 = 'Ubicación'
+  actualButtonName2 = 'Ubicación'
+  actualButtonName3 = 'Ubicación'
+  actualButtonName4 = 'Ubicación'
+  pathForRoute1 = ''
+  pathForRoute2 = ''
+  pathForRoute3 = ''
+  pathForRoute4 = ''
 
-  openLocationDialog(){
+  openLocationDialog1(){
     const dialogRef = this.dialog.open(CustomfiltersComponent,{
       width:"323px",
-      data: {path: this.pathForLocation}
+      data: {path: this.pathForLocation1}
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.pathForLocation = result.path;
-      this.actualButtonName = result.name;
-      this.pathForRoute = result.location;
-      this.saveName(this.actualButtonName)
-      console.log(this.pathForLocation)
+      this.pathForLocation1 = result.path;
+      this.actualButtonName1 = result.name;
+      this.pathForRoute1 = result.location;
+      this.saveName(this.actualButtonName1)
+    });
+  }
+  openLocationDialog2(){
+    const dialogRef = this.dialog.open(CustomfiltersComponent,{
+      width:"323px",
+      data: {path: this.pathForLocation2}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pathForLocation2 = result.path;
+      this.actualButtonName2 = result.name;
+      this.pathForRoute2 = result.location;
+      this.saveName(this.actualButtonName2)
+    });
+  }
+  openLocationDialog3(){
+    const dialogRef = this.dialog.open(CustomfiltersComponent,{
+      width:"323px",
+      data: {path: this.pathForLocation3}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pathForLocation3 = result.path;
+      this.actualButtonName3 = result.name;
+      this.pathForRoute3 = result.location;
+      this.saveName(this.actualButtonName3)
+    });
+  }
+  openLocationDialog4(){
+    const dialogRef = this.dialog.open(CustomfiltersComponent,{
+      width:"323px",
+      data: {path: this.pathForLocation4}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pathForLocation4 = result.path;
+      this.actualButtonName4 = result.name;
+      this.pathForRoute4 = result.location;
+      this.saveName(this.actualButtonName4)
     });
   }
 //-------------------------Download-------------------------------//
@@ -167,12 +313,12 @@ export class PredictionComponent implements OnInit {
     this.nameCsv = name;
   }
 
-  downloadData(): void{
+  downloadData(mydata: any): void{
     const csvRows = [];
-    const headers = Object.keys(this.cdata[0]);
+    const headers = Object.keys(mydata[0]);
     //const dat = JSON.parse(this.depdata);
     csvRows.push(headers.join(','));
-    for (const row of this.cdata){
+    for (const row of mydata){
       const values = headers.map( header =>{
         let key = header as keyof Data;
         return ''+row[key]
@@ -198,17 +344,42 @@ export class PredictionComponent implements OnInit {
   adderValue3 = 100;
   adderValue4 = 100;
 
-  // setAdderValue(value: string, adder: number){
-  //   if(adder == 1){
-  //     if (value == "less") {
-  //       this.adderValue1 = this.adderValue1-1;
-  //     }
-  //     else{
-  //       this.adderValue1 = this.adderValue1+1;
-  //     }
-  //   }else{
-  //     if(adder ==)
-  //   }
-    
-  // }
+  setAdderValue(value: string, adder: number){
+    if(adder == 1){
+      if (value == "less") {
+        this.adderValue1 = this.adderValue1-1;
+      }
+      else{
+        this.adderValue1 = this.adderValue1+1;
+      }
+    }else{
+      if(adder == 2){
+        if (value == "less") {
+          this.adderValue2 = this.adderValue2-1;
+        }
+        else{
+          this.adderValue2 = this.adderValue2+1;
+        }
+      }else{
+        if(adder == 3){
+          if (value == "less") {
+            this.adderValue3 = this.adderValue3-1;
+          }
+          else{
+            this.adderValue3 = this.adderValue3+1;
+          }
+        }
+        else{
+          if(adder == 4){
+            if (value == "less") {
+              this.adderValue4 = this.adderValue4-1;
+            }
+            else{
+              this.adderValue4 = this.adderValue4+1;
+            }
+          }
+        }
+      }
+    }
+  }
 }
