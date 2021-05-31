@@ -313,7 +313,7 @@ public fourthChartData = [
     this.nameCsv = name;
   }
 
-  downloadData(mydata: any): void{
+  downloadData(mydata: any, name: any): void{
     const csvRows = [];
     const headers = Object.keys(mydata[0]);
     //const dat = JSON.parse(this.depdata);
@@ -331,7 +331,7 @@ public fourthChartData = [
     const a = document.createElement('a');
     a.setAttribute('hidden', '');
     a.setAttribute('href', url);
-    a.setAttribute('download', this.nameCsv.concat('.csv'));
+    a.setAttribute('download', name.concat('.csv'));
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
