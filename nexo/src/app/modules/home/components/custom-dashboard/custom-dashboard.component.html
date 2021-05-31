@@ -11,7 +11,7 @@
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
                   </mat-form-field>
-                  <button mat-icon-button (click)="setDate(this.pathForLocation)"><mat-icon>check_circle</mat-icon></button>
+                  <button mat-icon-button (click)="setDate(this.pathForRoute.concat(this.pathForLocation))"><mat-icon>check_circle</mat-icon></button>
                   <button mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon>more_vert</mat-icon>
                   </button>
