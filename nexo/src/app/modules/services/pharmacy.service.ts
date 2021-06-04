@@ -36,5 +36,11 @@ export class PharmacyService {
   
       })
     }
+    update(pharmacy: any): Observable<any>{
+      return this.http.put<any>(this.url+`/pharmacy`,pharmacy,{
+        headers: this.headers,
+  
+      })
+    }
 
 }

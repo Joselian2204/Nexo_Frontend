@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Location } from '../../../models/location';//
-import { LocationService} from '../../../services/location.service';//
+import { Location } from '../../../models/location';
+import { LocationService} from '../../../services/location.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,6 +9,7 @@ import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
 import { AddPharmacyComponent } from '../dialogs/add-pharmacy/add-pharmacy.component';
 import { HealthService } from 'src/app/modules/services/health.service';
 import { DeletePharmacyComponent } from '../dialogs/delete-pharmacy/delete-pharmacy.component';
+import { UpdatePharmacyComponent } from '../dialogs/update-pharmacy/update-pharmacy.component';
 
 @Component({
   selector: 'app-pharmacy',
@@ -51,7 +52,6 @@ export class PharmacyComponent implements OnInit {
       this.pharmacyList = pharmacy;
       this.dataSource = new MatTableDataSource(this.pharmacyList);
       this.dataSource.paginator = this.paginator;
-      console.log(this.pharmacyList)
     });
     
   }
@@ -71,6 +71,17 @@ export class PharmacyComponent implements OnInit {
     }
   }
   onUpdate(pharmacy: Pharmacy){
+    console.log(pharmacy);
+    const dialog = this.dialog.open(UpdatePharmacyComponent,{
+      width: "600px",
+      data: {pharmacy},
+    })
+    dialog.afterClosed().subscribe(data=>{
+      if(data!=null&&data!=undefined&&data!=""){
+        this.total--;
+        this.dataSource = new MatTableDataSource(this.pharmacyList);
+      }
+    })
 
   }
   onDelete(pharmacy: Pharmacy,i:number){

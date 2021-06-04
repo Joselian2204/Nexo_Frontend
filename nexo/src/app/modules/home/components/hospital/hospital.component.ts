@@ -49,7 +49,6 @@ export class HospitalComponent implements OnInit {
       this.hospitalList = hospitals
       this.dataSource = new MatTableDataSource(this.hospitalList);
       this.dataSource.paginator = this.paginator;
-      //console.log(this.hospitalList)
     });
     
   }

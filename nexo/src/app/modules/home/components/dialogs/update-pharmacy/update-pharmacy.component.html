@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="customAdd">
+    <div class="controlers-container">
+        <h3 class="dialogTitle">Actualizar Farmacias</h3>
+
+        <div class="dialogRow mt-2">
+            <mat-form-field class="selectDash">
+                <mat-label class="selectDash">Departamento</mat-label>
+                <mat-select class="selectDash" [(value)]="selected">
+                    <mat-optgroup label = Departamentos>
+                        <mat-option *ngFor = "let department of departments" value={{department.id}}>{{department.name}}</mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="ml-3">
+                <mat-label  class="labelEdit">Nombre</mat-label>
+                <input formControlName="name" matInput >
+            </mat-form-field>
+        </div>
+        <div class="dialogRow">
+            <mat-form-field>
+                <mat-label  class="labelEdit">Ubicacion</mat-label>
+                <input formControlName="location" matInput >
+            </mat-form-field>
+            <mat-form-field class="ml-3">
+                <mat-label  class="labelEdit">Numero de Teléfono</mat-label>
+                <input formControlName="phoneNumber" matInput >
+            </mat-form-field>
+        </div>
+        <div class="dialogRow">
+            <mat-form-field>
+                <mat-label  class="labelEdit">Latitud</mat-label>
+                <input formControlName="lat" matInput >
+            </mat-form-field>
+            <mat-form-field class="ml-3">
+                <mat-label  class="labelEdit">Longitud</mat-label>
+                <input formControlName="lng" matInput >
+            </mat-form-field>
+        </div>
+        <div class="dialogRow mt-2">
+            <button mat-stroked-button type="submit" class="acept-button" (click)="update()">Guardar</button>
+            <button mat-stroked-button class="decline-button ml-3" (click)="cancel()">Cancelar</button>
+        </div>
+    </div>
+</form>
