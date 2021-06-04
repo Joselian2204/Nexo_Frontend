@@ -10,28 +10,26 @@ import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
 })
 export class DeletePharmacyComponent implements OnInit {
 
-  constructor(
-    public dialogRef: MatDialogRef<DeletePharmacyComponent>,
+  constructor(public dialogRef: MatDialogRef<DeletePharmacyComponent>,
     @Inject(MAT_DIALOG_DATA) public data:{pharmacy: Pharmacy},
-    private pharmacyService: PharmacyService
-  ) { }
+    private pharmacyService: PharmacyService) { }
 
   ngOnInit(): void {
-  }
-  delete(){
-    const InitPath = "/pharmacy/";
-    const finalPath = InitPath.concat(this.data.pharmacy.idPharmacy.toString());
-    this.pharmacyService.delete(finalPath).subscribe({
-      next:(data)=>{
-        this.dialogRef.close(this.data.pharmacy)
-      },
-      error: (error)=>{
-        console.log(error)
-      }
-    });
   }
   cancel(){
     this.dialogRef.close();
   }
+  delete(){
+    const InitPath = "/pharmacy/";
+    const finalPath = InitPath.concat(this.data.pharmacy.idPharmacy.toString());
 
+    this.pharmacyService.delete(finalPath).subscribe({
+      next:(data)=>{
+        this.dialogRef.close(this.data.pharmacy);        
+      },
+      error:(error)=>{
+        console.log(error);
+      }
+    });
+  }
 }

@@ -42,6 +42,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { PredictionComponent } from './components/prediction/prediction.component';
 import { DeletePharmacyComponent } from './components/dialogs/delete-pharmacy/delete-pharmacy.component';
 
+
 @NgModule({
   declarations: [
     SidenavComponent,

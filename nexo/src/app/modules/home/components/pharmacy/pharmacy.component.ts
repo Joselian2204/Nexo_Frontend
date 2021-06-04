@@ -77,7 +77,7 @@ export class PharmacyComponent implements OnInit {
     console.log(pharmacy);
     const dialog = this.dialog.open(DeletePharmacyComponent,{
       width: "600px",
-      data: {pharmacy: pharmacy}
+      data: {pharmacy},
     })
     dialog.afterClosed().subscribe(data=>{
       if(data!=null&&data!=undefined&&data!=""){
