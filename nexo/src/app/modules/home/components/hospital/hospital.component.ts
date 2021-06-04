@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Hospital } from 'src/app/modules/models/hospital';
 import { HospitalService } from 'src/app/modules/services/hospital.service';
 import { AddHospitalComponent } from '../dialogs/add-hospital/add-hospital.component';
+import { HttpClient } from '@angular/common/http';
+import { DeleteHospitalComponent } from '../dialogs/delete-hospital/delete-hospital.component';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class HospitalComponent implements OnInit {
   "location",
   "phoneNumber",
   "lat",
-  "lng",];
+  "lng",
+  "actions"];
 
   searchKey!: string;
 
@@ -64,6 +67,23 @@ export class HospitalComponent implements OnInit {
     else{
       return parameter;
     }
+  }
+  onUpdate(hospital: Hospital){
+
+  }
+  onDelete(hospital: Hospital,i:number){
+    const dialog = this.dialog.open(DeleteHospitalComponent,{
+      width: "600px",
+      data: {hospital},
+    })
+    dialog.afterClosed().subscribe(data=>{
+      if(data!=null&&data!=undefined&&data!=""){
+        this.hospitalList.splice(i,1);
+        this.total--;
+        this.dataSource = new MatTableDataSource(this.hospitalList);
+      }
+    })
+
   }
 
 }
