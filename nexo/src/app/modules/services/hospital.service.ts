@@ -32,4 +32,15 @@ export class HospitalService {
   
       })
     }
+    delete(path: String): Observable<any>{
+      return this.http.delete<any>(this.url+path,{
+        headers: this.headers,
+  
+      })
+    }
+    /*update(hospital: any, path: String): Observable<any>{
+      return this.http.put<any>(this.url+`/hospital`,hospital,{
+        headers: this.headers,
+      })
+    }*/
 }

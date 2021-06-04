@@ -30,4 +30,11 @@ export class PharmacyService {
   
       })
     }
+    delete(path: String): Observable<any>{
+      return this.http.delete<any>(this.url+path,{
+        headers: this.headers,
+  
+      })
+    }
+
 }

@@ -8,6 +8,7 @@ import { Pharmacy } from 'src/app/modules/models/pharmacy';
 import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
 import { AddPharmacyComponent } from '../dialogs/add-pharmacy/add-pharmacy.component';
 import { HealthService } from 'src/app/modules/services/health.service';
+import { DeletePharmacyComponent } from '../dialogs/delete-pharmacy/delete-pharmacy.component';
 
 @Component({
   selector: 'app-pharmacy',
@@ -22,7 +23,8 @@ export class PharmacyComponent implements OnInit {
   "location",
   "phoneNumber",
   "lat",
-  "lng",];
+  "lng",
+  "actions"];
 
 
   searchKey!: string;
@@ -67,5 +69,23 @@ export class PharmacyComponent implements OnInit {
     else{
       return parameter;
     }
+  }
+  onUpdate(pharmacy: Pharmacy){
+
+  }
+  onDelete(pharmacy: Pharmacy,i:number){
+    console.log(pharmacy);
+    const dialog = this.dialog.open(DeletePharmacyComponent,{
+      width: "600px",
+      data: {pharmacy: pharmacy}
+    })
+    dialog.afterClosed().subscribe(data=>{
+      if(data!=null&&data!=undefined&&data!=""){
+        this.pharmacyList.splice(i,1);
+        this.total--;
+        this.dataSource = new MatTableDataSource(this.pharmacyList);
+      }
+    })
+
   }
 }
