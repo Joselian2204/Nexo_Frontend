@@ -19,7 +19,12 @@ export class UpdateHospitalComponent implements OnInit {
   departments: Location[]=[];
 
   selected: String = '';
+
   aux: String = '';
+
+  actualDepartment!: any;
+
+  actualDepartmentId!: any;
 
   constructor(
     private _builder: FormBuilder,
@@ -39,27 +44,24 @@ export class UpdateHospitalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.aux = this.data.hospital.idDepartament;
-    this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
+    this.actualDepartment = this.data.hospital.idDepartment;
+    this.locationService.getLocation("bol").subscribe( dep => {
+      this.departments = dep;
+      this.departments.map(x => {
+        if(x.name === this.actualDepartment){
+          this.actualDepartmentId = x.id;
+          this.selected = this.actualDepartmentId
+        }
+      })
+    });
   }
+
   cancel(){
     this.dialogRef.close();
   }
-  search(department: String){
-    this.departments.forEach(element => {
-      if(department==element.name){
-        this.selected=element.id 
-      }
 
-    });
-  }
   update(){
     this.dialogRef.close();
-    if(this.selected.length==0){
-      console.log(this.selected)
-      console.log(this.aux)
-      this.search(this.aux)
-    }
     var newHospital={
       idHospital: this.data.hospital.idHospital,
       idDepartment: this.selected,

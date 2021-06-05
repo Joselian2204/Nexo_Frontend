@@ -71,9 +71,9 @@ export class PharmacyComponent implements OnInit {
     }
   }
   onUpdate(pharmacy: Pharmacy){
-    console.log(pharmacy);
+    console.log('envio',pharmacy);
     const dialog = this.dialog.open(UpdatePharmacyComponent,{
-      width: "600px",
+      width: "450px",
       data: {pharmacy},
     })
     dialog.afterClosed().subscribe(data=>{

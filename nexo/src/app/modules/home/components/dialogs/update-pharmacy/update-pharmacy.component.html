@@ -6,6 +6,9 @@
             <mat-form-field class="selectDash">
                 <mat-label class="selectDash">Departamento</mat-label>
                 <mat-select class="selectDash" [(value)]="selected">
+                    <mat-optgroup label = Actual>
+                        <mat-option value={{this.actualDepartmentId}}>{{this.actualDepartment}}</mat-option>
+                    </mat-optgroup>
                     <mat-optgroup label = Departamentos>
                         <mat-option *ngFor = "let department of departments" value={{department.id}}>{{department.name}}</mat-option>
                     </mat-optgroup>

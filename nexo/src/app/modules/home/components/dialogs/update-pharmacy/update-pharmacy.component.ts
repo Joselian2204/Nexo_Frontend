@@ -20,6 +20,10 @@ export class UpdatePharmacyComponent implements OnInit {
 
   selected: String = '';
 
+  actualDepartment!: any;
+
+  actualDepartmentId!: any;
+
   constructor(
     private _builder: FormBuilder,
     public dialogRef: MatDialogRef<UpdatePharmacyComponent>,
@@ -38,22 +42,22 @@ export class UpdatePharmacyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data.pharmacy);
-    this.search(this.data.pharmacy.idDepartament);
-   //this.selected = this.data.pharmacy.idDepartament;
-    this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
+    this.actualDepartment = this.data.pharmacy.idDepartment;
+    this.locationService.getLocation("bol").subscribe( dep => {
+      this.departments = dep;
+      this.departments.map(x => {
+        if(x.name === this.actualDepartment){
+          this.actualDepartmentId = x.id
+          this.selected = this.actualDepartmentId
+        }
+      });
+    });
   }
+
   cancel(){
     this.dialogRef.close();
   }
-  search(department: String){
-    this.departments.forEach(element => {
-      if(department==element.name){
-        this.selected=element.id 
-      }
 
-    });
-  }
   update(){
     this.dialogRef.close();
     var newPharmacy={

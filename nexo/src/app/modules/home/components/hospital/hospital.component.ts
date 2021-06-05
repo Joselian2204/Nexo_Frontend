@@ -84,7 +84,7 @@ export class HospitalComponent implements OnInit {
   }
   onUpdate(hospital: Hospital){
     const dialog = this.dialog.open(UpdateHospitalComponent,{
-      width: "600px",
+      width: "450px",
       data: {hospital},
     })
     dialog.afterClosed().subscribe(data=>{
