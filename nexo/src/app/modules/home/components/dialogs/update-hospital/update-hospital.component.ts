@@ -1,46 +1,45 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Hospital } from 'src/app/modules/models/hospital';
 import { Location } from 'src/app/modules/models/location';
-import { Pharmacy } from 'src/app/modules/models/pharmacy';
+import { HospitalService } from 'src/app/modules/services/hospital.service';
 import { LocationService } from 'src/app/modules/services/location.service';
-import { PharmacyService } from 'src/app/modules/services/pharmacy.service';
+import { UpdatePharmacyComponent } from '../update-pharmacy/update-pharmacy.component';
 
 @Component({
-  selector: 'app-update-pharmacy',
-  templateUrl: './update-pharmacy.component.html',
-  styleUrls: ['./update-pharmacy.component.scss']
+  selector: 'app-update-hospital',
+  templateUrl: './update-hospital.component.html',
+  styleUrls: ['./update-hospital.component.scss']
 })
-export class UpdatePharmacyComponent implements OnInit {
-
+export class UpdateHospitalComponent implements OnInit {
   
   form!: FormGroup;
 
   departments: Location[]=[];
 
   selected: String = '';
+  aux: String = '';
 
   constructor(
     private _builder: FormBuilder,
-    public dialogRef: MatDialogRef<UpdatePharmacyComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:{pharmacy: Pharmacy},
-    private pharmacyService: PharmacyService,
+    public dialogRef: MatDialogRef<UpdateHospitalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:{hospital: Hospital},
+    private hospitalService: HospitalService,
     private locationService: LocationService
     
   ) {
     this.form = this._builder.group({
-      name:[data.pharmacy.name],
-      location:[data.pharmacy.location],
-      phoneNumber:[data.pharmacy.phoneNumber],
-      lat:[data.pharmacy.lat],
-      lng:[data.pharmacy.lng]
+      name:[data.hospital.name],
+      location:[data.hospital.location],
+      phoneNumber:[data.hospital.phoneNumber],
+      lat:[data.hospital.lat],
+      lng:[data.hospital.lng]
     })
   }
 
   ngOnInit(): void {
-    console.log(this.data.pharmacy);
-    this.search(this.data.pharmacy.idDepartament);
-   //this.selected = this.data.pharmacy.idDepartament;
+    this.aux = this.data.hospital.idDepartament;
     this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
   }
   cancel(){
@@ -56,8 +55,13 @@ export class UpdatePharmacyComponent implements OnInit {
   }
   update(){
     this.dialogRef.close();
-    var newPharmacy={
-      idPharmacy: this.data.pharmacy.idPharmacy,
+    if(this.selected.length==0){
+      console.log(this.selected)
+      console.log(this.aux)
+      this.search(this.aux)
+    }
+    var newHospital={
+      idHospital: this.data.hospital.idHospital,
       idDepartment: this.selected,
       name:this.form.get(["name"])?.value,
       location:this.form.get(["location"])?.value,
@@ -65,8 +69,8 @@ export class UpdatePharmacyComponent implements OnInit {
       lat:this.form.get(["lat"])?.value,
       lng:this.form.get(["lng"])?.value
     }; 
-    console.log(newPharmacy);
-    this.pharmacyService.update(newPharmacy).subscribe({
+    console.log(newHospital);
+    this.hospitalService.update(newHospital).subscribe({
       next:(data)=>{
         this.dialogRef.close();     
       },

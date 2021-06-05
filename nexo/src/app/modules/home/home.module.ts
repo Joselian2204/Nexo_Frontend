@@ -43,6 +43,7 @@ import { PredictionComponent } from './components/prediction/prediction.componen
 import { DeletePharmacyComponent } from './components/dialogs/delete-pharmacy/delete-pharmacy.component';
 import { DeleteHospitalComponent } from './components/dialogs/delete-hospital/delete-hospital.component';
 import { UpdatePharmacyComponent } from './components/dialogs/update-pharmacy/update-pharmacy.component';
+import { UpdateHospitalComponent } from './components/dialogs/update-hospital/update-hospital.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { UpdatePharmacyComponent } from './components/dialogs/update-pharmacy/up
     DeletePharmacyComponent,
     DeleteHospitalComponent,
     UpdatePharmacyComponent,
+    UpdateHospitalComponent,
   ],
   imports: [
     CommonModule,

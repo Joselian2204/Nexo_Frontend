@@ -38,9 +38,10 @@ export class HospitalService {
   
       })
     }
-    /*update(hospital: any, path: String): Observable<any>{
+    update(hospital: any): Observable<any>{
       return this.http.put<any>(this.url+`/hospital`,hospital,{
         headers: this.headers,
+  
       })
-    }*/
+    }
 }

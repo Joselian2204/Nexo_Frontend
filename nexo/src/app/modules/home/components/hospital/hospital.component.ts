@@ -9,6 +9,7 @@ import { HospitalService } from 'src/app/modules/services/hospital.service';
 import { AddHospitalComponent } from '../dialogs/add-hospital/add-hospital.component';
 import { HttpClient } from '@angular/common/http';
 import { DeleteHospitalComponent } from '../dialogs/delete-hospital/delete-hospital.component';
+import { UpdateHospitalComponent } from '../dialogs/update-hospital/update-hospital.component';
 
 
 @Component({
@@ -67,9 +68,6 @@ export class HospitalComponent implements OnInit {
       return parameter;
     }
   }
-  onUpdate(hospital: Hospital){
-
-  }
   onDelete(hospital: Hospital,i:number){
     const dialog = this.dialog.open(DeleteHospitalComponent,{
       width: "600px",
@@ -78,6 +76,19 @@ export class HospitalComponent implements OnInit {
     dialog.afterClosed().subscribe(data=>{
       if(data!=null&&data!=undefined&&data!=""){
         this.hospitalList.splice(i,1);
+        this.total--;
+        this.dataSource = new MatTableDataSource(this.hospitalList);
+      }
+    })
+
+  }
+  onUpdate(hospital: Hospital){
+    const dialog = this.dialog.open(UpdateHospitalComponent,{
+      width: "600px",
+      data: {hospital},
+    })
+    dialog.afterClosed().subscribe(data=>{
+      if(data!=null&&data!=undefined&&data!=""){
         this.total--;
         this.dataSource = new MatTableDataSource(this.hospitalList);
       }
