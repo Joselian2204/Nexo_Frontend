@@ -18,7 +18,7 @@ export class UpdateHospitalComponent implements OnInit {
 
   departments: Location[]=[];
 
-  selected: String = '';
+  selected: any = '';
 
   aux: String = '';
 
@@ -61,6 +61,11 @@ export class UpdateHospitalComponent implements OnInit {
   }
 
   update(){
+    this.data.hospital.name = this.form.get(["name"])?.value
+    this.data.hospital.location = this.form.get(["location"])?.value,
+    this.data.hospital.phoneNumber = this.form.get(["phoneNumber"])?.value,
+    this.data.hospital.lat = this.form.get(["lat"])?.value,
+    this.data.hospital.lng = this.form.get(["lng"])?.value
     this.dialogRef.close();
     var newHospital={
       idHospital: this.data.hospital.idHospital,

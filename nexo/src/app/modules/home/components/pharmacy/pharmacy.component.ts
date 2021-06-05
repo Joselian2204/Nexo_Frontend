@@ -80,6 +80,7 @@ export class PharmacyComponent implements OnInit {
       if(data!=null&&data!=undefined&&data!=""){
         this.total--;
         this.dataSource = new MatTableDataSource(this.pharmacyList);
+        this.dataSource.data = (this.pharmacyList)
       }
     })
 
@@ -87,14 +88,15 @@ export class PharmacyComponent implements OnInit {
   onDelete(pharmacy: Pharmacy,i:number){
     console.log(pharmacy);
     const dialog = this.dialog.open(DeletePharmacyComponent,{
-      width: "600px",
+      width: "450px",
       data: {pharmacy},
     })
     dialog.afterClosed().subscribe(data=>{
-      if(data!=null&&data!=undefined&&data!=""){
+      if(data=='ok'){
         this.pharmacyList.splice(i,1);
         this.total--;
-        this.dataSource = new MatTableDataSource(this.pharmacyList);
+        //this.dataSource = new MatTableDataSource(this.pharmacyList);
+        this.dataSource.data = (this.pharmacyList)
       }
     })
 

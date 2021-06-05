@@ -18,7 +18,7 @@ export class UpdatePharmacyComponent implements OnInit {
 
   departments: Location[]=[];
 
-  selected: String = '';
+  selected: any = '';
 
   actualDepartment!: any;
 
@@ -60,6 +60,11 @@ export class UpdatePharmacyComponent implements OnInit {
 
   update(){
     this.dialogRef.close();
+    this.data.pharmacy.name = this.form.get(["name"])?.value
+    this.data.pharmacy.location = this.form.get(["location"])?.value,
+    this.data.pharmacy.phoneNumber = this.form.get(["phoneNumber"])?.value,
+    this.data.pharmacy.lat = this.form.get(["lat"])?.value,
+    this.data.pharmacy.lng = this.form.get(["lng"])?.value
     var newPharmacy={
       idPharmacy: this.data.pharmacy.idPharmacy,
       idDepartment: this.selected,

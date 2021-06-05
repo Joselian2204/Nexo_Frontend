@@ -20,6 +20,7 @@ export class DeletePharmacyComponent implements OnInit {
     this.dialogRef.close();
   }
   delete(){
+    this.dialogRef.close('ok');
     const InitPath = "/pharmacy/";
     const finalPath = InitPath.concat(this.data.pharmacy.idPharmacy.toString());
 
