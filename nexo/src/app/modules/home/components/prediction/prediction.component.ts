@@ -136,7 +136,7 @@ public fourthChartData = [
   selectPred4 = "";
   selectVar4 = "";
 
-  types: any[] =[{name: 'AR1', value: 'ar1/'},{name:'Lineal', value: 'mtx/'}];
+  types: any[] =[{name: 'AR1', value: 'ar1/'},{name:'Lineal', value: 'mtx/'},{name:'AR2', value: 'ar2/'},{name:'Arima', value: 'arima/'},{name:'Gray', value: 'gray/'}];
 
   variables: any[] = [{type: 'Infectados', value: 0},{type: 'Decesos', value: 1},{type: 'Recuperados', value: 2}]
 
