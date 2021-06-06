@@ -3,6 +3,7 @@ import { LocalStorageService} from './local-storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {Administrator } from '../models/administrator'
+import {url} from '../lib/URL';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,6 @@ export class AdministratorService {
 
   authToken: string = "";
   headers: any;
-  url: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient,
     private localStorageService: LocalStorageService) {
@@ -23,7 +23,7 @@ export class AdministratorService {
 
   login(admi: Administrator):Observable<any>{
     console.log(admi)
-    return this.http.post<any>(this.url+`/administrator/login`,admi,{ observe: 'response' });
+    return this.http.post<any>(url+`administrator/login`,admi,{ observe: 'response' });
 
   }
 

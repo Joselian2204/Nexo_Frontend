@@ -19,7 +19,7 @@ export class DeleteHospitalComponent implements OnInit {
     this.dialogRef.close();
   }
   delete(){
-    const InitPath = "/hospital/";
+    const InitPath = "hospital/";
     const finalPath = InitPath.concat(this.data.hospital.idHospital.toString());
 
     this.hospitalService.delete(finalPath).subscribe({

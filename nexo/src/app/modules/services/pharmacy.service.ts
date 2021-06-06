@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
+import {url} from '../lib/URL';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,6 @@ import { LocalStorageService } from './local-storage.service';
 export class PharmacyService {
   authToken: string = "";
   headers: any;
-  url: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient,
     private localStorageService: LocalStorageService) {
@@ -20,24 +20,24 @@ export class PharmacyService {
       })
      }
      getPharmacy(): Observable<any>{
-      return this.http.get<any>(this.url+`/pharmacy`,{
+      return this.http.get<any>(url+`pharmacy`,{
         headers: this.headers
       })
     }
     addPharmacy(pharmacy: any): Observable<any>{
-      return this.http.post<any>(this.url+`/pharmacy`,pharmacy,{
+      return this.http.post<any>(url+`pharmacy`,pharmacy,{
         headers: this.headers,
   
       })
     }
     delete(path: String): Observable<any>{
-      return this.http.delete<any>(this.url+path,{
+      return this.http.delete<any>(url+path,{
         headers: this.headers,
   
       })
     }
     update(pharmacy: any): Observable<any>{
-      return this.http.put<any>(this.url+`/pharmacy`,pharmacy,{
+      return this.http.put<any>(url+`pharmacy`,pharmacy,{
         headers: this.headers,
   
       })

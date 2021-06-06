@@ -40,7 +40,6 @@ export class UpdatePharmacyComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data.pharmacy);
     this.search(this.data.pharmacy.idDepartament);
-   //this.selected = this.data.pharmacy.idDepartament;
     this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
   }
   cancel(){
