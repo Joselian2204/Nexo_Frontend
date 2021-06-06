@@ -1,8 +1,8 @@
-<div class="controlers-container">
-    <title mat-dialog-title class="title-dialog">Eliminar Hospital</title>
-    <title mat-dialog-title class="label-dialog">Esta seguro que desea eliminar este hspital?</title>
-    <mat-dialog-actions align="end">
-        <button mat-stroked-button type="submit" class="decline-button" (click)="delete()">Eliminar</button>
-        <button mat-stroked-button class="acept-button" (click)="cancel()">Cancelar</button>
+<div class="deleteDialog">
+    <title mat-dialog-title class="dialogTitle">Eliminar Hospital</title>
+    <title mat-dialog-title class="dialogText">Esta seguro que desea eliminar este hspital?</title>
+    <mat-dialog-actions>
+        <button mat-stroked-button type="submit" class="acept-button" (click)="delete()">Eliminar</button>
+        <button mat-stroked-button class="decline-button" (click)="cancel()">Cancelar</button>
     </mat-dialog-actions>
 </div>

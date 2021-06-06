@@ -1,6 +1,6 @@
 export interface Pharmacy{
     "idPharmacy":number,
-    "idDepartament":string,
+    "idDepartment":string,
     "name":string,
     "location":string,
     "phoneNumber":string,

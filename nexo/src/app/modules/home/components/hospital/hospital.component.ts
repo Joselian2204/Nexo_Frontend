@@ -70,11 +70,11 @@ export class HospitalComponent implements OnInit {
   }
   onDelete(hospital: Hospital,i:number){
     const dialog = this.dialog.open(DeleteHospitalComponent,{
-      width: "600px",
+      width: "450px",
       data: {hospital},
     })
     dialog.afterClosed().subscribe(data=>{
-      if(data!=null&&data!=undefined&&data!=""){
+      if(data == 'ok'){
         this.hospitalList.splice(i,1);
         this.total--;
         this.dataSource = new MatTableDataSource(this.hospitalList);
@@ -84,7 +84,7 @@ export class HospitalComponent implements OnInit {
   }
   onUpdate(hospital: Hospital){
     const dialog = this.dialog.open(UpdateHospitalComponent,{
-      width: "600px",
+      width: "450px",
       data: {hospital},
     })
     dialog.afterClosed().subscribe(data=>{

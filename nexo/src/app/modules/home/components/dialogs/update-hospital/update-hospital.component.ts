@@ -18,8 +18,13 @@ export class UpdateHospitalComponent implements OnInit {
 
   departments: Location[]=[];
 
-  selected: String = '';
+  selected: any = '';
+
   aux: String = '';
+
+  actualDepartment!: any;
+
+  actualDepartmentId!: any;
 
   constructor(
     private _builder: FormBuilder,
@@ -39,27 +44,29 @@ export class UpdateHospitalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.aux = this.data.hospital.idDepartament;
-    this.locationService.getLocation("bol").subscribe( dep => this.departments = dep);
+    this.actualDepartment = this.data.hospital.idDepartment;
+    this.locationService.getLocation("bol").subscribe( dep => {
+      this.departments = dep;
+      this.departments.map(x => {
+        if(x.name === this.actualDepartment){
+          this.actualDepartmentId = x.id;
+          this.selected = this.actualDepartmentId
+        }
+      })
+    });
   }
+
   cancel(){
     this.dialogRef.close();
   }
-  search(department: String){
-    this.departments.forEach(element => {
-      if(department==element.name){
-        this.selected=element.id 
-      }
 
-    });
-  }
   update(){
+    this.data.hospital.name = this.form.get(["name"])?.value
+    this.data.hospital.location = this.form.get(["location"])?.value,
+    this.data.hospital.phoneNumber = this.form.get(["phoneNumber"])?.value,
+    this.data.hospital.lat = this.form.get(["lat"])?.value,
+    this.data.hospital.lng = this.form.get(["lng"])?.value
     this.dialogRef.close();
-    if(this.selected.length==0){
-      console.log(this.selected)
-      console.log(this.aux)
-      this.search(this.aux)
-    }
     var newHospital={
       idHospital: this.data.hospital.idHospital,
       idDepartment: this.selected,
