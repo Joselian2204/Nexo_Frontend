@@ -7,6 +7,7 @@ import { Prediction } from 'src/app/modules/models/prediction';
 import { DataService } from 'src/app/modules/services/data.service';
 import { LocationService } from 'src/app/modules/services/location.service';
 import { PredictionService } from 'src/app/modules/services/prediction.service';
+import { BetasDialogComponent } from '../dialogs/betas-dialog/betas-dialog.component';
 import { CustomfiltersComponent } from '../dialogs/customfilters/customfilters.component';
 
 @Component({
@@ -304,6 +305,31 @@ public fourthChartData = [
       this.pathForRoute4 = result.location;
       this.saveName(this.actualButtonName4)
     });
+  }
+
+  viewVariables(chart: number, id:string){
+    if(chart == 1){
+      const dialogRef = this.dialog.open(BetasDialogComponent,{
+        width:"250px",
+        data: {id: this.pathForLocation1}
+      });
+    }else if(chart == 2){
+      const dialogRef = this.dialog.open(BetasDialogComponent,{
+        width:"250px",
+        data: {id: this.pathForLocation2}
+      });
+    }else if(chart == 3){
+      const dialogRef = this.dialog.open(BetasDialogComponent,{
+        width:"250px",
+        data: {id: this.pathForLocation3}
+      });
+    }
+    else if(chart == 4){
+      const dialogRef = this.dialog.open(BetasDialogComponent,{
+        width:"250px",
+        data: {id: this.pathForLocation4}
+      });
+    }
   }
 //-------------------------Download-------------------------------//
 

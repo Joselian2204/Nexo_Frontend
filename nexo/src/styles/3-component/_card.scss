@@ -83,7 +83,7 @@
 }
 
 .infDashboards{
-    width: 33vw;
+    width: 35vw;
     padding: 2rem 2rem;
     background-color: $color-primary-white;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
@@ -112,7 +112,7 @@
 }
 
 .infCustomDashboards{
-    width: 35.5vw;
+    width: 36.5vw;
     padding: 2rem 2rem;
     background-color: $color-primary-white;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
@@ -136,3 +136,12 @@
     width: 15vw;
 }
 
+.myBetaCard{
+    padding: 2rem;
+    background-color: $color-primary-light-1;
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+}

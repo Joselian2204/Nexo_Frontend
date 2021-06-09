@@ -44,6 +44,7 @@ import { DeletePharmacyComponent } from './components/dialogs/delete-pharmacy/de
 import { DeleteHospitalComponent } from './components/dialogs/delete-hospital/delete-hospital.component';
 import { UpdatePharmacyComponent } from './components/dialogs/update-pharmacy/update-pharmacy.component';
 import { UpdateHospitalComponent } from './components/dialogs/update-hospital/update-hospital.component';
+import { BetasDialogComponent } from './components/dialogs/betas-dialog/betas-dialog.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { UpdateHospitalComponent } from './components/dialogs/update-hospital/up
     DeleteHospitalComponent,
     UpdatePharmacyComponent,
     UpdateHospitalComponent,
+    BetasDialogComponent,
   ],
   imports: [
     CommonModule,
