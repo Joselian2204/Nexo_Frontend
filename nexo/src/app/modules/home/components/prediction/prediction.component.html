@@ -24,7 +24,7 @@
             </div>
             <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog1()">{{this.actualButtonName1}}</button>
             <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred1,this.pathForRoute1,this.pathForLocation1,this.adderValue1,this.selectVar1,1)"><mat-icon>check</mat-icon></button>
-            <button mat-icon-button class="mt-07" (click)="viewVariables(1,this.pathForLocation1)"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="viewVariables(1,this.pathForRoute1,this.pathForLocation1,this.selectVar1)"><mat-icon>info</mat-icon></button>
             <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData1,this.actualButtonName1)"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
@@ -61,7 +61,7 @@
             </div>
             <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog2()">{{this.actualButtonName2}}</button>
             <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred2,this.pathForRoute2,this.pathForLocation2,this.adderValue2,this.selectVar2,2)"><mat-icon>check</mat-icon></button>
-            <button mat-icon-button class="mt-07" (click)="viewVariables(2,this.pathForLocation2)"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="viewVariables(2,this.pathForRoute2,this.pathForLocation2,this.selectVar2)"><mat-icon>info</mat-icon></button>
             <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData2,this.actualButtonName2)"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
@@ -100,7 +100,7 @@
             </div>
             <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog3()">{{this.actualButtonName3}}</button>
             <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred3,this.pathForRoute3,this.pathForLocation3,this.adderValue3,this.selectVar3,3)"><mat-icon>check</mat-icon></button>
-            <button mat-icon-button class="mt-07" (click)="viewVariables(3,this.pathForLocation3)"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="viewVariables(3,this.pathForRoute3,this.pathForLocation3,this.selectVar3)"><mat-icon>info</mat-icon></button>
             <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData3,this.actualButtonName3)"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart
@@ -137,7 +137,7 @@
             </div>
             <button mat-raised-button class="locationButtonPred" (click)="openLocationDialog4()">{{this.actualButtonName4}}</button>
             <button mat-icon-button class="mt-07"(click)="fetchData(this.selectPred4,this.pathForRoute4,this.pathForLocation4,this.adderValue4,this.selectVar4,4)"><mat-icon>check</mat-icon></button>
-            <button mat-icon-button class="mt-07" (click)="viewVariables(4,this.pathForLocation4)"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button class="mt-07" (click)="viewVariables(4,this.pathForRoute4,this.pathForLocation4,this.selectVar4)"><mat-icon>info</mat-icon></button>
             <button mat-icon-button class="mt-07" (click)="downloadData(this.myNewData4,this.actualButtonName4)"><mat-icon>download</mat-icon></button>
         </div>
         <canvas baseChart

@@ -16,4 +16,9 @@ export class PredictionService {
     .set('filter', filter);
     return this.http.get<any>(url+"prediction/"+path,{params});
   }
+  getVariables(path:string, filter: any):Observable<any>{
+    const params = new HttpParams()
+    .set('filter',filter);
+    return this.http.get<any>(url+"prediction/"+path,{params});
+  }
 }

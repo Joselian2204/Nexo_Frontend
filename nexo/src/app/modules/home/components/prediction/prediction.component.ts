@@ -307,11 +307,23 @@ public fourthChartData = [
     });
   }
 
-  viewVariables(chart: number, id:string){
+  viewVariables(chart: number,ptr: string, ptl: string, variable: any){
+
+    console.log(ptr)
+    console.log(ptl)
+    const lineal = 'lineal/';
+    let initPath = lineal.concat(ptr);
+    let finalPath = initPath.concat(ptl)
+
+    console.log(finalPath)
+
     if(chart == 1){
       const dialogRef = this.dialog.open(BetasDialogComponent,{
         width:"250px",
-        data: {id: this.pathForLocation1}
+        data: {
+          pth: finalPath,
+          var: variable
+        }
       });
     }else if(chart == 2){
       const dialogRef = this.dialog.open(BetasDialogComponent,{
